@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $db_host = getenv('DB_HOST') ?: 'localhost';
 $db_name = getenv('DB_NAME') ?: 'u142136422_officialhino';
 $db_user = getenv('DB_USER') ?: 'u142136422_officialhino';
@@ -26,10 +24,6 @@ try {
 /* -------------------------
    Session hardening (recommended)
    ------------------------- */
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_strict_mode', 1);
-// jika situs Anda pakai HTTPS, aktifkan ini:
-// ini_set('session.cookie_secure', 1);
 
 /* -------------------------
    Helper functions

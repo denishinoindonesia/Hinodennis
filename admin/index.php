@@ -1,32 +1,36 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Setting session (bisa di sini supaya lebih aman)
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_strict_mode', 1);
+// ini_set('session.cookie_secure', 1); // aktifkan kalau pakai HTTPS
 
 session_start();
 
+require 'config.php'; // file config.php dengan PDO $pdo di atas
 
+// Cek session login
 if (!isset($_SESSION['admin_id'])) {
-  header("Location: login.php");
-  exit;
+    header("Location: login.php");
+    exit;
 }
 
-include 'config.php';
-
-// === AMBIL DATA DARI DATABASE ===
+// Ambil data total artikel dan pesan
 $total_artikel = 0;
 $total_messages = 0;
 
 try {
-  $query = $conn->query("SELECT COUNT(*) AS total FROM artikel");
-  if ($query && $row = $query->fetch_assoc()) $total_artikel = $row['total'];
+    $row = fetchOnePrepared($pdo, "SELECT COUNT(*) AS total FROM artikel");
+    if ($row) $total_artikel = $row['total'];
 
-  $query = $conn->query("SELECT COUNT(*) AS total FROM messages");
-  if ($query && $row = $query->fetch_assoc()) $total_messages = $row['total'];
+    $row = fetchOnePrepared($pdo, "SELECT COUNT(*) AS total FROM messages");
+    if ($row) $total_messages = $row['total'];
 } catch (Exception $e) {
-  echo "⚠️ Error: " . $e->getMessage();
+    echo "⚠️ Error: " . $e->getMessage();
 }
+
+// ... lanjutkan dengan HTML dan tampilkan data $total_artikel dan $total_messages
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
