@@ -107,7 +107,6 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
         <img src="../img/favicon.png" alt="Logo" />
     </div>
     <a href="index.php"><i class="fa-solid fa-home"></i> Dashboard</a>
-    <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
     <a href="artikel.php"><i class="fa-solid fa-file-alt"></i> Artikel</a>
     <a href="messages.php" class="active"><i class="fa-solid fa-envelope"></i> Pesan</a>
     <div class="mt-auto pt-3">
