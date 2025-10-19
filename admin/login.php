@@ -148,7 +148,7 @@ if (isset($_POST['login'])) {
 
 <body>
     <div class="login-card">
-        <img src="../img/logo3.png" alt="Logo Hino">
+        <img src="../img/favicon.png" alt="Logo Hino">
         <div class="brand-title">Login Admin Slot Gacor</div>
         <div class="brand-subtitle">Masuk ke panel administrasi</div>
 
