@@ -6,18 +6,13 @@ if (!isset($_SESSION['admin_id'])) {
   exit;
 }
 
-
 include 'config.php';
 
 // === AMBIL DATA DARI DATABASE ===
-$total_products = 0;
 $total_artikel = 0;
 $total_messages = 0;
 
 try {
-  $query = $conn->query("SELECT COUNT(*) AS total FROM products");
-  if ($query && $row = $query->fetch_assoc()) $total_products = $row['total'];
-
   $query = $conn->query("SELECT COUNT(*) AS total FROM artikel");
   if ($query && $row = $query->fetch_assoc()) $total_artikel = $row['total'];
 
@@ -157,7 +152,6 @@ try {
       flex-shrink: 0;
     }
 
-    .icon-products { background: linear-gradient(135deg, #0d6efd, #5a9bfd); }
     .icon-artikel { background: linear-gradient(135deg, #28a745, #5dd075); }
     .icon-messages { background: linear-gradient(135deg, #ffc107, #ffd75a); }
 
@@ -215,17 +209,6 @@ try {
       <h3>Selamat Datang, <?php echo $_SESSION['admin']; ?> 👋</h3>
       <p class="text-muted">Panel Admin Asiatek Indo Makmur — Didesain untuk kemudahan & kecepatan kerja.</p>
     </div>
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="stat-card">
-          <div class="stat-icon icon-products"><i class="fa-solid fa-box"></i></div>
-          <div class="stat-info">
-            <h6>Total Produk</h6>
-            <h3><?php echo $total_products; ?></h3>
-          </div>
-        </div>
-      </div>
 
       <div class="col-md-4">
         <div class="stat-card">
