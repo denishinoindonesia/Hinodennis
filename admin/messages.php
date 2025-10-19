@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 session_start();
 
-require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+include 'config.php';
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
