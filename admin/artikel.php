@@ -1,14 +1,27 @@
 <?php
+// Setting session (bisa di sini supaya lebih aman)
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_strict_mode', 1);
+// ini_set('session.cookie_secure', 1); // aktifkan kalau pakai HTTPS
+
 session_start();
-if (!isset($_SESSION['admin'])) {
+
+require 'config.php'; // file config.php dengan PDO $pdo di atas
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-include 'config.php';
+// Ambil data total artikel dan pesan
+$total_artikel = 0;
+$total_messages = 0;
 
-// Ambil semua artikel
-$result = $conn->query("SELECT * FROM artikel ORDER BY created_at ASC");
+try {
+    $row = fetchOnePrepared($pdo, "SELECT COUNT(*) AS total FROM artikel");
+    if ($row) $total_artikel = $row['total'];
+}
 ?>
 
 <!DOCTYPE html>

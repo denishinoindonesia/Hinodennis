@@ -27,8 +27,6 @@ try {
 } catch (Exception $e) {
     echo "⚠️ Error: " . $e->getMessage();
 }
-
-// ... lanjutkan dengan HTML dan tampilkan data $total_artikel dan $total_messages
 ?>
 
 
