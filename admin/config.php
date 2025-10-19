@@ -2,9 +2,9 @@
 session_start();
 
 $host = 'localhost';
-$user = 'u429834259_admin';
-$pass = 'Sqwe123@@';
-$db   = 'u429834259_asiatekindo';
+$user = 'u142136422_officialhino';
+$pass = 'D3n15h1no35!';
+$db   = 'u142136422_officialhino';
 
 $conn = new mysqli($host, $user, $pass, $db);
 
