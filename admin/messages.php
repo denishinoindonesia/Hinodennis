@@ -1,13 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
-
-// Path config.php disesuaikan
-include 'config.php'; 
-
 // Debug
 if (!isset($conn)) {
     die("Variabel koneksi database (\$conn) tidak terdefinisi. Cek config.php dan path include.");
