@@ -2,6 +2,14 @@
 // login.php
 require_once 'config.php'; // pastikan path benar
 
+// Debug POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
