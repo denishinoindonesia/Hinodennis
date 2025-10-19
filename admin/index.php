@@ -201,7 +201,7 @@ try {
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo">
-      <img src="../img/logo.png" alt="Logo">
+      <img src="../img/favicon.png" alt="Logo">
     </div>
 
     <a href="index.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
@@ -216,7 +216,7 @@ try {
   <div class="main-content">
     <div class="main-header">
       <h3>Selamat Datang, <?php echo $_SESSION['admin_username']; ?> 👋</h3>
-      <p class="text-muted">Panel Admin Asiatek Indo Makmur — Didesain untuk kemudahan & kecepatan kerja.</p>
+      <p class="text-muted">Panel Admin Hino — Didesain untuk kemudahan & kecepatan kerja.</p>
     </div>
 
       <div class="col-md-4">
