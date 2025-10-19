@@ -1,24 +1,20 @@
 <?php
 session_start();
 
-require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+require 'config.php'; // pastikan path ini benar dan $pdo tersedia
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
-// Debug
-if (!isset($conn)) {
-    die("Variabel koneksi database (\$conn) tidak terdefinisi. Cek config.php dan path include.");
-}
 
-$result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
-if (!$result) {
-    die("Error query: " . $conn->error);
-}
+// Ambil semua pesan, urut dari terbaru
+$sql = "SELECT * FROM messages ORDER BY created_at DESC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$messages = $stmt->fetchAll();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -108,7 +104,7 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
 <!-- SIDEBAR -->
 <div class="sidebar">
     <div class="logo text-center">
-        <img src="../img/logo.png" alt="Logo" />
+        <img src="../img/favicon.png" alt="Logo" />
     </div>
     <a href="index.php"><i class="fa-solid fa-home"></i> Dashboard</a>
     <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
@@ -140,9 +136,14 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
                 </tr>
             </thead>
             <tbody>
+                <?php if (count($messages) === 0): ?>
+                <tr>
+                    <td colspan="6" class="text-center">Belum ada pesan masuk.</td>
+                </tr>
+                <?php else: ?>
                 <?php
                 $no = 1;
-                while ($row = $result->fetch_assoc()):
+                foreach ($messages as $row):
                 ?>
                 <tr>
                     <td class="text-center"><?= $no++; ?></td>
@@ -155,11 +156,7 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
                         <a href="messages_hapus.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" title="Hapus" onclick="return confirm('Yakin ingin menghapus pesan ini?')"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
-                <?php endwhile; ?>
-                <?php if ($result->num_rows === 0): ?>
-                <tr>
-                    <td colspan="6" class="text-center">Belum ada pesan masuk.</td>
-                </tr>
+                <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>
