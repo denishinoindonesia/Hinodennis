@@ -1,21 +1,44 @@
 <?php
-include 'config.php';
-session_start();
+// login.php
+require_once 'config.php'; // pastikan path benar
 
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $result = $conn->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
-    
-    if ($result->num_rows > 0) {
-        $_SESSION['admin'] = $username;
-        header("Location: index.php");
-        exit;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if ($username === '' || $password === '') {
+        $error = 'Username dan password wajib diisi.';
     } else {
-        $error = "Username atau password salah!";
+        // Ambil user berdasarkan username
+        $user = fetchOnePrepared($pdo, "SELECT id, username, password FROM users WHERE username = :u LIMIT 1", [
+            ':u' => $username
+        ]);
+
+        if ($user && password_verify($password, $user['password'])) {
+            // optional: rehash jika diperlukan
+            if (password_needs_rehash($user['password'], PASSWORD_DEFAULT)) {
+                $newHash = password_hash($password, PASSWORD_DEFAULT);
+                execPrepared($pdo, "UPDATE users SET password = :p WHERE id = :id", [
+                    ':p' => $newHash,
+                    ':id' => $user['id']
+                ]);
+            }
+
+            // Set session — gunakan ID, bukan username, dan regenerate session id
+            session_regenerate_id(true);
+            $_SESSION['admin_id'] = $user['id'];
+            $_SESSION['admin_username'] = $user['username'];
+
+            header('Location: index.php');
+            exit;
+        } else {
+            // jangan jelaskan apakah username atau password salah (menghindari user enumeration)
+            $error = 'Username atau password salah.';
+        }
     }
 }
 ?>
+
 
 <!doctype html>
 <html lang="id">

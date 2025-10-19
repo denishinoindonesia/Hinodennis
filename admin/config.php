@@ -1,27 +1,69 @@
 <?php
 session_start();
 
-$host = 'localhost';
-$user = 'u142136422_officialhino';
-$pass = 'D3n15h1no35!';
-$db   = 'u142136422_officialhino';
+$db_host = getenv('DB_HOST') ?: 'localhost';
+$db_name = getenv('DB_NAME') ?: 'u142136422_officialhino';
+$db_user = getenv('DB_USER') ?: 'u142136422_officialhino';
+$db_pass = getenv('DB_PASS') ?: 'D3n15h1no35!';
 
-$conn = new mysqli($host, $user, $pass, $db);
+$dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";
 
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // exception saat error
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false, // pakai native prepares bila tersedia
+];
+
+try {
+    $pdo = new PDO($dsn, $db_user, $db_pass, $options);
+} catch (PDOException $e) {
+    // Jangan tampilkan detail error di production — log saja.
+    error_log("Database connection failed: " . $e->getMessage());
+    // Tampilkan pesan umum
+    exit('Koneksi ke database gagal. Silakan coba lagi nanti.');
 }
 
-// Fungsi fetchAll untuk mengambil semua data dari query
-function fetchAll($query){
-    global $conn;
-    $result = $conn->query($query);
-    $rows = [];
-    if($result){
-        while($row = $result->fetch_assoc()){
-            $rows[] = $row;
-        }
-    }
-    return $rows;
+/* -------------------------
+   Session hardening (recommended)
+   ------------------------- */
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_strict_mode', 1);
+// jika situs Anda pakai HTTPS, aktifkan ini:
+// ini_set('session.cookie_secure', 1);
+
+/* -------------------------
+   Helper functions
+   ------------------------- */
+
+/**
+ * fetchAllPrepared
+ * Jalankan statement prepared (SELECT) dan kembalikan semua baris.
+ * - $sql: query with placeholders
+ * - $params: array of params (positional or named)
+ */
+function fetchAllPrepared(PDO $pdo, string $sql, array $params = []): array {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll();
 }
-?>
+
+/**
+ * fetchOnePrepared
+ * Ambil satu baris (atau null)
+ */
+function fetchOnePrepared(PDO $pdo, string $sql, array $params = []): ?array {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $row = $stmt->fetch();
+    return $row === false ? null : $row;
+}
+
+/**
+ * execPrepared
+ * Untuk INSERT/UPDATE/DELETE. Mengembalikan rowCount() (jumlah baris yang terpengaruh)
+ */
+function execPrepared(PDO $pdo, string $sql, array $params = []): int {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->rowCount();
+}
