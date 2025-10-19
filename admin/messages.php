@@ -1,11 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
-
-include 'config.php';
 
 // Ambil semua pesan, urut dari terbaru
 $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
