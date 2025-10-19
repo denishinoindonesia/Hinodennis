@@ -120,7 +120,7 @@ try {
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo text-center">
-      <img src="../img/logo.png" alt="Logo">
+      <img src="../img/favicon.png" alt="Logo">
     </div>
     <a href="index.php"><i class="fa-solid fa-home"></i> Dashboard</a>
     <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
