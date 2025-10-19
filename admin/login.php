@@ -1,14 +1,7 @@
 <?php
 // login.php
+session_start();
 require_once 'config.php'; // pastikan path benar
-
-// Debug POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-}
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $username = trim($_POST['username'] ?? '');
@@ -47,16 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 }
 ?>
 
-
 <!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login Admin - Slot Gacor</title>
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
     <style>
         /* === BODY === */
@@ -71,13 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             font-family: 'Poppins', sans-serif;
             margin: 0;
         }
-
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         /* === LOGIN CARD === */
         .login-card {
             background: rgba(255, 255, 255, 0.95);
@@ -89,19 +79,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             backdrop-filter: blur(8px);
             text-align: center;
         }
-
         .login-card:hover {
             box-shadow: 0 18px 45px rgba(13, 110, 253, 0.4);
             transform: translateY(-2px);
             transition: 0.3s;
         }
-
         /* === LOGO === */
         .login-card img {
             width: 130px;
             margin-bottom: 20px;
         }
-
         /* === TITLE === */
         .brand-title {
             font-weight: 700;
@@ -109,13 +96,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             color: #0d6efd;
             margin-bottom: 8px;
         }
-
         .brand-subtitle {
             color: #6c757d;
             font-size: 0.9rem;
             margin-bottom: 25px;
         }
-
         /* === INPUT === */
         .input-group {
             display: flex;
@@ -127,13 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             margin-bottom: 20px;
             transition: 0.3s;
         }
-
         .input-group i {
             color: #0d6efd;
             font-size: 17px;
             padding: 0 14px;
         }
-
         .input-group input {
             border: none;
             background: transparent;
@@ -143,12 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             color: #333;
             outline: none;
         }
-
         .input-group:focus-within {
             box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
             border-color: #0d6efd;
         }
-
         /* === BUTTON === */
         .btn-login {
             background: linear-gradient(135deg, #0d6efd, #5a9bfd);
@@ -162,12 +143,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             width: 100%;
             transition: all 0.3s ease;
         }
-
         .btn-login:hover {
             background: linear-gradient(135deg, #005ce6, #3b82f6);
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
-
         /* === ERROR TEXT === */
         .text-danger {
             font-size: 0.9rem;
@@ -176,28 +155,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         }
     </style>
 </head>
-
 <body>
     <div class="login-card">
-        <img src="../img/favicon.png" alt="Logo Hino">
+        <img src="../img/favicon.png" alt="Logo Hino" />
         <div class="brand-title">Login Admin Slot Gacor</div>
         <div class="brand-subtitle">Masuk ke panel administrasi</div>
 
-        <form method="post">
+        <form method="post" novalidate>
             <div class="input-group">
                 <i class="fa fa-user"></i>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Username" required autofocus />
             </div>
 
             <div class="input-group">
                 <i class="fa fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required />
             </div>
 
-            <button name="login" class="btn-login">Masuk</button>
+            <button name="login" class="btn-login" type="submit">Masuk</button>
         </form>
 
-        <?php if (isset($error)) echo "<div class='text-danger'>$error</div>"; ?>
+        <?php if (isset($error)) : ?>
+            <div class="text-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
     </div>
 </body>
 </html>
