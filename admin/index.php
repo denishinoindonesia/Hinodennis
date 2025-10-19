@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 
 session_start();
 
-session_start();
 
 if (!isset($_SESSION['admin_id'])) {
   header("Location: login.php");
