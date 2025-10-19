@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
 }
 
 // Path config.php disesuaikan
-include '../config.php'; 
+include 'config.php'; 
 
 // Debug
 if (!isset($conn)) {
