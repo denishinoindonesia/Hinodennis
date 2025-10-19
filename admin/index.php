@@ -1,9 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+
+if (!isset($_SESSION['admin_id'])) {
   header("Location: login.php");
   exit;
 }
+
 
 include 'config.php';
 
