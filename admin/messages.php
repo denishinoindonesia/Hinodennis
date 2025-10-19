@@ -1,26 +1,24 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
-
-include 'config.php';
-
-// Cek session login
-if (!isset($_SESSION['admin_id'])) {
+if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
 }
 
-// Ambil semua pesan, urut dari terbaru
-$result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
+// Path config.php disesuaikan
+include '../config.php'; 
 
-// Cek query error
+// Debug
+if (!isset($conn)) {
+    die("Variabel koneksi database (\$conn) tidak terdefinisi. Cek config.php dan path include.");
+}
+
+$result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
 if (!$result) {
-    die("Gagal mengambil data pesan: " . $conn->error);
+    die("Error query: " . $conn->error);
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
