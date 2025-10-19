@@ -1,12 +1,7 @@
 <?php
-// Setting session (bisa di sini supaya lebih aman)
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_strict_mode', 1);
-// ini_set('session.cookie_secure', 1); // aktifkan kalau pakai HTTPS
-
 session_start();
 
-require 'config.php'; // file config.php dengan PDO $pdo di atas
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
@@ -14,15 +9,15 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-// Ambil data total artikel dan pesan
-$total_artikel = 0;
-$total_messages = 0;
-
+// Ambil data artikel
 try {
-    $row = fetchOnePrepared($pdo, "SELECT COUNT(*) AS total FROM artikel");
-    if ($row) $total_artikel = $row['total'];
+    $stmt = $pdo->query("SELECT * FROM artikel ORDER BY created_at DESC");
+    $articles = $stmt->fetchAll();
+} catch (PDOException $e) {
+    exit("Gagal mengambil data artikel: " . $e->getMessage());
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
