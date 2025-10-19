@@ -1,0 +1,22 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# Pastikan domain utama
+RewriteCond %{HTTP_HOST} ^(www\.)?official-hino\.com$ [NC]
+
+# KECUALIKAN folder admin, api, dan file maintenance itu sendiri
+RewriteCond %{REQUEST_URI} !^/(admin|api|maintenance\.html) [NC]
+
+# Hanya jalankan untuk file HTML atau PHP di root
+RewriteCond %{REQUEST_URI} \.(php|html)?$ [NC]
+
+# Izinkan IP admin agar tetap bisa akses
+# (ganti 123.123.123.123 dengan IP kamu sendiri)
+; RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123$
+
+# Arahkan ke halaman maintenance
+RewriteRule ^.*$ /maintenance.html [R=302,L]
+
+# Pastikan file dan folder lainnya tetap berfungsi normal
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
