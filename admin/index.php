@@ -206,7 +206,7 @@ try {
   <!-- MAIN CONTENT -->
   <div class="main-content">
     <div class="main-header">
-      <h3>Selamat Datang, <?php echo $_SESSION['admin']; ?> 👋</h3>
+      <h3>Selamat Datang, <?php echo $_SESSION['admin_username']; ?> 👋</h3>
       <p class="text-muted">Panel Admin Asiatek Indo Makmur — Didesain untuk kemudahan & kecepatan kerja.</p>
     </div>
 
