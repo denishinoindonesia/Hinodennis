@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/home_css/header.css" />
     <link rel="stylesheet" href="css/home_css/product.css" />
-    <link rel="stylesheet" href="css/home_css/layanan.css" />
+    <!-- <link rel="stylesheet" href="css/home_css/layanan.css" /> -->
     <link rel="stylesheet" href="css/home_css/contactsec.css" />
     <link rel="stylesheet" href="css/home_css/companyprofilehome.css" />
     <link rel="stylesheet" href="css/home_css/ourcommitment.css" />
