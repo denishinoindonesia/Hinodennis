@@ -115,15 +115,9 @@
     <!-- Hero -->
     <section class="hero">
       <div class="slider">
-        <img src="img/bannerhino2.png" class="slide active" alt="Banner 1" />
-        <img src="img/Euro 4 Hino 300.jpeg" class="slide active" alt="Banner 2" />
-        <img src="img/Euro 4 Hino 500.jpeg" class="slide" alt="Banner 3" />
-        <img src="img/Euro 4 Hino Bus.jpeg" class="slide" alt="Banner 4" />
-      </div>
-      <div class="container">
-        <h2>Sales Hino No.1 Dengan Layanan Profesional & Cepat</h2>
-        <p>Profesional, cepat, dan siap memberikan solusi terbaik untuk kebutuhan truk bisnis Anda.</p>
-        <a href="https://wa.me/+6285975287684?text=Halo%20Saya%20Dapat%20Nomor%20Anda%20Dari%20Google" class="btn btn-contact">Hubungi Sekarang</a>
+        <img src="img/Euro 4 Hino 300.jpeg" class="slide active" alt="Banner 1" />
+        <img src="img/Euro 4 Hino 500.jpeg" class="slide" alt="Banner 2" />
+        <img src="img/Euro 4 Hino Bus.jpeg" class="slide" alt="Banner 3" />
       </div>
     </section>
     
