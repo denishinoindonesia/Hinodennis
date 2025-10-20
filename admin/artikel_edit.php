@@ -1,29 +1,41 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) { 
-    header("Location: login.php"); 
-    exit; 
-}
-include 'config.php';
 
-$id = intval($_GET['id']);
-$result = $conn->query("SELECT * FROM artikel WHERE id=$id");
-$article = $result->fetch_assoc();
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// =============================
+// Ambil ID artikel
+// =============================
+$id = intval($_GET['id'] ?? 0);
+
+// Ambil data artikel dari database
+$stmt = $pdo->prepare("SELECT * FROM artikel WHERE id = ?");
+$stmt->execute([$id]);
+$article = $stmt->fetch();
 
 if (!$article) {
-    $_SESSION['message'] = ['type'=>'danger','text'=>'Artikel tidak ditemukan.'];
+    $_SESSION['message'] = ['type' => 'danger', 'text' => 'Artikel tidak ditemukan.'];
     header("Location: artikel.php");
     exit;
 }
 
+// =============================
+// Update data artikel
+// =============================
 if (isset($_POST['update'])) {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $image = $article['image']; // gambar lama
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
+    $image = $article['image']; // gunakan gambar lama jika tidak ada upload baru
 
     // Upload gambar baru jika ada
     if (isset($_FILES['image']) && $_FILES['image']['name'] != '') {
-        $targetDir = "uploads/";
+        $targetDir = "uploads/artikel/";
         if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
 
         $fileName = time() . '_' . basename($_FILES['image']['name']);
@@ -34,13 +46,15 @@ if (isset($_POST['update'])) {
         }
     }
 
-    $stmt = $conn->prepare("UPDATE artikel SET title=?, description=?, image=? WHERE id=?");
-    $stmt->bind_param("sssi", $title, $description, $image, $id);
+    try {
+        $sql = "UPDATE artikel SET title = ?, description = ?, image = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$title, $description, $image, $id]);
 
-    if ($stmt->execute()) {
-        $_SESSION['message'] = ['type'=>'success','text'=>'Artikel berhasil diperbarui!'];
-    } else {
-        $_SESSION['message'] = ['type'=>'danger','text'=>'Gagal memperbarui artikel.'];
+        $_SESSION['message'] = ['type' => 'success', 'text' => 'Artikel berhasil diperbarui!'];
+    } catch (Exception $e) {
+        error_log("Gagal memperbarui artikel: " . $e->getMessage());
+        $_SESSION['message'] = ['type' => 'danger', 'text' => 'Gagal memperbarui artikel.'];
     }
 
     header("Location: artikel.php");
@@ -82,7 +96,6 @@ img.current-image { width: 120px; border-radius: 8px; margin-bottom: 10px; }
 <div class="sidebar">
   <div class="logo"><img src="../img/logo.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-  <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
   <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
   <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
   <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
@@ -116,7 +129,7 @@ img.current-image { width: 120px; border-radius: 8px; margin-bottom: 10px; }
       <div class="mb-3">
         <label class="form-label">Gambar Saat Ini</label><br>
         <?php if(!empty($article['image'])): ?>
-          <img src="uploads/artikel/<?= $article['image'] ?>" class="current-image">
+          <img src="uploads/artikel/<?= htmlspecialchars($article['image']) ?>" class="current-image">
         <?php else: ?>
           <img src="https://via.placeholder.com/120?text=No+Image" class="current-image">
         <?php endif; ?>

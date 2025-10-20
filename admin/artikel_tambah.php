@@ -1,33 +1,46 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) { header("Location: login.php"); exit; }
-include 'config.php';
 
-if(isset($_POST['submit'])){
-    $title = $_POST['title'];
-    $description = $_POST['description'];
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// =============================
+//  Proses Simpan Artikel Baru
+// =============================
+if (isset($_POST['submit'])) {
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
     $image = '';
 
-    // Upload gambar jika ada
-    if(isset($_FILES['image']) && $_FILES['image']['name'] != ''){
+    // Upload gambar (jika ada)
+    if (isset($_FILES['image']) && $_FILES['image']['name'] != '') {
         $targetDir = "uploads/artikel/";
-        if(!is_dir($targetDir)) mkdir($targetDir,0755,true);
+        if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
 
-        $fileName = time().'_'.basename($_FILES['image']['name']);
-        $targetFilePath = $targetDir.$fileName;
+        $fileName = time() . '_' . basename($_FILES['image']['name']);
+        $targetFilePath = $targetDir . $fileName;
 
-        if(move_uploaded_file($_FILES['image']['tmp_name'],$targetFilePath)){
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
             $image = $fileName;
         }
     }
 
-    $stmt = $conn->prepare("INSERT INTO artikel(title, description, image, created_at) VALUES(?,?,?,NOW())");
-    $stmt->bind_param("sss",$title,$description,$image);
+    // Simpan data artikel menggunakan PDO
+    try {
+        $sql = "INSERT INTO artikel (title, description, image, created_at) 
+                VALUES (?, ?, ?, NOW())";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$title, $description, $image]);
 
-    if($stmt->execute()){
-        $_SESSION['message']=['type'=>'success','text'=>'Artikel berhasil ditambahkan!'];
-    } else{
-        $_SESSION['message']=['type'=>'danger','text'=>'Gagal menambahkan artikel.'];
+        $_SESSION['message'] = ['type' => 'success', 'text' => 'Artikel berhasil ditambahkan!'];
+    } catch (Exception $e) {
+        error_log("Gagal menambahkan artikel: " . $e->getMessage());
+        $_SESSION['message'] = ['type' => 'danger', 'text' => 'Gagal menambahkan artikel.'];
     }
 
     header("Location: artikel.php");
@@ -65,9 +78,8 @@ body { font-family:'Poppins',sans-serif; background: var(--accent); color: var(-
 </head>
 <body>
 <div class="sidebar">
-  <div class="logo"><img src="../img/logo.png" alt="Logo"></div>
+  <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-  <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
   <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
   <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
   <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>

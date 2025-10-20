@@ -1,14 +1,24 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) { 
-    header("Location: login.php"); 
-    exit; 
-}
-include 'config.php';
 
-$id = intval($_GET['id']);
-$result = $conn->query("SELECT * FROM artikel WHERE id=$id");
-$article = $result->fetch_assoc();
+require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Validasi & ambil ID
+$id = $_GET['id'] ?? null;
+if (!$id || !ctype_digit($id)) {
+    $_SESSION['message'] = ['type' => 'danger', 'text' => 'ID artikel tidak valid.'];
+    header("Location: artikel.php");
+    exit;
+}
+
+// Ambil data artikel dari database (pakai helper dari config.php)
+$article = fetchOnePrepared($pdo, "SELECT * FROM artikel WHERE id = ?", [$id]);
 
 if (!$article) {
     $_SESSION['message'] = ['type'=>'danger','text'=>'Artikel tidak ditemukan.'];
@@ -16,7 +26,6 @@ if (!$article) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -49,7 +58,6 @@ img.article-image { width: 100%; max-width: 400px; border-radius: 10px; margin-b
 <div class="sidebar">
   <div class="logo"><img src="../img/logo.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-  <a href="produk.php"><i class="fa-solid fa-box"></i> Produk</a>
   <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
   <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
   <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
@@ -65,8 +73,8 @@ img.article-image { width: 100%; max-width: 400px; border-radius: 10px; margin-b
     <h4><?= htmlspecialchars($article['title']) ?></h4>
     <p class="text-muted">Tanggal Dibuat: <?= date("d M Y", strtotime($article['created_at'])) ?></p>
     
-    <?php if(!empty($article['image'])): ?>
-        <img src="uploads/artikel/<?= $article['image'] ?>" class="article-image" alt="<?= htmlspecialchars($article['title']) ?>">
+    <?php if (!empty($article['image'])): ?>
+        <img src="uploads/artikel/<?= htmlspecialchars($article['image']) ?>" class="article-image" alt="<?= htmlspecialchars($article['title']) ?>">
     <?php else: ?>
         <img src="https://via.placeholder.com/400x250?text=No+Image" class="article-image" alt="No Image">
     <?php endif; ?>

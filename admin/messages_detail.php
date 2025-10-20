@@ -1,18 +1,29 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+
+require 'config.php'; // pastikan path ini benar dan $pdo tersedia
+
+// Cek session login
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-include 'config.php';
+$id = $_GET['id'] ?? null;
 
-$id = intval($_GET['id']); // pastikan aman
-$result = $conn->query("SELECT * FROM messages WHERE id=$id");
-$message = $result->fetch_assoc();
+if (!$id || !ctype_digit($id)) {
+    $_SESSION['message'] = ['type' => 'danger', 'text' => 'Permintaan tidak valid.'];
+    header("Location: messages.php");
+    exit;
+}
+
+$id = (int) $id;
+
+// Ambil pesan dari database
+$message = fetchOnePrepared($pdo, "SELECT * FROM messages WHERE id = ?", [$id]);
 
 if (!$message) {
-    $_SESSION['message'] = ['type'=>'danger','text'=>'Pesan tidak ditemukan.'];
+    $_SESSION['message'] = ['type' => 'danger', 'text' => 'Pesan tidak ditemukan.'];
     header("Location: messages.php");
     exit;
 }
@@ -45,7 +56,12 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
 .sidebar .logo { text-align: center; margin-bottom: 40px; }
 .sidebar .logo img { width: 140px; height: auto; }
 
-.sidebar a { display:flex; align-items:center; gap:12px; padding:12px 18px; color:#555; border-radius:10px; font-size:15px; text-decoration:none; margin-bottom:8px; transition:0.3s; }
+.sidebar a { 
+    display:flex; align-items:center; gap:12px; 
+    padding:12px 18px; color:#555; border-radius:10px; 
+    font-size:15px; text-decoration:none; margin-bottom:8px; 
+    transition:0.3s; 
+}
 .sidebar a i { font-size:17px; }
 .sidebar a:hover, .sidebar a.active { background:#0d6efd; color:white; }
 
@@ -71,32 +87,36 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
     <a href="artikel.php"><i class="fa-solid fa-file-alt"></i> Artikel</a>
     <a href="messages.php" class="active"><i class="fa-solid fa-envelope"></i> Pesan</a>
     <div class="mt-auto pt-3">
-        <a href="logout.php" style="color:#dc3545;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div class="main-content">
-    <h3 class="fw-semibold text-primary mb-4"><i class="fa-solid fa-envelope-open-text me-2"></i> Detail Pesan</h3>
+    <h3 class="fw-semibold text-primary mb-4">
+        <i class="fa-solid fa-envelope-open-text me-2"></i> Detail Pesan
+    </h3>
 
     <div class="card p-4">
         <div class="mb-3">
             <label class="fw-semibold">Nama Pengirim:</label>
-            <p><?= htmlspecialchars($message['name']) ?></p>
+            <p><?= htmlspecialchars($message['name'] ?? '-') ?></p>
         </div>
         <div class="mb-3">
             <label class="fw-semibold">Nomor Pengirim:</label>
-            <p><?= htmlspecialchars($message['phone']) ?></p>
+            <p><?= htmlspecialchars($message['phone'] ?? '-') ?></p>
         </div>
         <div class="mb-3">
             <label class="fw-semibold">Pesan:</label>
-            <p><?= nl2br(htmlspecialchars($message['message'])) ?></p>
+            <p><?= nl2br(htmlspecialchars($message['message'] ?? '-')) ?></p>
         </div>
         <div class="mb-3">
             <label class="fw-semibold">Tanggal Diterima:</label>
-            <p><?= date("d M Y H:i", strtotime($message['created_at'])) ?></p>
+            <p><?= !empty($message['created_at']) ? date("d M Y H:i", strtotime($message['created_at'])) : '-' ?></p>
         </div>
-        <a href="messages.php" class="btn btn-primary"><i class="fa fa-arrow-left me-1"></i> Kembali ke Pesan</a>
+        <a href="messages.php" class="btn btn-primary">
+            <i class="fa fa-arrow-left me-1"></i> Kembali ke Pesan
+        </a>
     </div>
 </div>
 
