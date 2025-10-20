@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/home_css/header.css" />
     <link rel="stylesheet" href="css/home_css/product.css" />
-    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/home_css/layanan.css" />
     <link rel="stylesheet" href="css/home_css/contactsec.css" />
     <link rel="stylesheet" href="css/home_css/companyprofilehome.css" />
     <link rel="stylesheet" href="css/home_css/ourcommitment.css" />
@@ -120,58 +120,32 @@
         <img src="img/Euro 4 Hino Bus.jpeg" class="slide" alt="Banner 3" />
       </div>
     </section>
-    
-    <!-- About Company -->
-    <section class="about-company">
-      <div class="container">
-        <div class="about-content">
-          <div class="text">
-            <h2>Sales Hino Indonesia</h2>
-            <div class="divider"></div>
-            <p>
-              Nathan, Sales Hino Indonesia yang berpengalaman dan profesional, siap menjadi mitra terbaik Anda...
-            </p>
-            <p>
-              Komitmen Nathan adalah memberikan lebih dari sekadar penjualan...
-            </p>
-            <div class="contact-buttons">
-              <a href="https://wa.me/6285975287684" class="btn whatsapp-btn">+62 859-7528-7684</a>
-              <a href="mailto:saleshinojabodetabek@gmail.com" class="btn email-btn">saleshinojabodetabek@gmail.com</a>
-            </div>
-          </div>
-          <div class="image-gallery">
-            <img src="img/promohino1.jpg" alt="Promo Hino" />
-          </div>
-        </div>
-      </div>
-    </section>
-        
-    <!-- Hero 2 -->
-    <section class="hero1">
-      <img src="img/hino1.jpg" alt="Header Background" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0;" />
-      <div class="container">
-        <h2>Solusi Terbaik Kebutuhan Armada Anda</h2>
-        <p>Kami menyediakan truk Hino berkualitas...</p>
-        <a href="#product-carousel" class="btn btn-contact">Browse Catalog</a>
-      </div>
-    </section>
-        
-    <!-- Product Section -->
-    <div id="product-carousel"></div>
-    <section class="product-carousel">
-      <h2>Our Product</h2>
-      <p>Pilihan Utama Pengusaha Cerdas di Seluruh Indonesia</p>
-      <div class="carousel-wrapper">
-        <button class="carousel-btn left">&#10094;</button>
-        <div class="carousel">
-          <div class="product-item"><a href="hino300.html"><img src="img/300series/136MDL.png" alt="Hino 300" /><p><strong>Hino 300 Series</strong></p></a></div>
-          <div class="product-item"><a href="hino500.html"><img src="img/500series/FM340TH.png" alt="Hino 500" /><p><strong>Hino 500 Series</strong></p></a></div>
-          <div class="product-item"><a href="hinobus.html"><img src="img/hinobus.png" alt="Hino Bus" /><p><strong>Hino Bus Series</strong></p></a></div>
-        </div>
-        <button class="carousel-btn right">&#10095;</button>
-      </div>
-    </section>
 
+    <!-- Layanan Official Hino -->
+    <section class="section-produk">
+        <div class="card-container">
+
+        <div class="card">
+            <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis">
+            <h3>PENJUALAN TRUK & BIS</h3>
+            <a href="#produk" class="btn">SELENGKAPNYA</a>
+        </div>
+
+        <div class="card">
+            <img src="img/bannerservice.jpg" alt="Layanan Service">
+            <h3>LAYANAN SERVICE</h3>
+            <a href="contact.php" class="btn">SELENGKAPNYA</a>
+        </div>
+
+        <div class="card">
+            <img src="img/bannersparepart.jpg" alt="Spare Part">
+            <h3>SPARE PART</h3>
+            <a href="contact.php" class="btn">SELENGKAPNYA</a>
+        </div>
+
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <div class="contact-container">
       <div class="contact-tabs"><div class="tab active">Hubungi Kami</div></div>
