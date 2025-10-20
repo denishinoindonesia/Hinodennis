@@ -4,7 +4,7 @@ header {
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 9999; /* tambah nilai besar supaya di atas hero */
 }
 
 .header-content {
@@ -25,7 +25,6 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 /* ===================== SLIDER ===================== */
@@ -34,6 +33,7 @@ header {
   width: 100%;
   height: 100%;
   z-index: 0;
+  overflow: hidden;
 }
 
 .slider img {
