@@ -45,7 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login Admin - Slot Gacor</title>
+    <title>Login Admin Panel - Hino Official</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../img/favicon.png" type="image/png" />
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -158,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 <body>
     <div class="login-card">
         <img src="../img/favicon.png" alt="Logo Hino" />
-        <div class="brand-title">Login Admin Slot Gacor</div>
+        <div class="brand-title">Login Admin Panel Hino Official</div>
         <div class="brand-subtitle">Masuk ke panel administrasi</div>
 
         <form method="post" novalidate>
