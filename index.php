@@ -272,10 +272,10 @@ $artikelData = fetchAllPrepared($pdo, $sql);
                 <div class="blog-card-content">
                   <h3>
                     <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
-                      <?= htmlspecialchars($artikel['title']) ?>
+                      <?= htmlspecialchars($artikel['judul']) ?>
                     </a>
                   </h3>
-                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['description']), 0, 100, '...')) ?></p>
+                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
                   <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
                     Baca Selengkapnya
                   </a>
