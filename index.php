@@ -1,45 +1,25 @@
 <?php
-// index.php
+require 'config.php'; // pastikan file config.php ada dan berisi koneksi $pdo
+
+// Ambil 3 artikel terbaru dari database
+$sql = "SELECT id, judul, isi, gambar, created_at FROM artikel ORDER BY created_at DESC LIMIT 3";
+$artikelData = fetchAllPrepared($pdo, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Dealer Hino Jabodetabek | Sales Truck Hino Terbaik di Indonesia</title>
+    <title>Hino Official | Dealer Truck Hino Tangerang</title>
 
-    <meta name="description" content="Dealer Resmi Hino Jakarta. Hubungi : 0859 7528 7684 / 0882 1392 5184 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
+    <meta name="description" content="Hino Official - Dealer Truck Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
     <meta name="keywords" content="sales Hino, sales Hino Jakarta, sales Hino Jabodetabek, sales Hino Tangerang, sales Hino Bekasi, sales Hino Depok, sales Hino Bogor, sales truck Hino, dealer Hino, dealer Hino Jabodetabek, dealer Hino Tangerang, dealer Hino Bekasi, dealer Hino Depok, dealer Hino Bogor, dealer truck Hino, dealer Hino resmi, dealer Hino Jakarta, dealer Hino Indonesia, jual truk Hino, kredit truk Hino, cicilan truk Hino, promo truk Hino, harga truk Hino terbaru, diskon truk Hino, truk Hino Dutro, truk Hino 300, truk Hino 500, Hino Dutro 136 HD, Hino Dutro 4x4, Hino Dutro box, Hino Dutro engkel, spesifikasi Hino Dutro, modifikasi truk Hino, gambar truk Hino, keunggulan truk Hino, truk Hino untuk bisnis, truk Hino untuk logistik, perbandingan truk Hino dan Isuzu Elf, dealer truk Hino termurah" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZY8E57Z99"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-2ZY8E57Z99');
-    </script>
-
-    <link rel="canonical" href="https://saleshinoindonesia.com/" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Dealer Hino Indonesia | Promo & Harga Truk Terbaik" />
-    <meta property="og:description" content="Dapatkan promo truk Hino terbaru di Jakarta. Konsultasi langsung dengan sales profesional. Gratis penawaran & layanan cepat!" />
-    <meta property="og:image" content="https://saleshinoindonesia.com/img/promohino1.jpg" />
-    <meta property="og:url" content="https://saleshinoindonesia.com/" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dealer Hino Indonesia | Promo & Harga Truk Terbaik" />
-    <meta name="twitter:description" content="Hubungi kami untuk mendapatkan penawaran terbaik truk Hino. Layanan cepat & profesional." />
-    <meta name="twitter:image" content="https://saleshinoindonesia.com/img/promohino1.jpg" />
-
-    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://official-hino.com/" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
 
     <!-- Font & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
@@ -49,55 +29,24 @@
     <link rel="stylesheet" href="css/home_css/promoutama.css" />
     <link rel="stylesheet" href="css/home_css/layanan.css" />
     <link rel="stylesheet" href="css/home_css/produk.css" />
-    <link rel="stylesheet" href="css/home_css/contactsec.css" />
-    <link rel="stylesheet" href="css/home_css/blogcard.css" />
     <link rel="stylesheet" href="css/home_css/keunggulankami.css" />
     <link rel="stylesheet" href="css/home_css/contact.css" />
+    <link rel="stylesheet" href="css/home_css/blogcard.css" />
 
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AutoDealer",
-        "name": "Dealer Hino Indonesia - Jakarta",
-        "image": "https://saleshinoindonesia.com/img/logo3.png",
-        "url": "https://saleshinoindonesia.com",
-        "logo": "https://saleshinoindonesia.com/img/logo3.png",
-        "telephone": "+62-859-7528-7684",
-        "email": "saleshinojabodetabek@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Golf Lake Ruko Venice, Jl. Lkr. Luar Barat No.78 Blok B, RT.9/RW.14, Cengkareng Tim.",
-          "addressLocality": "Jakarta Barat",
-          "addressRegion": "DKI Jakarta",
-          "postalCode": "11730",
-          "addressCountry": "ID"
-        },
-        "openingHours": "Mo-Sa 08:00-17:00",
-        "priceRange": "$$",
-        "sameAs": [
-          "https://www.instagram.com/saleshinojabodetabek",
-          "https://www.facebook.com/profile.php?id=61573843992250",
-          "https://wa.me/6285975287684"
-        ]
-      }
-    </script>
   </head>
 
   <body>
-
     <!-- Header -->
     <header>
       <div class="container header-content navbar">
         <div class="header-title">
-          <a href="https://saleshinoindonesia.com">
+          <a href="https://official-hino.com">
             <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
           </a>
         </div>
-        
+
         <div class="hamburger-menu">&#9776;</div>
 
         <nav class="nav links">
@@ -121,124 +70,113 @@
     </section>
 
     <!-- Section: Promo Utama -->
-      <section id="promo-utama" class="promo-section">
-        <div class="promo-text">
-          <h2>Dapatkan Harga dan Penawaran Terbaik Langsung dari Dealer Resmi Hino Indonesia</h2>
-          <ul>
-            <li>Ingin harga terbaik untuk semua jenis truk Hino?</li>
-            <li>Bingung memilih kendaraan yang tepat untuk bisnis Anda?</li>
-            <li>Butuh pelayanan cepat, ramah, dan profesional?</li>
-            <li>Hubungi Nathan Hino sekarang juga dan dapatkan solusi terbaik!</li>
-          </ul>
-          <p>Anda berada di tempat yang tepat! Nathan Hino siap membantu Anda mendapatkan truk Hino baru dengan harga kompetitif untuk seluruh Indonesia, <strong>terutama di Jabodetabek dan Jawa Barat</strong>. Pelayanan cepat, terpercaya, dan tanpa ribet menanti Anda!</p>
-          <div class="promo-buttons">
-            <a href="https://wa.me/6285975287684" class="btn-primary" target="_blank" rel="noopener noreferrer">Konsultasi Pembelian</a>
-          </div>
+    <section id="promo-utama" class="promo-section">
+      <div class="promo-text">
+        <h2>Dapatkan Harga dan Penawaran Terbaik Langsung dari Dealer Resmi Hino Indonesia</h2>
+        <ul>
+          <li>Ingin harga terbaik untuk semua jenis truk Hino?</li>
+          <li>Bingung memilih kendaraan yang tepat untuk bisnis Anda?</li>
+          <li>Butuh pelayanan cepat, ramah, dan profesional?</li>
+          <li>Hubungi Dennis sekarang juga dan dapatkan solusi terbaik!</li>
+        </ul>
+        <p>
+          Denis Hino siap membantu Anda mendapatkan truk Hino baru dengan harga kompetitif untuk seluruh Indonesia,
+          <strong>terutama di Tangerang</strong>. Pelayanan cepat, terpercaya, dan tanpa ribet menanti Anda!
+        </p>
+        <div class="promo-buttons">
+          <a href="https://wa.me/6281219055571" class="btn-primary" target="_blank" rel="noopener noreferrer">Konsultasi Pembelian</a>
         </div>
-        <img src="img/hino.png" alt="Truk Hino Hijau" loading="lazy" class="promo-main-image"/>
-      </section>
-      
+      </div>
+      <img src="img/hino.png" alt="Truk Hino Hijau" loading="lazy" class="promo-main-image" />
+    </section>
+
     <!-- BAGIAN PRODUK & LAYANAN -->
     <section class="hino-section-produk">
-        <div class="hino-container">
+      <div class="hino-container">
         <div class="hino-heading">
-            <h5>PRODUK & LAYANAN</h5>
-            <h2>HINO BANDUNG</h2>
-            <p>Kami melayani jasa penyediaan unit Truk & Bis, layanan service dan penjualan spare part merk Hino.</p>
+          <h5>PRODUK & LAYANAN</h5>
+          <h2>HINO TANGERANG</h2>
+          <p>Kami melayani jasa penyediaan unit Truk & Bus, layanan service dan penjualan spare part merk Hino.</p>
         </div>
 
         <div class="hino-cards">
-            <div class="hino-card">
-            <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis">
-            <h3>PENJUALAN TRUK & BIS</h3>
-            <a href="#produk" class="hino-btn">SELENGKAPNYA</a>
-            </div>
+          <div class="hino-card">
+            <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis" />
+            <h3>PENJUALAN TRUK & BUS</h3>
+            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+          </div>
 
-            <div class="hino-card">
-            <img src="img/bannerservice.jpg" alt="Layanan Service">
+          <div class="hino-card">
+            <img src="img/bannerservice.jpg" alt="Layanan Service" />
             <h3>LAYANAN SERVICE</h3>
-            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
-            </div>
+            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+          </div>
 
-            <div class="hino-card">
-            <img src="img/bannersparepart.jpg" alt="Spare Part">
+          <div class="hino-card">
+            <img src="img/bannersparepart.jpg" alt="Spare Part" />
             <h3>SPARE PART</h3>
-            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
-            </div>
+            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
 
-      <!-- Produk -->
-      <section id="products-section" class="products-section fade-element">
-        <h2 class="section-title">Produk Truk Hino Unggulan</h2>
-        <div class="products">
-          <div class="product">
-            <img src="img/hino300produk.png" alt="Hino 300 Dutro" loading="lazy"/>
-            <h3><a href="https://dealerhinoindonesia.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a></h3>
-            <p>Truk ringan dan tangguh, cocok untuk usaha kecil dan menengah.</p>
-          </div>
-          <div class="product">
-            <img src="img/hino500produk.png" alt="Hino 500 Ranger" loading="lazy"/>
-            <h3><a href="https://dealerhinoindonesia.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a></h3>
-            <p>Performa handal untuk pengangkutan berat dan jarak jauh.</p>
-          </div>
-          <div class="product">
-            <img src="img/hinobusproduk.png" alt="Hino Bus Series" loading="lazy"/>
-            <h3><a href="https://dealerhinoindonesia.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a></h3>
-            <p>Solusi transportasi penumpang dengan kenyamanan terbaik.</p>
-          </div>
+    <!-- Produk -->
+    <section id="products-section" class="products-section fade-element">
+      <h2 class="section-title">Produk Truk Hino Unggulan</h2>
+      <div class="products">
+        <div class="product">
+          <img src="img/hino300produk.png" alt="Hino 300 Dutro" loading="lazy" />
+          <h3>
+            <a href="https://dealerhinoindonesia.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a>
+          </h3>
+          <p>Truk ringan dan tangguh, cocok untuk usaha kecil dan menengah.</p>
         </div>
-      </section>
-    
+
+        <div class="product">
+          <img src="img/hino500produk.png" alt="Hino 500 Ranger" loading="lazy" />
+          <h3>
+            <a href="https://dealerhinoindonesia.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a>
+          </h3>
+          <p>Performa handal untuk pengangkutan berat dan jarak jauh.</p>
+        </div>
+
+        <div class="product">
+          <img src="img/hinobusproduk.png" alt="Hino Bus Series" loading="lazy" />
+          <h3>
+            <a href="https://dealerhinoindonesia.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a>
+          </h3>
+          <p>Solusi transportasi penumpang dengan kenyamanan terbaik.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Keunggulan Kami -->
-  <section class="advantages">
-    <div class="advantages-container">
+    <section class="advantages">
+      <div class="advantages-container">
         <div class="advantages-image">
           <img src="img/worker.png" alt="Worker Image" />
         </div>
+
         <div class="advantages-content">
           <h2>Program Purna Jual</h2>
-          
+
           <div class="advantage-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#0a1950"
-              stroke-width="2"
-              >
-              <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-                d="M5 13l4 4L19 7"
-                />
-              </svg>
-            
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#0a1950" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
             <div>
               <h4>Program Service</h4>
               <p>
                 Nikmati layanan gratis biaya jasa service berkala untuk setiap pembelian unit Hino tertentu. Pemeriksaan dilakukan oleh teknisi bersertifikat menggunakan suku cadang asli Hino.
-Hemat biaya, kendaraan lebih terawat, performa maksimal.
+                Hemat biaya, kendaraan lebih terawat, performa maksimal.
               </p>
             </div>
           </div>
 
           <div class="advantage-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#0a1950"
-              stroke-width="2"
-              >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 5.87v-2a4 4 0 00-3-3.87M16 7a4 4 0 11-8 0 4 4 0 018 0z"
-                />
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#0a1950" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 5.87v-2a4 4 0 00-3-3.87M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
             <div>
               <h4>Program Suku Cadang</h4>
@@ -247,22 +185,11 @@ Hemat biaya, kendaraan lebih terawat, performa maksimal.
               </p>
             </div>
           </div>
-          
+
           <div class="advantage-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#0a1950"
-              stroke-width="2"
-              >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 0v13m-3.5-3.5L12 21l3.5-3.5"
-                />
-              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#0a1950" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 0v13m-3.5-3.5L12 21l3.5-3.5" />
+            </svg>
             <div>
               <h4>Program On Site Service</h4>
               <p>
@@ -270,23 +197,12 @@ Hemat biaya, kendaraan lebih terawat, performa maksimal.
               </p>
             </div>
           </div>
-          
+
           <div class="advantage-item">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="#0a1950"
-            stroke-width="2"
-            >
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 17H4a1 1 0 01-1-1V6a1 1 0 011-1h11a1 1 0 011 1v10a1 1 0 01-1 1h-1m5 0a2 2 0 100-4h-1m-4 4h6m-1 0a2 2 0 110 4 2 2 0 010-4zM6 17a2 2 0 100 4 2 2 0 000-4z"
-                />
-              </svg>
-              <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#0a1950" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17H4a1 1 0 01-1-1V6a1 1 0 011-1h11a1 1 0 011 1v10a1 1 0 01-1 1h-1m5 0a2 2 0 100-4h-1m-4 4h6m-1 0a2 2 0 110 4 2 2 0 010-4zM6 17a2 2 0 100 4 2 2 0 000-4z" />
+            </svg>
+            <div>
               <h4>Pelatihan & Konsultasi</h4>
               <p>
                 Hino tidak hanya menjual truk, tapi juga memastikan setiap pengguna memahami cara terbaik untuk mengoperasikan dan merawatnya. Melalui program Pelatihan & Konsultasi, kami membekali operator dan manajemen Anda dengan pengetahuan teknis, keselamatan, efisiensi pengoperasian, serta perawatan kendaraan.
@@ -296,40 +212,75 @@ Hemat biaya, kendaraan lebih terawat, performa maksimal.
         </div>
       </div>
     </section>
-    
+
     <!-- Contact Section -->
     <div class="contact-container">
-      <div class="contact-tabs"><div class="tab active">Hubungi Kami</div></div>
+      <div class="contact-tabs">
+        <div class="tab active">Hubungi Kami</div>
+      </div>
+
       <div class="contact-info">
-        <div class="contact-item"><img src="img/cssupport.png" alt="WhatsApp" /><div><strong>Whatsapp</strong><br />+62 859-7528-7684</div></div>
+        <div class="contact-item">
+          <img src="img/cssupport.png" alt="WhatsApp" />
+          <div>
+            <strong>Whatsapp</strong><br />
+            +62 812-1905-5571
+          </div>
+        </div>
+
         <div class="divider"></div>
-        <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" /><div><strong>Phone Call</strong><br />+62 882-1392-5184</div></div>
+
+        <div class="contact-item">
+          <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" />
+          <div>
+            <strong>Phone Call</strong><br />
+            +62 882-1392-5184
+          </div>
+        </div>
+
         <div class="divider"></div>
-        <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" /><div><strong>Email</strong><br />saleshinojabodetabek@gmail.com</div></div>
+
+        <div class="contact-item">
+          <img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" />
+          <div>
+            <strong>Email</strong><br />
+            denishinoindonesia@gmail.com
+          </div>
+        </div>
       </div>
     </div>
-      
+
     <!-- Blog Section -->
     <section class="blog-section">
       <div class="container">
         <h2>Blog & Artikel</h2>
         <p>Dapatkan informasi terbaru seputar Truk Hino...</p>
+
         <div class="blog-grid">
-          <?php
-            $artikelData = json_decode(file_get_contents("https://saleshinoindonesia.com/admin/api/get_artikel.php"), true);
-            if (is_array($artikelData)) {
-              $terbaru = array_slice($artikelData, 0, 3);
-              foreach ($terbaru as $artikel):
-          ?>
-            <div class="blog-card">
-              <img src="<?= htmlspecialchars($artikel['gambar']) ?>" alt="<?= htmlspecialchars($artikel['judul']) ?>" />
-              <div class="blog-card-content">
-                <h3><a href="detail_artikel.php?id=<?= $artikel['id'] ?>"><?= htmlspecialchars($artikel['judul']) ?></a></h3>
-                <p><?= substr(strip_tags($artikel['isi']), 0, 100) ?>...</p>
-                <a href="detail_artikel.php?id=<?= $artikel['id'] ?>" class="read-more">Baca Selengkapnya</a>
+          <?php if (!empty($artikelData)): ?>
+            <?php foreach ($artikelData as $artikel): ?>
+              <div class="blog-card">
+                <img 
+                  src="<?= htmlspecialchars($artikel['gambar']) ?>" 
+                  alt="<?= htmlspecialchars($artikel['judul']) ?>" 
+                  loading="lazy"
+                />
+                <div class="blog-card-content">
+                  <h3>
+                    <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
+                      <?= htmlspecialchars($artikel['judul']) ?>
+                    </a>
+                  </h3>
+                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
+                  <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
+                    Baca Selengkapnya
+                  </a>
+                </div>
               </div>
-            </div>
-          <?php endforeach; } else { echo "<p>Tidak ada artikel ditemukan.</p>"; } ?>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p>Tidak ada artikel ditemukan.</p>
+          <?php endif; ?>
         </div>
       </div>
     </section>
