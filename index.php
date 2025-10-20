@@ -44,6 +44,7 @@
     <!-- Font & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/home_css/header.css" />
     <link rel="stylesheet" href="css/home_css/product.css" />
     <link rel="stylesheet" href="css/footer.css" />
@@ -89,8 +90,27 @@
 
   <body>
 
-    <!-- Navbar -->
-    <?php include 'navbar.php'; ?>
+    <!-- Header -->
+    <header>
+      <div class="container header-content navbar">
+        <div class="header-title">
+          <a href="https://saleshinoindonesia.com">
+            <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
+          </a>
+        </div>
+        
+        <div class="hamburger-menu">&#9776;</div>
+
+        <nav class="nav links">
+          <a href="index.php">Home</a>
+          <a href="hino300.html">Hino 300 Series</a>
+          <a href="hino500.html">Hino 500 Series</a>
+          <a href="hinobus.html">Hino Bus Series</a>
+          <a href="artikel.php">Blog & Artikel</a>
+          <a href="contact.php">Contact</a>
+        </nav>
+      </div>
+    </header>
 
     <!-- Hero -->
     <section class="hero">
