@@ -1,11 +1,11 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-require 'admin/config.php'; // pastikan file config.php ada dan berisi koneksi $pdo
+require 'admin/config.php';
 
 // Ambil 3 artikel terbaru dari database
-$sql = "SELECT id, judul, isi, gambar, created_at FROM artikel ORDER BY created_at DESC LIMIT 3";
+$sql = "SELECT id, title AS judul, description AS isi, image AS gambar, created_at 
+        FROM artikel 
+        ORDER BY created_at DESC 
+        LIMIT 3";
 $artikelData = fetchAllPrepared($pdo, $sql);
 ?>
 
