@@ -272,8 +272,8 @@ exit; // hentikan agar tidak lanjut ke HTML di bawah
             <?php foreach ($artikelData as $artikel): ?>
               <div class="blog-card">
                 <img 
-                  src="https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['image']) ?>" 
-                  alt="<?= htmlspecialchars($artikel['title']) ?>" 
+                  src="admin/uploads/artikel/<?= htmlspecialchars($artikel['gambar']) ?>" 
+                  alt="<?= htmlspecialchars($artikel['judul']) ?>" 
                   loading="lazy"
                 />
                 <div class="blog-card-content">
