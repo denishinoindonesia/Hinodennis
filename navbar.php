@@ -25,6 +25,7 @@
 
     <!-- CSS Navbar -->
     <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/home_css/header.css" />
 
   </body>
 </html>
