@@ -8,13 +8,6 @@ $sql = "SELECT id, title AS judul, description AS isi, image AS gambar, created_
         LIMIT 3";
 $artikelData = fetchAllPrepared($pdo, $sql);
 
-// 🔍 Tambahkan di sini untuk cek data
-echo '<pre>';
-print_r($artikelData);
-echo '</pre>';
-exit; // hentikan agar tidak lanjut ke HTML di bawah
-?>
-
 ?>
 
 <!DOCTYPE html>
