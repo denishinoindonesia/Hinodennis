@@ -264,17 +264,17 @@ $artikelData = fetchAllPrepared($pdo, $sql);
             <?php foreach ($artikelData as $artikel): ?>
               <div class="blog-card">
                 <img 
-                  src="<?= htmlspecialchars($artikel['gambar']) ?>" 
-                  alt="<?= htmlspecialchars($artikel['judul']) ?>" 
+                  src="<?= htmlspecialchars($artikel['image']) ?>" 
+                  alt="<?= htmlspecialchars($artikel['title']) ?>" 
                   loading="lazy"
                 />
                 <div class="blog-card-content">
                   <h3>
                     <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
-                      <?= htmlspecialchars($artikel['judul']) ?>
+                      <?= htmlspecialchars($artikel['title']) ?>
                     </a>
                   </h3>
-                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
+                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['description']), 0, 100, '...')) ?></p>
                   <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
                     Baca Selengkapnya
                   </a>
