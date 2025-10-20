@@ -122,27 +122,45 @@
     </section>
 
     <!-- Layanan Official Hino -->
-    <section class="section-produk">
-        <div class="card-container">
+    <section class="pl-header">
+        <div class="container">
+        <h5 class="pl-subheading">PRODUK & LAYANAN</h5>
+        <h2 class="pl-title">HINO BANDUNG</h2>
+        <p class="pl-text">Kami melayani jasa penyediaan unit Truk & Bis, layanan service dan penjualan spare part merk Hino.</p>
+        </div>
+    </section>
 
+    <section class="pl-cards">
+        <div class="container">
         <div class="card">
+            <div class="card-image">
             <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis">
+            </div>
+            <div class="card-content">
             <h3>PENJUALAN TRUK & BIS</h3>
             <a href="#produk" class="btn">SELENGKAPNYA</a>
+            </div>
         </div>
 
         <div class="card">
+            <div class="card-image">
             <img src="img/bannerservice.jpg" alt="Layanan Service">
+            </div>
+            <div class="card-content">
             <h3>LAYANAN SERVICE</h3>
             <a href="contact.php" class="btn">SELENGKAPNYA</a>
+            </div>
         </div>
 
         <div class="card">
+            <div class="card-image">
             <img src="img/bannersparepart.jpg" alt="Spare Part">
+            </div>
+            <div class="card-content">
             <h3>SPARE PART</h3>
             <a href="contact.php" class="btn">SELENGKAPNYA</a>
+            </div>
         </div>
-
         </div>
     </section>
     
