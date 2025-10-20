@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 require 'admin/config.php'; // pastikan file config.php ada dan berisi koneksi $pdo
 
 // Ambil 3 artikel terbaru dari database
