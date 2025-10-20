@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; // pastikan file config.php ada dan berisi koneksi $pdo
+require 'admin/config.php'; // pastikan file config.php ada dan berisi koneksi $pdo
 
 // Ambil 3 artikel terbaru dari database
 $sql = "SELECT id, judul, isi, gambar, created_at FROM artikel ORDER BY created_at DESC LIMIT 3";
