@@ -1,123 +1,141 @@
-/* === PROMO SECTION ATAS === */
-.promo-section {
+/* ===========================================
+   SECTION: PROMO UTAMA (Hino Indonesia)
+   =========================================== */
+
+#promo-utama {
   display: flex;
-  gap: 2rem;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 3rem 1rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 2.5rem;
+  padding: 3.5rem 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
 }
 
-.promo-text {
-  flex: 1 1 400px;
-  min-width: 280px;
-}
-
-.promo-text h2 {
-  color: #2e7d32;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-.promo-text ul {
-  list-style: disc inside;
-  margin-bottom: 1rem;
+/* === TEKS PROMO === */
+#promo-utama .promo-text {
+  flex: 1 1 420px;
+  min-width: 300px;
   color: #333;
 }
 
-.promo-text ul li {
-  margin-bottom: 0.5rem;
-}
-
-.promo-text p {
-  margin-bottom: 1.5rem;
-  color: #555;
-  font-size: 1.1rem;
-}
-
-.promo-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  padding: 12px 28px;
-  border-radius: 7px;
+#promo-utama .promo-text h2 {
+  color: #2e7d32;
+  font-size: 2rem;
   font-weight: 700;
-  text-decoration: none;
-  font-size: 1.1rem;
-  display: inline-block;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+#promo-utama .promo-text ul {
+  list-style: disc inside;
+  margin: 0 0 1.2rem;
+  padding: 0;
+}
+
+#promo-utama .promo-text ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#promo-utama .promo-text p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.8rem;
+}
+
+/* === TOMBOL PROMO === */
+#promo-utama .promo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#promo-utama .btn-primary {
   background: #2e7d32;
   color: #fff;
-  transition: background 0.3s ease;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.05rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(46, 125, 50, 0.25);
 }
 
-.btn-primary:hover {
+#promo-utama .btn-primary:hover {
   background: #27682a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(46, 125, 50, 0.35);
 }
 
-/* Gambar utama promo */
-.promo-main-image {
-  flex: 1 1 400px;
-  max-width: 450px;
+/* === GAMBAR UTAMA PROMO === */
+#promo-utama .promo-main-image {
+  flex: 1 1 420px;
+  max-width: 460px;
   max-height: 280px;
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* === MEDIA QUERIES === */
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
 
 /* Tablet */
 @media (max-width: 992px) {
-  .promo-section {
+  #promo-utama {
     flex-direction: column;
     text-align: center;
+    padding: 3rem 1.2rem;
   }
 
-  .promo-text {
+  #promo-utama .promo-text {
     max-width: 100%;
   }
 
-  .promo-buttons {
+  #promo-utama .promo-buttons {
     justify-content: center;
   }
 
-  .promo-main-image {
-    max-width: 90%;
-    margin-top: 1.5rem;
+  #promo-utama .promo-main-image {
+    margin-top: 1.8rem;
+    max-width: 85%;
   }
 }
 
 /* Mobile */
 @media (max-width: 576px) {
-  .promo-section {
+  #promo-utama {
     padding: 2rem 1rem;
     gap: 1.5rem;
   }
 
-  .promo-text h2 {
+  #promo-utama .promo-text h2 {
     font-size: 1.6rem;
   }
 
-  .promo-text p {
+  #promo-utama .promo-text p {
     font-size: 1rem;
   }
 
-  .btn-primary {
+  #promo-utama .btn-primary {
     width: 100%;
     text-align: center;
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 10px 22px;
   }
 
-  .promo-main-image {
+  #promo-utama .promo-main-image {
     max-width: 100%;
     max-height: 220px;
   }
