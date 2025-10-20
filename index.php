@@ -121,7 +121,7 @@
     </section>
 
     <!-- Section: Promo Utama -->
-      <section id="promo-utama" class="promo-section fade-element">
+      <section id="promo-utama">
         <div class="promo-text">
           <h2>Dapatkan Harga dan Penawaran Terbaik Langsung dari Dealer Resmi Hino Indonesia</h2>
           <ul>
