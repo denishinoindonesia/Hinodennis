@@ -23,7 +23,7 @@
 }
 
 #promo-utama .promo-text h2 {
-  color: #2e7d32;
+  color: #b80000;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.4;
@@ -43,7 +43,7 @@
 }
 
 #promo-utama .promo-text p {
-  color: #555;
+  color: #b80000;
   font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 1.8rem;
@@ -57,7 +57,7 @@
 }
 
 #promo-utama .btn-primary {
-  background: #2e7d32;
+  background: #b80000;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -70,7 +70,7 @@
 }
 
 #promo-utama .btn-primary:hover {
-  background: #27682a;
+  background: #b80000;
   transform: translateY(-2px);
   box-shadow: 0 5px 12px rgba(46, 125, 50, 0.35);
 }

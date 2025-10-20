@@ -257,7 +257,7 @@ $artikelData = fetchAllPrepared($pdo, $sql);
     <section class="blog-section">
       <div class="container">
         <h2>Blog & Artikel</h2>
-        <p>Dapatkan informasi terbaru seputar Truk Hino...</p>
+        <p>Dapatkan informasi terbaru seputar Truk Hino, perawatan, dan promo terbaik.</p>
 
         <div class="blog-grid">
           <?php if (!empty($artikelData)): ?>

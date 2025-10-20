@@ -8,7 +8,7 @@
 .products-section .section-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #2e7d32;
+  color: #b80000;
   margin-bottom: 2rem;
 }
 
@@ -37,14 +37,14 @@
   width: 100%;
   height: auto; /* tinggi menyesuaikan proporsi gambar */
   display: block;
-  border-bottom: 3px solid #2e7d32;
+  border-bottom: 3px solid #b80000;
   border-radius: 6px 6px 0 0;
 }
 
 .product h3 {
   font-size: 18px;
   margin: 0.8rem 0 0.4rem;
-  color: #2e7d32;
+  color: #b80000;
 }
 
 .product p {
