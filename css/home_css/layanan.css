@@ -1,6 +1,6 @@
 /* ============================
-   PRODUK & LAYANAN HINO
-   (Isolated CSS, aman dari bentrok)
+   PRODUK & LAYANAN HINO BANDUNG
+   (Isolated CSS - aman dari bentrok)
 ============================ */
 
 .hino-section-produk {
@@ -17,24 +17,25 @@
 .hino-section-produk::after {
   content: "";
   position: absolute;
-  width: 180px;
-  height: 180px;
-  background-image: radial-gradient(white 1px, transparent 1px);
-  background-size: 12px 12px;
-  opacity: 0.35;
+  width: 200px;
+  height: 200px;
+  background-image: radial-gradient(white 2px, transparent 2px);
+  background-size: 10px 10px;
+  opacity: 0.5; /* sedikit lebih terang */
   z-index: 1;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)); /* bikin lebih pop */
 }
 
 /* Titik di kiri atas */
 .hino-section-produk::before {
-  top: 30px;
-  left: 30px;
+  top: 40px;
+  left: 40px;
 }
 
 /* Titik di kanan bawah */
 .hino-section-produk::after {
-  bottom: 30px;
-  right: 30px;
+  bottom: 40px;
+  right: 40px;
 }
 
 /* === Konten Utama === */
@@ -140,8 +141,8 @@
   }
   .hino-section-produk::before,
   .hino-section-produk::after {
-    width: 100px;
-    height: 100px;
-    background-size: 10px 10px;
+    width: 120px;
+    height: 120px;
+    background-size: 8px 8px;
   }
 }
