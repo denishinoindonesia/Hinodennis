@@ -48,8 +48,8 @@
     <link rel="stylesheet" href="css/home_css/header.css" />
     <link rel="stylesheet" href="css/home_css/promoutama.css" />
     <link rel="stylesheet" href="css/home_css/layanan.css" />
+    <link rel="stylesheet" href="css/home_css/produk.css" />
     <link rel="stylesheet" href="css/home_css/contactsec.css" />
-    <link rel="stylesheet" href="css/home_css/ourcommitment.css" />
     <link rel="stylesheet" href="css/home_css/blogcard.css" />
     <link rel="stylesheet" href="css/home_css/keunggulankami.css" />
     <link rel="stylesheet" href="css/home_css/contact.css" />
@@ -168,6 +168,134 @@
         </div>
         </div>
     </section>
+
+      <!-- Produk -->
+      <section id="products-section" class="products-section fade-element">
+        <h2 class="section-title">Produk Truk Hino Unggulan</h2>
+        <div class="products">
+          <div class="product">
+            <img src="img/hino300produk.png" alt="Hino 300 Dutro" loading="lazy"/>
+            <h3><a href="https://dealerhinoindonesia.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a></h3>
+            <p>Truk ringan dan tangguh, cocok untuk usaha kecil dan menengah.</p>
+          </div>
+          <div class="product">
+            <img src="img/hino500produk.png" alt="Hino 500 Ranger" loading="lazy"/>
+            <h3><a href="https://dealerhinoindonesia.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a></h3>
+            <p>Performa handal untuk pengangkutan berat dan jarak jauh.</p>
+          </div>
+          <div class="product">
+            <img src="img/hinobusproduk.png" alt="Hino Bus Series" loading="lazy"/>
+            <h3><a href="https://dealerhinoindonesia.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a></h3>
+            <p>Solusi transportasi penumpang dengan kenyamanan terbaik.</p>
+          </div>
+        </div>
+      </section>
+    
+    <!-- Keunggulan Kami -->
+  <section class="advantages">
+    <div class="advantages-container">
+        <div class="advantages-image">
+          <img src="img/worker.png" alt="Worker Image" />
+        </div>
+        <div class="advantages-content">
+          <h2>Program Purna Jual</h2>
+          
+          <div class="advantage-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#0a1950"
+              stroke-width="2"
+              >
+              <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+                d="M5 13l4 4L19 7"
+                />
+              </svg>
+            
+            <div>
+              <h4>Program Service</h4>
+              <p>
+                Nikmati layanan gratis biaya jasa service berkala untuk setiap pembelian unit Hino tertentu. Pemeriksaan dilakukan oleh teknisi bersertifikat menggunakan suku cadang asli Hino.
+Hemat biaya, kendaraan lebih terawat, performa maksimal.
+              </p>
+            </div>
+          </div>
+
+          <div class="advantage-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#0a1950"
+              stroke-width="2"
+              >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 5.87v-2a4 4 0 00-3-3.87M16 7a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+            </svg>
+            <div>
+              <h4>Program Suku Cadang</h4>
+              <p>
+                Dapatkan jaminan kualitas dan ketahanan terbaik untuk truk Anda dengan menggunakan suku cadang asli Hino. Kami menyediakan layanan lengkap untuk memastikan setiap komponen kendaraan Anda bekerja secara optimal dan tahan lama.
+              </p>
+            </div>
+          </div>
+          
+          <div class="advantage-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#0a1950"
+              stroke-width="2"
+              >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 0v13m-3.5-3.5L12 21l3.5-3.5"
+                />
+              </svg>
+            <div>
+              <h4>Program On Site Service</h4>
+              <p>
+                Kini, perawatan dan perbaikan truk Hino menjadi lebih praktis dengan layanan On Site Service. Teknisi Hino yang profesional akan datang langsung ke lokasi operasional Anda — menghemat waktu, tenaga, dan biaya operasional.
+              </p>
+            </div>
+          </div>
+          
+          <div class="advantage-item">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#0a1950"
+            stroke-width="2"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 17H4a1 1 0 01-1-1V6a1 1 0 011-1h11a1 1 0 011 1v10a1 1 0 01-1 1h-1m5 0a2 2 0 100-4h-1m-4 4h6m-1 0a2 2 0 110 4 2 2 0 010-4zM6 17a2 2 0 100 4 2 2 0 000-4z"
+                />
+              </svg>
+              <div>
+              <h4>Pelatihan & Konsultasi</h4>
+              <p>
+                Hino tidak hanya menjual truk, tapi juga memastikan setiap pengguna memahami cara terbaik untuk mengoperasikan dan merawatnya. Melalui program Pelatihan & Konsultasi, kami membekali operator dan manajemen Anda dengan pengetahuan teknis, keselamatan, efisiensi pengoperasian, serta perawatan kendaraan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- Contact Section -->
     <div class="contact-container">
@@ -180,25 +308,7 @@
         <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" alt="Email" /><div><strong>Email</strong><br />saleshinojabodetabek@gmail.com</div></div>
       </div>
     </div>
-
-    <!-- Keunggulan Kami -->
-    <section class="advantages">
-      <div class="advantages-container">
-        <div class="advantages-image">
-          <img src="img/worker.png" alt="Worker Image" />
-        </div>
-        <div class="advantages-content">
-          <h2>Program Purna Jual</h2>
-          <!-- isi keunggulan tetap -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Youtube Section -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/FgvKuKNTMVk?si=IkUZ_Xu16KkYXmQ1" frameborder="0" allowfullscreen></iframe>
-    </div>
-
+      
     <!-- Blog Section -->
     <section class="blog-section">
       <div class="container">
