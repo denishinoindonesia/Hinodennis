@@ -1,19 +1,49 @@
 /* ============================
-   (dibuat isolated agar tidak bentrok)
+   PRODUK & LAYANAN HINO
+   (Isolated CSS, aman dari bentrok)
 ============================ */
 
 .hino-section-produk {
-  background: linear-gradient(180deg, #b80000 50%, #d9f5da 50%);
+  position: relative;
+  background: linear-gradient(180deg, #b80000 50%, #ffffff 50%);
   padding: 80px 0;
   text-align: center;
   font-family: "Poppins", sans-serif;
   overflow: hidden;
 }
 
+/* === Pola Titik Dekoratif === */
+.hino-section-produk::before,
+.hino-section-produk::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+/* Titik di kiri atas */
+.hino-section-produk::before {
+  top: 30px;
+  left: 30px;
+}
+
+/* Titik di kanan bawah */
+.hino-section-produk::after {
+  bottom: 30px;
+  right: 30px;
+}
+
+/* === Konten Utama === */
 .hino-container {
+  position: relative;
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 2;
 }
 
 .hino-heading h5 {
@@ -40,9 +70,7 @@
   line-height: 1.6;
 }
 
-/* ======================
-   CARD STYLING
-====================== */
+/* === Kartu Produk === */
 .hino-cards {
   display: flex;
   flex-wrap: wrap;
@@ -95,9 +123,7 @@
   background: #8c0000;
 }
 
-/* ======================
-   RESPONSIVE
-====================== */
+/* === Responsive === */
 @media (max-width: 992px) {
   .hino-heading h2 {
     font-size: 36px;
@@ -111,5 +137,11 @@
   }
   .hino-card {
     width: 90%;
+  }
+  .hino-section-produk::before,
+  .hino-section-produk::after {
+    width: 100px;
+    height: 100px;
+    background-size: 10px 10px;
   }
 }
