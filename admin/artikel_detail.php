@@ -56,7 +56,7 @@ img.article-image { width: 100%; max-width: 400px; border-radius: 10px; margin-b
 <body>
 
 <div class="sidebar">
-  <div class="logo"><img src="../img/logo.png" alt="Logo"></div>
+  <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
   <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
   <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
