@@ -60,18 +60,30 @@
   .products {
     flex-direction: column;
     align-items: center;
+    gap: 1.5rem; /* lebih rapih jarak antar produk */
   }
 
   .product {
-    max-width: 90%;
+    max-width: 95%; /* lebih luas, biar judul tidak terpotong */
+    flex: none; /* hentikan fleksibel agar ukuran sesuai max-width */
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px 6px 0 0;
+    object-fit: cover; /* biar tetap proporsional */
   }
 
   .product h3 {
-    font-size: 16px;
+    font-size: 18px; /* tetap terlihat jelas */
+    margin: 0.8rem 0 0.5rem;
+    word-wrap: break-word; /* pastikan teks panjang tetap muncul */
   }
 
   .product p {
-    font-size: 13px;
+    font-size: 14px;
     padding: 0 10px 15px;
+    line-height: 1.5;
   }
 }
