@@ -264,7 +264,7 @@ $artikelData = fetchAllPrepared($pdo, $sql);
             <?php foreach ($artikelData as $artikel): ?>
               <div class="blog-card">
                 <img 
-                  src="<?= htmlspecialchars($artikel['image']) ?>" 
+                  src="https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['image']) ?>" 
                   alt="<?= htmlspecialchars($artikel['title']) ?>" 
                   loading="lazy"
                 />
