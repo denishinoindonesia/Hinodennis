@@ -1,121 +1,115 @@
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+/* ============================
+   (dibuat isolated agar tidak bentrok)
+============================ */
 
-/* Header Section */
-.pl-header {
-  background: #b80000; /* merah khas Hino */
-  color: #fff;
+.hino-section-produk {
+  background: linear-gradient(180deg, #b80000 50%, #d9f5da 50%);
   padding: 80px 0;
   text-align: center;
-  position: relative;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
-.pl-subheading {
+.hino-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hino-heading h5 {
+  color: #111;
   font-size: 16px;
   letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  opacity: 0.9;
-}
-
-.pl-title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-
-.pl-text {
-  font-size: 18px;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
-/* Cards Section */
-.pl-cards {
-  padding: 60px 0 100px 0;
-}
-
-.pl-cards .card {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 15px;
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.pl-cards .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.card-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-content {
-  padding: 30px 20px 40px 20px;
-  text-align: center;
-}
-
-.card-content h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #0a2f14; /* hijau gelap untuk teks */
-  margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  background: #b80000;
-  color: #fff;
-  text-decoration: none;
-  padding: 12px 30px;
-  border-radius: 4px;
-  font-size: 16px;
   font-weight: 600;
-  transition: background 0.3s ease;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-.btn:hover {
-  background: #8c0000;
+.hino-heading h2 {
+  color: #fff;
+  font-size: 46px;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-/* Layout Flex untuk kartu */
-.pl-cards .container {
+.hino-heading p {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* ======================
+   CARD STYLING
+====================== */
+.hino-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
 }
 
-/* Responsive */
+.hino-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: 340px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hino-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hino-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.hino-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a2f14;
+  margin: 25px 0 10px;
+  text-transform: uppercase;
+}
+
+.hino-btn {
+  display: inline-block;
+  background: #b80000;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 25px;
+  transition: background 0.3s ease;
+}
+
+.hino-btn:hover {
+  background: #8c0000;
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
 @media (max-width: 992px) {
-  .pl-title {
+  .hino-heading h2 {
     font-size: 36px;
-  }
-  .card-content h3 {
-    font-size: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .pl-cards .container {
+  .hino-cards {
     flex-direction: column;
     align-items: center;
   }
-  .card {
+  .hino-card {
     width: 90%;
-    margin: 20px 0;
   }
 }
