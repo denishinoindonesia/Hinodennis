@@ -11,7 +11,16 @@ $sql = "SELECT a.id, a.judul, a.isi, a.gambar, a.tanggal, k.nama_kategori AS kat
         LEFT JOIN kategori k ON a.kategori_id = k.id
         ORDER BY a.tanggal DESC
         LIMIT 3";
+
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $artikelData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Gagal mengambil data artikel: " . $e->getMessage());
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
