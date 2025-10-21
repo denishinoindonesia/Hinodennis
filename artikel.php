@@ -140,6 +140,8 @@ $artikel = array_slice($artikelData, $offset, $perPage);
           />
           <select name="kategori" onchange="this.form.submit()">
             <option value="">Semua Kategori</option>
+            <option value="">Semua Kategori</option>
+            <option value="">Semua Kategori</option>
             <?php if (is_array($kategoriData)): ?>
               <?php foreach ($kategoriData as $kat): ?>
                 <option value="<?= htmlspecialchars($kat['nama_kategori']) ?>" <?= $selectedKategori === $kat['nama_kategori'] ? 'selected' : '' ?>>
