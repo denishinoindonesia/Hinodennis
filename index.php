@@ -77,7 +77,7 @@ try {
     </header>
 
     <!-- Hero -->
-    <section class="hero fade-element">
+    <section class="hero">
       <div class="slider">
         <img src="img/Euro 4 Hino 300.jpeg" class="slide active" alt="Banner 1" />
         <img src="img/Euro 4 Hino 500.jpeg" class="slide" alt="Banner 2" />
@@ -119,7 +119,7 @@ try {
           <div class="hino-card">
             <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis" />
             <h3>PENJUALAN TRUK & BUS</h3>
-            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+            <a href="products-section" class="hino-btn">SELENGKAPNYA</a>
           </div>
 
           <div class="hino-card">

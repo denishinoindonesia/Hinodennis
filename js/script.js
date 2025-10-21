@@ -138,25 +138,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(nextSlide, 4000);
   }
-});
 
-const faders = document.querySelectorAll(".fade-element");
+  // === FADE IN / OUT ===
+  const faders = document.querySelectorAll(".fade-element");
 
-const options = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
+  const options = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
 
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    } else {
-      entry.target.classList.remove("visible"); // fade out saat hilang
-    }
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible"); // fade out saat hilang
+      }
+    });
+  }, options);
+
+  faders.forEach((fader) => {
+    appearOnScroll.observe(fader);
   });
-}, options);
-
-faders.forEach((fader) => {
-  appearOnScroll.observe(fader);
 });
