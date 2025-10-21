@@ -1,23 +1,25 @@
 <?php
 session_start();
+require 'config.php'; // pastikan sudah ada koneksi $pdo
 
-require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
-
-// Cek session login
+// Cek login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-// Ambil data artikel
+// Ambil data artikel + kategori
 try {
-    $stmt = $pdo->query("SELECT * FROM artikel ORDER BY created_at DESC");
-    $articles = $stmt->fetchAll();
+    $sql = "SELECT a.*, k.nama AS kategori_nama 
+            FROM artikel a 
+            LEFT JOIN kategori k ON a.kategori_id = k.id 
+            ORDER BY a.created_at DESC";
+    $stmt = $pdo->query($sql);
+    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit("Gagal mengambil data artikel: " . $e->getMessage());
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -25,22 +27,17 @@ try {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manajemen Artikel</title>
-
-  <!-- Favicon -->
   <link rel="icon" href="../img/favicon.png" type="image/png" />
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
   <style>
     body {
       background: #f8f9fb;
       font-family: 'Poppins', sans-serif;
     }
 
-    /* === SIDEBAR === */
-    :root {
-  --primary: #0d6efd; /* biru bootstrap */
-}
+    :root { --primary: #0d6efd; }
 
     .sidebar {
       position: fixed;
@@ -53,7 +50,6 @@ try {
       padding: 30px 20px;
       display: flex;
       flex-direction: column;
-      transition: 0.3s;
     }
 
     .sidebar .logo {
@@ -80,26 +76,15 @@ try {
       transition: all 0.3s;
     }
 
-    .sidebar a i {
-      font-size: 17px;
-    }
-
+    .sidebar a i { font-size: 17px; }
     .sidebar a:hover, .sidebar a.active {
       background: var(--primary);
       color: white;
       box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
     }
 
-    .logout-link {
-      margin-top: auto;
-      color: #dc3545;
-      font-weight: 500;
-    }
-
-    .logout-link:hover {
-      color: #b02a37;
-    }
-
+    .logout-link { margin-top: auto; color: #dc3545; font-weight: 500; }
+    .logout-link:hover { color: #b02a37; }
 
     .main-content { margin-left: 260px; padding: 30px; }
 
@@ -113,9 +98,7 @@ try {
     .btn-primary:hover { background-color: #005ce6; }
 
     .table th { background-color: #0d6efd; color: white; }
-
     .table img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
-
     .card { border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   </style>
 </head>
@@ -130,14 +113,14 @@ try {
     <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
     <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
     <div class="mt-auto pt-3">
-      <a href="logout.php" style="color:#dc3545;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
   </div>
 
   <!-- NOTIFIKASI -->
   <?php if (isset($_SESSION['message'])): ?>
   <div class="alert alert-<?= $_SESSION['message']['type'] ?> alert-dismissible fade show" role="alert" style="margin-left: 260px; margin-top: 20px;">
-    <?= $_SESSION['message']['text'] ?>
+    <?= htmlspecialchars($_SESSION['message']['text']) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <?php unset($_SESSION['message']); ?>
@@ -157,6 +140,7 @@ try {
             <th width="5%">No</th>
             <th>Gambar</th>
             <th>Judul</th>
+            <th>Kategori</th>
             <th>Deskripsi</th>
             <th>Tanggal Dibuat</th>
             <th width="20%">Aksi</th>
@@ -164,20 +148,22 @@ try {
         </thead>
         <tbody>
           <?php
-          $no = 1;
-          foreach ($articles as $row):
+          if (count($articles) > 0):
+              $no = 1;
+              foreach ($articles as $row):
           ?>
           <tr>
             <td class="text-center"><?= $no++; ?></td>
             <td class="text-center">
-              <?php if (!empty($row['image'])): ?>
-                <img src="uploads/artikel/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>">
+              <?php if (!empty($row['gambar'])): ?>
+                <img src="../uploads/artikel/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
               <?php else: ?>
                 <img src="https://via.placeholder.com/60?text=No+Image" alt="no image">
               <?php endif; ?>
             </td>
-            <td><?= htmlspecialchars($row['title']) ?></td>
-            <td><?= htmlspecialchars(substr($row['description'], 0, 70)) ?>...</td>
+            <td><?= htmlspecialchars($row['judul']) ?></td>
+            <td class="text-center"><?= htmlspecialchars($row['kategori_nama'] ?? '-') ?></td>
+            <td><?= htmlspecialchars(substr(strip_tags($row['isi']), 0, 70)) ?>...</td>
             <td><?= date("d M Y", strtotime($row['created_at'])) ?></td>
             <td class="text-center">
               <a href="artikel_detail.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
@@ -185,7 +171,12 @@ try {
               <a href="artikel_hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus artikel ini?')"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
-          <?php endforeach; ?>
+          <?php
+              endforeach;
+          else:
+          ?>
+          <tr><td colspan="7" class="text-center text-muted">Belum ada artikel.</td></tr>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>
