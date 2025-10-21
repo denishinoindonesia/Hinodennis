@@ -1,7 +1,7 @@
 <?php
 // Ambil ID artikel dari URL
 $id = $_GET['id'] ?? null;
-$data = json_decode(file_get_contents("https://saleshinoindonesia.com/admin/api/get_artikel.php"), true);
+$data = json_decode(file_get_contents("https://official-hino.com/admin/api/get_artikel.php"), true);
 $artikel = null;
 
 // Cari artikel berdasarkan ID
@@ -23,9 +23,9 @@ if ($id && is_array($data)) {
     <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>" />
     <meta property="og:description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>..." />
     <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>" />
-    <meta property="og:url" content="https://saleshinoindonesia.com/detail_artikel.php?id=<?= $artikel['id'] ?>" />
+    <meta property="og:url" content="https://official-hino.com/detail_artikel.php?id=<?= $artikel['id'] ?>" />
     <title>Dealer Hino Indonesia | Sales Truck Hino Terbaik di Jabodetabek</title>
-    <meta name="description" content="Dealer Resmi Hino Jakarta. Hubungi : 0859 7528 7684 / 0882 1392 5184 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu.">
+    <meta name="description" content="Hino Official - Dealer Truck Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
     <!-- Font -->
@@ -51,16 +51,16 @@ if ($id && is_array($data)) {
       <div class="container header-content navbar">
     <!-- Logo -->
     <div class="header-title">
-      <a href="https://saleshinoindonesia.com">
+      <a href="https://official-hino.com">
         <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
       </a>
     </div>
         <div class="hamburger-menu">&#9776;</div>
         <nav class="nav links">
-          <a href="https://saleshinoindonesia.com">Home</a>
-          <a href="hino300.html">Hino 300 Series</a>
-          <a href="hino500.html">Hino 500 Series</a>
-          <a href="hinobus.html">Hino Bus Series</a>
+          <a href="https://official-hino.com">Home</a>
+          <a href="hino300.php">Hino 300 Series</a>
+          <a href="hino500.php">Hino 500 Series</a>
+          <a href="hinobus.php">Hino Bus Series</a>
           <a href="artikel.php">Blog & Artikel</a>
           <a href="contact.php">Contact</a>
         </nav>
@@ -75,7 +75,7 @@ if ($id && is_array($data)) {
             <?php if($artikel): ?>
               <h1><?= htmlspecialchars($artikel['judul']) ?></h1>
               <p style="color: #888; font-size: 14px; margin-bottom: 15px;">
-                Diposting oleh <strong><?= htmlspecialchars($artikel['author'] ?? 'Nathan Hino') ?></strong> pada <?= date('d M Y', strtotime($artikel['created_at'] ?? 'now')) ?>
+                Diposting oleh <strong><?= htmlspecialchars($artikel['author'] ?? 'Dennis Hino') ?></strong> pada <?= date('d M Y', strtotime($artikel['created_at'] ?? 'now')) ?>
               </p>
               <img src="<?= htmlspecialchars($artikel['gambar']) ?>" alt="<?= htmlspecialchars($artikel['judul']) ?>" class="featured-image" style="width: 100%; height: auto; margin-bottom: 20px;">
               <div class="isi-artikel">
@@ -158,40 +158,11 @@ if ($id && is_array($data)) {
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <img src="img/logo3.png" alt="Logo" class="footer-logo" />
-          <p>Nathan, Sales Hino Indonesia yang berpengalaman dan profesional, siap menjadi mitra terbaik Anda dalam memenuhi kebutuhan kendaraan niaga.</p>
-        </div>
-        <div class="footer-section">
-          <h4>HUBUNGI KAMI</h4>
-          <p>📞 0859-7528-7684</p>
-          <p>📧 saleshinojabodetabek@gmail.com</p>
-          <p>📍 Golf Lake Ruko Venice, Jl. Lkr. Luar Barat No.78 Blok B, RT.9/RW.14, Cengkareng, Jakarta</p>
-          <div class="footer-social" style="margin-top: 20px">
-            <h4>SOSIAL MEDIA</h4>
-            <div class="social-icons">
-              <a href="https://www.instagram.com/saleshinojabodetabek" target="_blank"><i data-feather="instagram"></i></a>
-              <a href="https://wa.me/+6285975287684?text=Halo%20Saya%20Dapat%20Nomor%20Anda%20Dari%20Google" target="_blank"><i data-feather="phone"></i></a>
-              <a href="https://www.facebook.com/profile.php?id=61573843992250" target="_blank"><i data-feather="facebook"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-section">
-          <div class="google-map-container" style="margin-top: 20px">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63471.95288843176!2d106.65860738294855!3d-6.131096504333846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1d775401fa6d%3A0xc7e25a8d81b821ec!2sDealer%20Hino%20Jabodetabek%20Resmi!5e0!3m2!1sen!2sus!4v1760817261750!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Sales Hino Indonesia. All Rights Reserved.</p>
-      </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
-        <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
-        <script src="https://static.elfsight.com/platform/platform.js" async></script>
-        <div class="elfsight-app-1c150e27-6597-4113-becd-79df393b9756" data-elfsight-app-lazy></div>
+    <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-1c150e27-6597-4113-becd-79df393b9756" data-elfsight-app-lazy></div>
 
 
     <script>
