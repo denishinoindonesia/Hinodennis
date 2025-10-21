@@ -1,22 +1,20 @@
 <?php
 session_start();
-require 'config.php'; // pastikan path benar dan $pdo sudah aktif
+require 'config.php';
 
-// Cek session login
+// Cek login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-// =============================
-// Ambil ID artikel
-// =============================
+// Ambil ID
 $id = intval($_GET['id'] ?? 0);
 
 // Ambil data artikel
 $stmt = $pdo->prepare("SELECT * FROM artikel WHERE id = ?");
 $stmt->execute([$id]);
-$article = $stmt->fetch();
+$article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$article) {
     $_SESSION['message'] = ['type' => 'danger', 'text' => 'Artikel tidak ditemukan.'];
@@ -24,59 +22,52 @@ if (!$article) {
     exit;
 }
 
-// =============================
-// Ambil data kategori untuk dropdown
-// =============================
+// Ambil kategori
 $kategoriStmt = $pdo->query("SELECT id, nama_kategori FROM kategori ORDER BY nama_kategori ASC");
 $kategoriList = $kategoriStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// =============================
-// Update data artikel
-// =============================
+// Update data
 if (isset($_POST['update'])) {
-    $title = trim($_POST['title']);
-    $description = trim($_POST['description']);
+    $judul = trim($_POST['judul']);
+    $isi = trim($_POST['isi']);
     $kategori_id = intval($_POST['kategori_id']);
-    $image = $article['image']; // gunakan gambar lama jika tidak ada upload baru
+    $gambar = $article['gambar']; // gunakan gambar lama jika tidak upload baru
 
-    // Upload gambar baru jika ada
-    if (isset($_FILES['image']) && $_FILES['image']['name'] != '') {
+    // Upload gambar baru
+    if (!empty($_FILES['gambar']['name'])) {
         $targetDir = "uploads/artikel/";
         if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
 
-        $fileName = time() . '_' . basename($_FILES['image']['name']);
+        $fileName = time() . '_' . basename($_FILES['gambar']['name']);
         $targetFilePath = $targetDir . $fileName;
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
-            $image = $fileName;
+        if (move_uploaded_file($_FILES['gambar']['tmp_name'], $targetFilePath)) {
+            $gambar = $fileName;
         }
     }
 
     try {
         $sql = "UPDATE artikel 
-                SET title = ?, description = ?, image = ?, kategori_id = ? 
+                SET judul = ?, isi = ?, gambar = ?, kategori_id = ? 
                 WHERE id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$title, $description, $image, $kategori_id, $id]);
+        $stmt->execute([$judul, $isi, $gambar, $kategori_id, $id]);
 
         $_SESSION['message'] = ['type' => 'success', 'text' => 'Artikel berhasil diperbarui!'];
     } catch (Exception $e) {
-        error_log("Gagal memperbarui artikel: " . $e->getMessage());
-        $_SESSION['message'] = ['type' => 'danger', 'text' => 'Gagal memperbarui artikel.'];
+        $_SESSION['message'] = ['type' => 'danger', 'text' => 'Gagal memperbarui artikel: ' . $e->getMessage()];
     }
 
     header("Location: artikel.php");
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edit Artikel</title>
-
 <link rel="icon" href="../img/favicon.png" type="image/png" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -91,13 +82,7 @@ body { font-family:'Poppins',sans-serif; background:var(--accent); color:var(--t
 .logout-link { margin-top:auto; color:#dc3545; font-weight:500; }
 .logout-link:hover { color:#b02a37; }
 .main-content { margin-left:270px; padding:40px 50px; }
-.main-header { margin-bottom:40px; }
-.main-header h3 { font-weight:700; color:var(--primary);}
 .card-form { background:var(--card-bg); border-radius:16px; padding:30px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
-.card-form h4 { margin-bottom:25px; color:var(--primary); font-weight:700; }
-.btn-primary { background-color:var(--primary); border-radius:10px; border:none; }
-.btn-secondary { border-radius:10px; }
-img.current-image { width:120px; border-radius:8px; margin-bottom:10px; }
 </style>
 </head>
 <body>
@@ -111,30 +96,18 @@ img.current-image { width:120px; border-radius:8px; margin-bottom:10px; }
 </div>
 
 <div class="main-content">
-  <div class="main-header">
-    <h3>Edit Artikel</h3>
-    <p class="text-muted">Perbarui informasi artikel di bawah ini.</p>
-  </div>
-
-  <!-- NOTIFIKASI -->
-  <?php if (isset($_SESSION['message'])): ?>
-  <div class="alert alert-<?= $_SESSION['message']['type'] ?> alert-dismissible fade show" role="alert">
-    <?= $_SESSION['message']['text'] ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  <?php unset($_SESSION['message']); ?>
-  <?php endif; ?>
+  <h3 class="mb-3 text-primary">Edit Artikel</h3>
 
   <div class="card-form">
     <form method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label">Judul</label>
-        <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($article['title']) ?>" required>
+        <input type="text" name="judul" class="form-control" value="<?= htmlspecialchars($article['judul']) ?>" required>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Deskripsi</label>
-        <textarea name="description" class="form-control" rows="5" required><?= htmlspecialchars($article['description']) ?></textarea>
+        <label class="form-label">Isi Artikel</label>
+        <textarea name="isi" class="form-control" rows="6" required><?= htmlspecialchars($article['isi']) ?></textarea>
       </div>
 
       <div class="mb-3">
@@ -151,12 +124,12 @@ img.current-image { width:120px; border-radius:8px; margin-bottom:10px; }
 
       <div class="mb-3">
         <label class="form-label">Gambar Saat Ini</label><br>
-        <?php if(!empty($article['image'])): ?>
-          <img src="uploads/artikel/<?= htmlspecialchars($article['image']) ?>" class="current-image">
+        <?php if (!empty($article['gambar'])): ?>
+          <img src="uploads/artikel/<?= htmlspecialchars($article['gambar']) ?>" style="width:120px;border-radius:8px;">
         <?php else: ?>
-          <img src="https://via.placeholder.com/120?text=No+Image" class="current-image">
+          <img src="https://via.placeholder.com/120?text=No+Image" style="width:120px;border-radius:8px;">
         <?php endif; ?>
-        <input type="file" name="image" class="form-control mt-2">
+        <input type="file" name="gambar" class="form-control mt-2">
       </div>
 
       <div class="text-end">
@@ -167,6 +140,5 @@ img.current-image { width:120px; border-radius:8px; margin-bottom:10px; }
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
