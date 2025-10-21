@@ -20,7 +20,7 @@
     />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://official-hino.com/hinobus.html" />
+    <link rel="canonical" href="https://official-hino.com/hinobus.php" />
 
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
@@ -77,9 +77,9 @@
           <div class="hamburger-menu">&#9776;</div>
           <nav class="nav links">
             <a href="index.php">Home</a>
-            <a href="hino300.html">Hino 300 Series</a>
-            <a href="hino500.html">Hino 500 Series</a>
-            <a href="hinobus.html">Hino Bus Series</a>
+            <a href="hino300.php">Hino 300 Series</a>
+            <a href="hino500.php">Hino 500 Series</a>
+            <a href="hinobus.php">Hino Bus Series</a>
             <a href="artikel.php">Blog & Artikel</a>
             <a href="contact.php">Contact</a>
           </nav>
