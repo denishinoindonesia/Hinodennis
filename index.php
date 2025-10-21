@@ -119,7 +119,7 @@ try {
           <div class="hino-card">
             <img src="img/bannerpenjualan.jpg" alt="Penjualan Truk & Bis" />
             <h3>PENJUALAN TRUK & BUS</h3>
-            <a href="products-section" class="hino-btn">SELENGKAPNYA</a>
+            <a href="#products-section" class="hino-btn">SELENGKAPNYA</a>
           </div>
 
           <div class="hino-card">
