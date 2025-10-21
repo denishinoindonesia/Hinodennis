@@ -10,10 +10,10 @@ if (!isset($_SESSION['admin_id'])) {
 
 // Ambil data artikel + kategori
 try {
-    $sql = "SELECT a.*, k.nama AS kategori_nama 
+    $sql = "SELECT a.*, k.nama_kategori AS kategori_nama 
             FROM artikel a 
             LEFT JOIN kategori k ON a.kategori_id = k.id 
-            ORDER BY a.created_at DESC";
+            ORDER BY a.id DESC";
     $stmt = $pdo->query($sql);
     $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
