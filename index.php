@@ -1,12 +1,16 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'admin/config.php';
 
 // Ambil 3 artikel terbaru dari database
-$sql = "SELECT id, judul, isi, gambar, created_at 
-        FROM artikel 
-        ORDER BY created_at DESC 
+$sql = "SELECT a.id, a.judul, a.isi, a.gambar, a.tanggal, k.nama_kategori AS kategori
+        FROM artikel a
+        LEFT JOIN kategori k ON a.kategori_id = k.id
+        ORDER BY a.tanggal DESC
         LIMIT 3";
-$artikelData = fetchAllPrepared($pdo, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -264,7 +268,7 @@ $artikelData = fetchAllPrepared($pdo, $sql);
         <?php foreach ($artikelData as $artikel): ?>
           <div class="blog-card">
             <img 
-              src="https://official-hino.com/admin/uploads/<?= htmlspecialchars($artikel['gambar']) ?>" 
+              src="https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['gambar']) ?>"
               alt="<?= htmlspecialchars($artikel['judul']) ?>" 
               loading="lazy"
             />
