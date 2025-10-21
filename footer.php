@@ -12,7 +12,7 @@
           <h4>HUBUNGI KAMI</h4>
           <p>📞 0812-1905-5571</p>
           <p>📧 denishinoindonesia@gmail.com</p>
-          <p>📍 Golf Lake Ruko Venice, Jl. Lkr. Luar Barat No.78 Blok B, RT.9/RW.14, Cengkareng Tim., Kecamatan Cengkareng, Jakarta</p>
+          <p>📍 Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa, Kabupaten Tangerang, Banten 15710</p>
           <div class="footer-social">
             <h4>SOSIAL MEDIA</h4>
           <div class="social-icons">
