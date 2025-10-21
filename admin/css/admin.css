@@ -250,7 +250,7 @@ body {
 }
 
 /* ============================
-   MESSAGES & BUTTONS STYLE
+   MESSAGES & ARTIKEL
 ============================ */
 .card {
   border-radius: 15px;
@@ -264,6 +264,13 @@ body {
   color: white;
   text-align: center;
   vertical-align: middle;
+}
+
+.table img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .table td {
@@ -316,7 +323,8 @@ body {
     padding: 15px;
   }
   .table th,
-  .table td {
+  .table td,
+  .table img {
     font-size: 14px;
     padding: 8px;
   }
@@ -336,7 +344,8 @@ body {
     padding: 10px;
   }
   .table th,
-  .table td {
+  .table td,
+  .table img {
     font-size: 13px;
     padding: 6px;
   }
