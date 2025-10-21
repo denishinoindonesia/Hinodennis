@@ -30,8 +30,8 @@ $kategori = [];
 while ($row = $result->fetch_assoc()) {
     // Buat format output: id dan nama (pakai alias agar frontend tetap bisa akses 'nama')
     $kategori[] = [
-        "id" => $row["id"],
-        "nama" => $row["nama_kategori"]
+    "id" => $row["id"],
+    "nama_kategori" => $row["nama_kategori"]
     ];
 }
 
