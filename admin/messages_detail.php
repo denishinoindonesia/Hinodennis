@@ -43,44 +43,6 @@ if (!$message) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/admin.css?v=2">
-
-<style>
-body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
-
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 250px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 3px 0 15px rgba(0,0,0,0.05);
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar .logo { text-align: center; margin-bottom: 40px; }
-.sidebar .logo img { width: 140px; height: auto; }
-
-.sidebar a { 
-    display:flex; align-items:center; gap:12px; 
-    padding:12px 18px; color:#555; border-radius:10px; 
-    font-size:15px; text-decoration:none; margin-bottom:8px; 
-    transition:0.3s; 
-}
-.sidebar a i { font-size:17px; }
-.sidebar a:hover, .sidebar a.active { background:#0d6efd; color:white; }
-
-.logout-link { margin-top:auto; color:#dc3545; font-weight:500; }
-.logout-link:hover { color:#b02a37; }
-
-.main-content { margin-left: 260px; padding: 30px; }
-
-.card { border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.btn-primary { background-color: #0d6efd; border: none; border-radius: 10px; font-weight: 500; }
-.btn-primary:hover { background-color: #005ce6; }
-</style>
 </head>
 <body>
 
