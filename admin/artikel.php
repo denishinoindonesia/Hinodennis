@@ -105,6 +105,9 @@ try {
 </head>
 <body>
 
+<button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay"></div>
+
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo text-center">
@@ -184,6 +187,8 @@ try {
       </div>
     </div>
   </div>
+  
+<script src="js/admin.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

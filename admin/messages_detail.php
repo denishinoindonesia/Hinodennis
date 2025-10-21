@@ -83,6 +83,9 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
 </head>
 <body>
 
+<button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay"></div>
+
 <!-- SIDEBAR -->
 <div class="sidebar">
     <div class="logo text-center">
@@ -125,6 +128,8 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
         </a>
     </div>
 </div>
+
+<script src="js/admin.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

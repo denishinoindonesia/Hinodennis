@@ -117,6 +117,9 @@ img.article-image {
 </head>
 <body>
 
+<button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay"></div>
+
 <div class="sidebar">
   <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
@@ -151,6 +154,9 @@ img.article-image {
     <a href="artikel.php" class="btn btn-primary"><i class="fa fa-arrow-left me-1"></i> Kembali</a>
   </div>
 </div>
+
+<script src="js/admin.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

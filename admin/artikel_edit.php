@@ -88,6 +88,9 @@ body { font-family:'Poppins',sans-serif; background:var(--accent); color:var(--t
 </head>
 <body>
 
+<button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay"></div>
+
 <div class="sidebar">
   <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
   <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
@@ -140,6 +143,9 @@ body { font-family:'Poppins',sans-serif; background:var(--accent); color:var(--t
     </form>
   </div>
 </div>
+
+
+<script src="js/admin.js"></script>
 
 </body>
 </html>

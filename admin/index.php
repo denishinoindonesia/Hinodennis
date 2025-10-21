@@ -201,6 +201,9 @@ try {
 
 <body>
 
+<button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay"></div>
+
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo">
@@ -242,6 +245,8 @@ try {
       </div>
     </div>
   </div>
+  
+<script src="js/admin.js"></script>
 
 </body>
 </html>
