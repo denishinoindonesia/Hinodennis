@@ -238,7 +238,7 @@ $artikelData = fetchAllPrepared($pdo, $sql);
           <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone" />
           <div>
             <strong>Phone Call</strong><br />
-            +62 882-1392-5184
+            +62 812-1905-5571
           </div>
         </div>
 
