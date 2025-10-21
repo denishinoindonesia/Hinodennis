@@ -49,7 +49,7 @@ try {
     // Ubah path gambar ke URL lengkap
     foreach ($artikel as &$row) {
         if (!empty($row['gambar'])) {
-            $row['gambar'] = 'https://official-hino.com/admin/uploads/artikel' . $row['gambar'];
+            $row['gambar'] = 'https://official-hino.com/admin/uploads/artikel/' . $row['gambar'];
         }
     }
 
