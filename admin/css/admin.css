@@ -1,16 +1,21 @@
+/* ==============================
+   ADMIN PANEL MAIN STYLES
+   ============================== */
 :root {
   --primary: #0d6efd;
-  --accent: #f4f6fb;
-  --text-dark: #2e2e2e;
-  --card-bg: #fff;
 }
+
 body {
+  background: #f8f9fb;
   font-family: "Poppins", sans-serif;
-  background: var(--accent);
-  color: var(--text-dark);
   margin: 0;
-  overflow-x: hidden;
-} /* === SIDEBAR === */
+  padding: 0;
+  color: #333;
+}
+
+/* ==============================
+   SIDEBAR
+   ============================== */
 .sidebar {
   position: fixed;
   left: 0;
@@ -22,17 +27,21 @@ body {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  transition: 0.3s;
+  z-index: 1000;
+  transition: left 0.3s ease;
 }
+
 .sidebar .logo {
   text-align: center;
   margin-bottom: 40px;
 }
+
 .sidebar .logo img {
   width: 140px;
   height: auto;
   object-fit: contain;
 }
+
 .sidebar a {
   display: flex;
   align-items: center;
@@ -45,195 +54,177 @@ body {
   margin-bottom: 8px;
   transition: all 0.3s;
 }
+
 .sidebar a i {
   font-size: 17px;
 }
+
 .sidebar a:hover,
 .sidebar a.active {
   background: var(--primary);
   color: white;
   box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
 }
+
 .logout-link {
   margin-top: auto;
   color: #dc3545;
   font-weight: 500;
 }
+
 .logout-link:hover {
   color: #b02a37;
-} /* === MAIN CONTENT === */
-.main-content {
-  margin-left: 270px;
-  padding: 40px 50px;
 }
-.main-header {
-  margin-bottom: 40px;
-}
-.main-header h3 {
-  font-weight: 700;
-  color: var(--primary);
-} /* === STAT CARDS === */
-.stat-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: all 0.3s;
-}
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-.stat-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  color: white;
-  flex-shrink: 0;
-}
-.icon-artikel {
-  background: linear-gradient(135deg, #28a745, #5dd075);
-}
-.icon-messages {
-  background: linear-gradient(135deg, #ffc107, #ffd75a);
-}
-.stat-info h6 {
-  margin: 0;
-  font-size: 15px;
-  color: #6c757d;
-}
-.stat-info h3 {
-  margin: 5px 0 0;
-  font-weight: 700;
-  color: var(--text-dark);
-}
-/* === RESPONSIVE === */
 
-/* --- Tablet (max-width: 992px) --- */
+/* ==============================
+   MAIN CONTENT
+   ============================== */
+.main-content {
+  margin-left: 260px;
+  padding: 30px;
+  transition: margin-left 0.3s ease;
+}
+
+/* ==============================
+   BUTTONS
+   ============================== */
+.btn-primary,
+.btn-info,
+.btn-danger {
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+}
+.btn-primary:hover {
+  background-color: #005ce6;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  background-color: #b02a37;
+}
+
+/* ==============================
+   TABLES & CARDS
+   ============================== */
+.table th {
+  background-color: var(--primary);
+  color: white;
+}
+
+.table img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================
+   HAMBURGER TOGGLE & OVERLAY
+   ============================== */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  display: none; /* Hidden by default (desktop) */
+  transition: background 0.3s;
+}
+
+.menu-toggle:hover {
+  background: #005ce6;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  display: none;
+}
+
+/* ==============================
+   MEDIA QUERIES (RESPONSIVE)
+   ============================== */
+
+/* Tablet (≤ 992px) */
 @media (max-width: 992px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 15px;
-    box-shadow: none;
-    border-bottom: 1px solid #ddd;
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
   }
 
-  .sidebar .logo {
-    margin-bottom: 0;
+  .sidebar {
+    left: -260px; /* Hidden */
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar .logo img {
+    width: 120px;
+  }
+}
+
+/* Mobile (≤ 576px) */
+@media (max-width: 576px) {
+  .main-content {
+    padding: 15px;
+  }
+
+  .sidebar {
+    width: 220px;
+    padding: 25px 15px;
+  }
+
+  .sidebar a {
+    font-size: 14px;
+    padding: 10px 14px;
+    gap: 10px;
   }
 
   .sidebar .logo img {
     width: 100px;
   }
 
-  .sidebar a {
-    font-size: 14px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: 25px;
-  }
-
-  .stat-card {
-    padding: 20px;
-  }
-
-  .stat-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 26px;
-  }
-}
-
-/* --- Mobile (max-width: 768px) --- */
-@media (max-width: 768px) {
-  .sidebar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .sidebar .logo img {
-    width: 120px;
-  }
-
-  .sidebar a {
-    width: 100%;
-    justify-content: flex-start;
-    font-size: 15px;
-  }
-
-  .main-content {
-    padding: 20px;
-  }
-
-  .main-header h3 {
-    font-size: 20px;
-  }
-
-  .stat-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .stat-icon {
-    width: 55px;
-    height: 55px;
-    font-size: 24px;
-  }
-
-  .stat-info h6 {
-    font-size: 14px;
-  }
-
-  .stat-info h3 {
-    font-size: 20px;
-  }
-}
-
-/* --- Small Mobile (max-width: 480px) --- */
-@media (max-width: 480px) {
-  .sidebar {
-    padding: 10px 15px;
-  }
-
-  .sidebar a {
-    font-size: 13px;
-    padding: 6px 10px;
-  }
-
-  .main-content {
-    padding: 15px;
-  }
-
-  .stat-card {
-    padding: 18px;
-    border-radius: 12px;
-  }
-
-  .stat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
-  }
-
-  .main-header h3 {
-    font-size: 18px;
+  .menu-toggle {
+    top: 15px;
+    left: 15px;
+    padding: 8px 10px;
   }
 }
