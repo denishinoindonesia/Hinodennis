@@ -144,7 +144,7 @@ try {
         <div class="product">
           <img src="img/hino300produk.png" alt="Hino 300 Dutro" loading="lazy" />
           <h3>
-            <a href="https://dealerhinoindonesia.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a>
+            <a href="https://official-hino.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a>
           </h3>
           <p>Truk ringan dan tangguh, cocok untuk usaha kecil dan menengah.</p>
         </div>
@@ -152,7 +152,7 @@ try {
         <div class="product">
           <img src="img/hino500produk.png" alt="Hino 500 Ranger" loading="lazy" />
           <h3>
-            <a href="https://dealerhinoindonesia.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a>
+            <a href="https://official-hino.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a>
           </h3>
           <p>Performa handal untuk pengangkutan berat dan jarak jauh.</p>
         </div>
@@ -160,7 +160,7 @@ try {
         <div class="product">
           <img src="img/hinobusproduk.png" alt="Hino Bus Series" loading="lazy" />
           <h3>
-            <a href="https://dealerhinoindonesia.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a>
+            <a href="https://official-hino.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a>
           </h3>
           <p>Solusi transportasi penumpang dengan kenyamanan terbaik.</p>
         </div>
