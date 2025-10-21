@@ -1,12 +1,16 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-header('Content-Type: application/json');
-
 include "../config.php";
 header('Content-Type: application/json; charset=utf-8');
+
+try {
+    $stmt = $pdo->query("SELECT id, nama_kategori FROM kategori ORDER BY nama_kategori ASC");
+    $kategori = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($kategori, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+} catch (Exception $e) {
+    error_log("Error get_kategori: " . $e->getMessage());
+    echo json_encode(["error" => "Terjadi kesalahan saat mengambil kategori."]);
+}
 
 // Cek koneksi
 if ($conn->connect_error) {
