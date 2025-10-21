@@ -30,8 +30,8 @@ $artikel = array_slice($artikelData, $offset, $perPage);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Info dan Promo Truk Hino Terbaru | Sales Hino Indonesia</title>
-    <meta name="description" content="Dealer Resmi Hino Jakarta. Hubungi : 0859 7528 7684 / 0882 1392 5184 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
+    <title>Info dan Promo Truk Hino Terbaru | Hino Official</title>
+    <meta name="description" content="Hino Official - Dealer Truck Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/navbar.css" />

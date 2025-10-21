@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <header>
       <div class="container header-content navbar">
         <div class="header-title">
-          <a href="https://saleshinoindonesia.com">
+          <a href="https://official-hino.com">
             <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
           </a>
         </div>
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <div class="map1">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63471.95288843176!2d106.65860738294855!3d-6.131096504333846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1d775401fa6d%3A0xc7e25a8d81b821ec!2sDealer%20Hino%20Jabodetabek%20Resmi!5e0!3m2!1sen!2sus!4v1760817261750!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4165925685147!2d106.4925165!3d-6.2086551000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42014b1ba54cb5%3A0x8cbdfa3c0d9e5809!2sDealer%20Hino%20Cikupa!5e0!3m2!1sid!2sid!4v1761059143239!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
