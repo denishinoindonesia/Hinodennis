@@ -1,0 +1,27 @@
+# ===========================
+
+# UPLOADS SECURITY
+
+# ===========================
+
+Options -Indexes
+
+# Nonaktifkan PHP & script lain
+
+<FilesMatch "\.(php|php3|php4|php5|phtml|phps|html|htm|js|css|exe|sh|bat|pl|py|jsp|asp)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Hanya izinkan gambar
+
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
+Allow from all
+</FilesMatch>
+
+# Blok file yang mirip gambar tapi ada PHP
+
+<FilesMatch ".\*\.(jpg|jpeg|png|gif|webp|svg)\.(php|phps|php5|phtml)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
