@@ -134,51 +134,53 @@ try {
     </div>
 
     <div class="card p-3">
-      <table class="table table-bordered align-middle">
-        <thead>
-          <tr class="text-center">
-            <th width="5%">No</th>
-            <th>Gambar</th>
-            <th>Judul</th>
-            <th>Kategori</th>
-            <th>Deskripsi</th>
-            <th>Tanggal Dibuat</th>
-            <th width="20%">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          if (count($articles) > 0):
-              $no = 1;
-              foreach ($articles as $row):
-          ?>
-          <tr>
-            <td class="text-center"><?= $no++; ?></td>
-            <td class="text-center">
-              <?php if (!empty($row['gambar'])): ?>
-                <img src="uploads/artikel/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
-              <?php else: ?>
-                <img src="https://via.placeholder.com/60?text=No+Image" alt="no image">
-              <?php endif; ?>
-            </td>
-            <td><?= htmlspecialchars($row['judul']) ?></td>
-            <td class="text-center"><?= htmlspecialchars($row['kategori_nama'] ?? '-') ?></td>
-            <td><?= htmlspecialchars(substr(strip_tags($row['isi']), 0, 70)) ?>...</td>
-            <td><?= date("d M Y", strtotime($row['tanggal'])) ?></td>
-            <td class="text-center">
-              <a href="artikel_detail.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-              <a href="artikel_edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-              <a href="artikel_hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus artikel ini?')"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-          <?php
-              endforeach;
-          else:
-          ?>
-          <tr><td colspan="7" class="text-center text-muted">Belum ada artikel.</td></tr>
-          <?php endif; ?>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead>
+            <tr class="text-center">
+              <th width="5%">No</th>
+              <th>Gambar</th>
+              <th>Judul</th>
+              <th>Kategori</th>
+              <th>Deskripsi</th>
+              <th>Tanggal Dibuat</th>
+              <th width="20%">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            if (count($articles) > 0):
+                $no = 1;
+                foreach ($articles as $row):
+            ?>
+            <tr>
+              <td class="text-center"><?= $no++; ?></td>
+              <td class="text-center">
+                <?php if (!empty($row['gambar'])): ?>
+                  <img src="uploads/artikel/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
+                <?php else: ?>
+                  <img src="https://via.placeholder.com/60?text=No+Image" alt="no image">
+                <?php endif; ?>
+              </td>
+              <td><?= htmlspecialchars($row['judul']) ?></td>
+              <td class="text-center"><?= htmlspecialchars($row['kategori_nama'] ?? '-') ?></td>
+              <td><?= htmlspecialchars(substr(strip_tags($row['isi']), 0, 70)) ?>...</td>
+              <td><?= date("d M Y", strtotime($row['tanggal'])) ?></td>
+              <td class="text-center">
+                <a href="artikel_detail.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                <a href="artikel_edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                <a href="artikel_hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus artikel ini?')"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+            <?php
+                endforeach;
+            else:
+            ?>
+            <tr><td colspan="7" class="text-center text-muted">Belum ada artikel.</td></tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 

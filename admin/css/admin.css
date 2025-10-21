@@ -1,0 +1,81 @@
+/* ========================
+   RESPONSIVE MEDIA QUERIES
+   ======================== */
+
+/* Tablet: ≤1024px */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    padding: 20px 15px;
+  }
+  .sidebar .logo img {
+    width: 120px;
+  }
+  .main-content {
+    margin-left: 210px;
+    padding: 20px 30px;
+  }
+  .table th,
+  .table td {
+    font-size: 14px;
+  }
+}
+
+/* Mobile: ≤768px */
+@media (max-width: 768px) {
+  /* Sidebar jadi top bar */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    box-shadow: none;
+  }
+  .sidebar .logo {
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+  .sidebar a {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+  .logout-link {
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  /* Konten utama full width */
+  .main-content {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+
+  /* Table scroll horizontal */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  /* Form input full width */
+  .card-form input,
+  .card-form textarea,
+  .card-form select {
+    width: 100%;
+  }
+
+  .card-form {
+    padding: 20px;
+  }
+
+  .card-detail {
+    padding: 20px;
+  }
+
+  img.article-image {
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -29,6 +29,9 @@ try {
 <!-- Favicon -->
 <link rel="icon" href="../img/favicon.png" type="image/png" />
 
+<link rel="stylesheet" href="css/admin.css">
+
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 <style>
@@ -128,44 +131,46 @@ body { background: #f8f9fb; font-family: 'Poppins', sans-serif; }
     </div>
 
     <div class="card p-3">
-        <table class="table table-bordered align-middle">
-            <thead>
-                <tr class="text-center">
-                    <th width="5%">No</th>
-                    <th>Nama</th>
-                    <th>Nomor Pengirim</th>
-                    <th>Pesan</th>
-                    <th>Tanggal</th>
-                    <th width="20%">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($messages) === 0): ?>
-                <tr>
-                    <td colspan="6" class="text-center text-muted">Belum ada pesan masuk.</td>
-                </tr>
-                <?php else: ?>
-                <?php $no = 1; foreach ($messages as $row): ?>
-                <tr>
-                    <td class="text-center"><?= $no++; ?></td>
-                    <td><?= htmlspecialchars($row['name']); ?></td>
-                    <td><?= htmlspecialchars($row['phone']); ?></td>
-                    <td><?= htmlspecialchars(mb_strimwidth($row['message'], 0, 70, '...')); ?></td>
-                    <td><?= date("d M Y H:i", strtotime($row['created_at'])); ?></td>
-                    <td class="text-center">
-                        <a href="messages_detail.php?id=<?= $row['id']; ?>" class="btn btn-info btn-sm" title="Lihat">
-                            <i class="fa fa-eye"></i>
-                        </a>
-                        <a href="messages_hapus.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" title="Hapus"
-                           onclick="return confirm('Yakin ingin menghapus pesan ini?')">
-                           <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead>
+                    <tr class="text-center">
+                        <th width="5%">No</th>
+                        <th>Nama</th>
+                        <th>Nomor Pengirim</th>
+                        <th>Pesan</th>
+                        <th>Tanggal</th>
+                        <th width="20%">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($messages) === 0): ?>
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">Belum ada pesan masuk.</td>
+                    </tr>
+                    <?php else: ?>
+                    <?php $no = 1; foreach ($messages as $row): ?>
+                    <tr>
+                        <td class="text-center"><?= $no++; ?></td>
+                        <td><?= htmlspecialchars($row['name']); ?></td>
+                        <td><?= htmlspecialchars($row['phone']); ?></td>
+                        <td><?= htmlspecialchars(mb_strimwidth($row['message'], 0, 70, '...')); ?></td>
+                        <td><?= date("d M Y H:i", strtotime($row['created_at'])); ?></td>
+                        <td class="text-center">
+                            <a href="messages_detail.php?id=<?= $row['id']; ?>" class="btn btn-info btn-sm" title="Lihat">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a href="messages_hapus.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" title="Hapus"
+                            onclick="return confirm('Yakin ingin menghapus pesan ini?')">
+                            <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
