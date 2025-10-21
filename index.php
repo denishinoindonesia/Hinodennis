@@ -253,40 +253,49 @@ $artikelData = fetchAllPrepared($pdo, $sql);
       </div>
     </div>
 
-    <!-- Blog Section -->
-    <section class="blog-section">
-      <div class="container">
-        <h2>Blog & Artikel</h2>
-        <p>Dapatkan informasi terbaru seputar Truk Hino, perawatan, dan promo terbaik.</p>
+<!-- Blog Section -->
+<section class="blog-section">
+  <div class="container">
+    <h2>Blog & Artikel</h2>
+    <p>Dapatkan informasi terbaru seputar Truk Hino, perawatan, dan promo terbaik.</p>
 
-        <div class="blog-grid">
-          <?php if (!empty($artikelData)): ?>
-            <?php foreach ($artikelData as $artikel): ?>
-              <div class="blog-card">
-                <img 
-                  src="https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['gambar']) ?>" 
-                  alt="<?= htmlspecialchars($artikel['judul']) ?>" 
-                  loading="lazy"
-                />
-                <div class="blog-card-content">
-                  <h3>
-                    <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
-                      <?= htmlspecialchars($artikel['judul']) ?>
-                    </a>
-                  </h3>
-                  <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
-                  <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          <?php else: ?>
-            <p>Tidak ada artikel ditemukan.</p>
-          <?php endif; ?>
-        </div>
-      </div>
-    </section>
+    <div class="blog-grid">
+      <?php if (!empty($artikelData)): ?>
+        <?php foreach ($artikelData as $artikel): ?>
+          <div class="blog-card">
+            <img 
+              src="https://official-hino.com/admin/uploads/<?= htmlspecialchars($artikel['gambar']) ?>" 
+              alt="<?= htmlspecialchars($artikel['judul']) ?>" 
+              loading="lazy"
+            />
+            <div class="blog-card-content">
+              <h3>
+                <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
+                  <?= htmlspecialchars($artikel['judul']) ?>
+                </a>
+              </h3>
+              
+              <?php if (!empty($artikel['kategori'])): ?>
+                <span class="artikel-kategori">
+                  <?= htmlspecialchars($artikel['kategori']) ?>
+                </span>
+              <?php endif; ?>
+
+              <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
+
+              <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
+                Baca Selengkapnya
+              </a>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p>Tidak ada artikel ditemukan.</p>
+      <?php endif; ?>
+    </div>
+  </div>
+</section>
+
 
     <!-- WhatsApp Chat -->
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
