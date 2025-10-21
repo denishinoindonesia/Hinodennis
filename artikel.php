@@ -1,13 +1,13 @@
 <?php
 // Ambil data artikel dan kategori dari API
-$kategoriData = json_decode(file_get_contents("https://official-hino.com/admin/api/get_kategori.php"), true);
+$kategoriData = json_decode(file_get_contents("https://saleshinoindonesia.com/admin/api/get_kategori.php"), true);
 $search = $_GET['search'] ?? '';
 $selectedKategori = $_GET['kategori'] ?? '';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $perPage = 6;
 
 // Bangun URL API dengan filter jika ada
-$apiUrl = "https://official-hino.com/admin/api/get_artikel.php";
+$apiUrl = "https://saleshinoindonesia.com/admin/api/get_artikel.php";
 $params = [];
 if ($search !== '') {
   $params[] = "search=" . urlencode($search);
@@ -99,14 +99,14 @@ $artikel = array_slice($artikelData, $offset, $perPage);
       <div class="container header-content navbar">
     <!-- Logo -->
     <div class="header-title">
-      <a href="https://official-hino.com">
+      <a href="https://saleshinoindonesia.com">
         <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
       </a>
     </div>
 
         <div class="hamburger-menu">&#9776;</div>
         <nav class="nav links">
-          <a href="https://official-hino.com">Home</a>
+          <a href="https://saleshinoindonesia.com">Home</a>
           <a href="hino300.html">Hino 300 Series</a>
           <a href="hino500.html">Hino 500 Series</a>
           <a href="hinobus.html">Hino Bus Series</a>
