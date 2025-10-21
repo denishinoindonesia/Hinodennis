@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+require 'config.php'; // pastikan koneksi PDO ($pdo) sudah benar
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
@@ -10,32 +9,54 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // =============================
+//  Ambil daftar kategori
+// =============================
+try {
+    $stmt = $pdo->query("SELECT id, nama_kategori FROM kategori ORDER BY nama_kategori ASC");
+    $kategoriList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    exit("Gagal mengambil data kategori: " . $e->getMessage());
+}
+
+// =============================
 //  Proses Simpan Artikel Baru
 // =============================
 if (isset($_POST['submit'])) {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
+    $kategori_id = $_POST['kategori_id'] ?? null;
     $image = '';
 
     // Upload gambar (jika ada)
-    if (isset($_FILES['image']) && $_FILES['image']['name'] != '') {
+    if (!empty($_FILES['image']['name'])) {
         $targetDir = "uploads/artikel/";
         if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
 
         $fileName = time() . '_' . basename($_FILES['image']['name']);
         $targetFilePath = $targetDir . $fileName;
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
-            $image = $fileName;
+        // Validasi ekstensi file
+        $allowedTypes = ['jpg', 'jpeg', 'png', 'webp'];
+        $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if (in_array($fileType, $allowedTypes)) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
+                $image = $fileName;
+            }
         }
     }
 
-    // Simpan data artikel menggunakan PDO
+    // Simpan data artikel
     try {
-        $sql = "INSERT INTO artikel (title, description, image, created_at) 
-                VALUES (?, ?, ?, NOW())";
+        $sql = "INSERT INTO artikel (judul, isi, gambar, tanggal, kategori_id) 
+                VALUES (:judul, :isi, :gambar, NOW(), :kategori_id)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$title, $description, $image]);
+        $stmt->execute([
+            ':judul' => $title,
+            ':isi' => $description,
+            ':gambar' => $image,
+            ':kategori_id' => $kategori_id
+        ]);
 
         $_SESSION['message'] = ['type' => 'success', 'text' => 'Artikel berhasil ditambahkan!'];
     } catch (Exception $e) {
@@ -55,11 +76,10 @@ if (isset($_POST['submit'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tambah Artikel</title>
 
-<!-- Favicon -->
 <link rel="icon" href="../img/favicon.png" type="image/png" />
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
 :root { --primary: #0d6efd; --accent: #f4f6fb; --text-dark: #2e2e2e; --card-bg: #fff; }
 body { font-family:'Poppins',sans-serif; background: var(--accent); color: var(--text-dark); margin:0; overflow-x:hidden; }
@@ -80,6 +100,7 @@ body { font-family:'Poppins',sans-serif; background: var(--accent); color: var(-
 .btn-secondary { border-radius:10px; }
 </style>
 </head>
+
 <body>
 <div class="sidebar">
   <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
@@ -101,14 +122,29 @@ body { font-family:'Poppins',sans-serif; background: var(--accent); color: var(-
         <label class="form-label">Judul</label>
         <input type="text" name="title" class="form-control" required>
       </div>
+
       <div class="mb-3">
         <label class="form-label">Deskripsi</label>
         <textarea name="description" class="form-control" rows="5" required></textarea>
       </div>
+
+      <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <select name="kategori_id" class="form-select" required>
+          <option value="">-- Pilih Kategori --</option>
+          <?php foreach ($kategoriList as $kategori): ?>
+            <option value="<?= htmlspecialchars($kategori['id']) ?>">
+              <?= htmlspecialchars($kategori['nama_kategori']) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
       <div class="mb-3">
         <label class="form-label">Gambar (opsional)</label>
-        <input type="file" name="image" class="form-control">
+        <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png,.webp">
       </div>
+
       <div class="text-end">
         <a href="artikel.php" class="btn btn-secondary">Batal</a>
         <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
