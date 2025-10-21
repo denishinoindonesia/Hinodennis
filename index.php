@@ -66,7 +66,7 @@ try {
         <div class="hamburger-menu">&#9776;</div>
 
         <nav class="nav links">
-          <a href="official-hino.com">Home</a>
+          <a href="index.php">Home</a>
           <a href="hino300.php">Hino 300 Series</a>
           <a href="hino500.php">Hino 500 Series</a>
           <a href="hinobus.php">Hino Bus Series</a>
@@ -77,7 +77,7 @@ try {
     </header>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero fade-element">
       <div class="slider">
         <img src="img/Euro 4 Hino 300.jpeg" class="slide active" alt="Banner 1" />
         <img src="img/Euro 4 Hino 500.jpeg" class="slide" alt="Banner 2" />
@@ -86,7 +86,7 @@ try {
     </section>
 
     <!-- Section: Promo Utama -->
-    <section id="promo-utama" class="promo-section">
+    <section id="promo-utama" class="promo-section fade-element">
       <div class="promo-text">
         <h2>Dapatkan Harga dan Penawaran Terbaik Langsung dari Dealer Resmi Hino Indonesia</h2>
         <ul>
@@ -107,7 +107,7 @@ try {
     </section>
 
     <!-- BAGIAN PRODUK & LAYANAN -->
-    <section class="hino-section-produk">
+    <section class="hino-section-produk fade-element">
       <div class="hino-container">
         <div class="hino-heading">
           <h5>PRODUK & LAYANAN</h5>
@@ -168,7 +168,7 @@ try {
     </section>
 
     <!-- Keunggulan Kami -->
-    <section class="advantages">
+    <section class="advantages fade-element">
       <div class="advantages-container">
         <div class="advantages-image">
           <img src="img/worker.png" alt="Worker Image" />
@@ -230,7 +230,7 @@ try {
     </section>
 
     <!-- Contact Section -->
-    <div class="contact-container">
+    <div class="contact-container fade-element">
       <div class="contact-tabs">
         <div class="tab active">Hubungi Kami</div>
       </div>
@@ -267,7 +267,7 @@ try {
     </div>
 
     <!-- Blog Section -->
-    <section class="blog-section">
+    <section class="blog-section fade-element">
       <div class="container">
         <h2>Blog & Artikel</h2>
         <p>Dapatkan informasi terbaru seputar Truk Hino, perawatan, dan promo terbaik.</p>
