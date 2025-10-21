@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
 
 // Cek session login
@@ -13,10 +12,10 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = (int) $_GET['id'];
 
     // Ambil info artikel untuk mendapatkan nama file gambar
-    $article = fetchOnePrepared($pdo, "SELECT image FROM artikel WHERE id = ?", [$id]);
+    $article = fetchOnePrepared($pdo, "SELECT gambar FROM artikel WHERE id = ?", [$id]);
 
     if ($article) {
-        $imageFile = $article['image'] ?? null;
+        $imageFile = $article['gambar'] ?? null;
 
         // Hapus file gambar jika ada
         if (!empty($imageFile)) {
