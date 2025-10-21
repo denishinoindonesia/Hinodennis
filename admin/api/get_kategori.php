@@ -5,13 +5,8 @@ error_reporting(E_ALL);
 
 header('Content-Type: application/json');
 
-// Koneksi ke database
-$host = "localhost";
-$user = "u868657420_root";
-$pass = "Natanael110405";
-$db   = "u868657420_db_dealer_hino";
-
-$conn = new mysqli($host, $user, $pass, $db);
+include "../config.php";
+header('Content-Type: application/json; charset=utf-8');
 
 // Cek koneksi
 if ($conn->connect_error) {

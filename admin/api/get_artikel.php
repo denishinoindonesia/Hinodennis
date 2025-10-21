@@ -1,47 +1,62 @@
 <?php
 include "../config.php";
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 // Ambil parameter pencarian dan filter kategori
-$search = isset($_GET['search']) ? '%' . $conn->real_escape_string($_GET['search']) . '%' : null;
-$kategori = isset($_GET['kategori']) ? $conn->real_escape_string($_GET['kategori']) : null;
+$search   = isset($_GET['search']) ? trim($_GET['search']) : null;
+$kategori = isset($_GET['kategori']) ? trim($_GET['kategori']) : null;
 
-// Query dasar dengan JOIN ke tabel kategori
-$query = "SELECT a.id, a.judul, a.isi, a.gambar, a.tanggal, k.nama_kategori AS kategori 
-          FROM artikel a 
-          LEFT JOIN kategori k ON a.kategori_id = k.id";
+// Query dasar
+$sql = "
+    SELECT 
+        a.id, 
+        a.judul, 
+        a.isi, 
+        a.gambar, 
+        a.tanggal, 
+        k.nama_kategori AS kategori
+    FROM artikel a
+    LEFT JOIN kategori k ON a.kategori_id = k.id
+";
 
+// Buat kondisi dinamis
 $conditions = [];
+$params = [];
 
-// Tambahkan kondisi jika ada search
 if ($search) {
-  $conditions[] = "(a.judul LIKE '$search' OR a.isi LIKE '$search')";
+    $conditions[] = "(a.judul LIKE :search OR a.isi LIKE :search)";
+    $params[':search'] = "%{$search}%";
 }
 
-// Tambahkan kondisi jika ada filter kategori (berdasarkan nama kategori)
 if ($kategori) {
-  $conditions[] = "k.nama_kategori = '$kategori'";
+    $conditions[] = "k.nama_kategori = :kategori";
+    $params[':kategori'] = $kategori;
 }
 
-// Gabungkan kondisi ke dalam query jika ada
+// Tambahkan kondisi jika ada
 if (!empty($conditions)) {
-  $query .= " WHERE " . implode(" AND ", $conditions);
+    $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
-// Urutkan berdasarkan artikel terbaru
-$query .= " ORDER BY a.id DESC";
+// Urutkan artikel terbaru
+$sql .= " ORDER BY a.id DESC";
 
-// Eksekusi query
-$result = $conn->query($query);
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $artikel = $stmt->fetchAll();
 
-$artikel = [];
+    // Ubah path gambar ke URL lengkap
+    foreach ($artikel as &$row) {
+        if (!empty($row['gambar'])) {
+            $row['gambar'] = 'https://saleshinoindonesia.com/admin/uploads/' . $row['gambar'];
+        }
+    }
 
-// Loop hasil dan ubah URL gambar jadi lengkap
-while ($row = $result->fetch_assoc()) {
-  $row['gambar'] = 'https://saleshinoindonesia.com/admin/uploads/' . $row['gambar'];
-  $artikel[] = $row;
+    echo json_encode($artikel, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+} catch (Exception $e) {
+    // Error handling
+    error_log("Error get_artikel: " . $e->getMessage());
+    echo json_encode(['error' => 'Terjadi kesalahan saat mengambil data artikel.']);
 }
-
-// Kembalikan dalam format JSON
-echo json_encode($artikel);
 ?>
