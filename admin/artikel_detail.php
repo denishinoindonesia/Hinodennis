@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php'; // pastikan path benar dan $pdo sudah aktif
+require 'config.php'; // pastikan $pdo aktif
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-// Validasi & ambil ID
+// Validasi ID
 $id = $_GET['id'] ?? null;
 if (!$id || !ctype_digit($id)) {
     $_SESSION['message'] = ['type' => 'danger', 'text' => 'ID artikel tidak valid.'];
@@ -16,7 +16,7 @@ if (!$id || !ctype_digit($id)) {
     exit;
 }
 
-// Ambil data artikel + kategori (LEFT JOIN biar aman walau kategori dihapus)
+// Ambil data artikel + kategori
 $sql = "SELECT a.*, k.nama_kategori 
         FROM artikel a 
         LEFT JOIN kategori k ON a.kategori_id = k.id 
@@ -26,7 +26,7 @@ $stmt->execute([$id]);
 $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$article) {
-    $_SESSION['message'] = ['type'=>'danger','text'=>'Artikel tidak ditemukan.'];
+    $_SESSION['message'] = ['type' => 'danger', 'text' => 'Artikel tidak ditemukan.'];
     header("Location: artikel.php");
     exit;
 }
@@ -38,29 +38,80 @@ if (!$article) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Detail Artikel</title>
 
-<!-- Favicon -->
 <link rel="icon" href="../img/favicon.png" type="image/png" />
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
-:root { --primary:#0d6efd; --accent:#f4f6fb; --text-dark:#2e2e2e; --card-bg:#fff; }
-body { font-family:'Poppins',sans-serif; background:var(--accent); color:var(--text-dark); margin:0; overflow-x:hidden; }
-.sidebar { position:fixed; left:0; top:0; width:250px; height:100vh; background:#fff; box-shadow:3px 0 15px rgba(0,0,0,0.05); padding:30px 20px; display:flex; flex-direction:column; }
+:root {
+  --primary:#0d6efd;
+  --accent:#f4f6fb;
+  --text-dark:#2e2e2e;
+  --card-bg:#fff;
+}
+body {
+  font-family:'Poppins',sans-serif;
+  background:var(--accent);
+  color:var(--text-dark);
+  margin:0;
+  overflow-x:hidden;
+}
+.sidebar {
+  position:fixed;
+  left:0; top:0;
+  width:250px; height:100vh;
+  background:#fff;
+  box-shadow:3px 0 15px rgba(0,0,0,0.05);
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+}
 .sidebar .logo { text-align:center; margin-bottom:40px; }
 .sidebar .logo img { width:140px; height:auto; }
-.sidebar a { display:flex; align-items:center; gap:12px; padding:12px 18px; color:#555; border-radius:10px; font-size:15px; text-decoration:none; margin-bottom:8px; transition:all 0.3s; }
+.sidebar a {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 18px; color:#555;
+  border-radius:10px; font-size:15px;
+  text-decoration:none; margin-bottom:8px;
+  transition:all 0.3s;
+}
 .sidebar a i { font-size:17px; }
-.sidebar a:hover, .sidebar a.active { background:var(--primary); color:white; box-shadow:0 4px 10px rgba(13,110,253,0.2); }
+.sidebar a:hover, .sidebar a.active {
+  background:var(--primary);
+  color:white;
+  box-shadow:0 4px 10px rgba(13,110,253,0.2);
+}
 .logout-link { margin-top:auto; color:#dc3545; font-weight:500; }
 .logout-link:hover { color:#b02a37; }
 .main-content { margin-left:270px; padding:40px 50px; }
 .main-header { margin-bottom:40px; }
 .main-header h3 { font-weight:700; color:var(--primary);}
-.card-detail { background:var(--card-bg); border-radius:16px; padding:30px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
-img.article-image { width:100%; max-width:400px; border-radius:10px; margin-bottom:20px; }
-.btn-primary { background-color:var(--primary); border-radius:10px; border:none; }
-.badge-category { background:#0d6efd; color:white; padding:6px 12px; border-radius:8px; font-size:13px; margin-bottom:10px; display:inline-block; }
+.card-detail {
+  background:var(--card-bg);
+  border-radius:16px;
+  padding:30px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+img.article-image {
+  width:100%;
+  max-width:400px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+.btn-primary {
+  background-color:var(--primary);
+  border-radius:10px;
+  border:none;
+}
+.badge-category {
+  background:#0d6efd;
+  color:white;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:10px;
+  display:inline-block;
+}
 </style>
 </head>
 <body>
@@ -80,21 +131,21 @@ img.article-image { width:100%; max-width:400px; border-radius:10px; margin-bott
   </div>
 
   <div class="card-detail">
-    <h4><?= htmlspecialchars($article['title']) ?></h4>
-    
+    <h4><?= htmlspecialchars($article['judul']) ?></h4>
+
     <?php if (!empty($article['nama_kategori'])): ?>
       <span class="badge-category"><i class="fa-solid fa-tag me-1"></i> <?= htmlspecialchars($article['nama_kategori']) ?></span>
     <?php endif; ?>
 
-    <p class="text-muted">Tanggal Dibuat: <?= date("d M Y", strtotime($article['created_at'])) ?></p>
+    <p class="text-muted">Tanggal Dibuat: <?= date("d M Y", strtotime($article['tanggal'])) ?></p>
 
-    <?php if (!empty($article['image'])): ?>
-        <img src="uploads/artikel/<?= htmlspecialchars($article['image']) ?>" class="article-image" alt="<?= htmlspecialchars($article['title']) ?>">
+    <?php if (!empty($article['gambar'])): ?>
+        <img src="uploads/artikel/<?= htmlspecialchars($article['gambar']) ?>" class="article-image" alt="<?= htmlspecialchars($article['judul']) ?>">
     <?php else: ?>
         <img src="https://via.placeholder.com/400x250?text=No+Image" class="article-image" alt="No Image">
     <?php endif; ?>
 
-    <p><?= nl2br(htmlspecialchars($article['description'])) ?></p>
+    <p><?= nl2br(htmlspecialchars($article['isi'])) ?></p>
 
     <a href="artikel.php" class="btn btn-primary"><i class="fa fa-arrow-left me-1"></i> Kembali</a>
   </div>
