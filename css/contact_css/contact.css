@@ -54,7 +54,7 @@
 .wrapper button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #ffd700;
+  background-color: #b80000;
   border: none;
   color: rgb(0, 0, 0);
   border-radius: 4px;
@@ -62,7 +62,7 @@
 }
 
 .wrapper button:hover {
-  background-color: #b8860b;
+  background-color: #b80000;
 }
 
 .wrapper .map1 iframe {
