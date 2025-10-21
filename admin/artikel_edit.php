@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-require 'config.php'; // pastikan ini path yang benar dan $pdo sudah didefinisikan
+require 'config.php'; // pastikan path benar dan $pdo sudah aktif
 
 // Cek session login
 if (!isset($_SESSION['admin_id'])) {
@@ -14,7 +13,7 @@ if (!isset($_SESSION['admin_id'])) {
 // =============================
 $id = intval($_GET['id'] ?? 0);
 
-// Ambil data artikel dari database
+// Ambil data artikel
 $stmt = $pdo->prepare("SELECT * FROM artikel WHERE id = ?");
 $stmt->execute([$id]);
 $article = $stmt->fetch();
@@ -26,11 +25,18 @@ if (!$article) {
 }
 
 // =============================
+// Ambil data kategori untuk dropdown
+// =============================
+$kategoriStmt = $pdo->query("SELECT id, nama_kategori FROM kategori ORDER BY nama_kategori ASC");
+$kategoriList = $kategoriStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// =============================
 // Update data artikel
 // =============================
 if (isset($_POST['update'])) {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
+    $kategori_id = intval($_POST['kategori_id']);
     $image = $article['image']; // gunakan gambar lama jika tidak ada upload baru
 
     // Upload gambar baru jika ada
@@ -47,9 +53,11 @@ if (isset($_POST['update'])) {
     }
 
     try {
-        $sql = "UPDATE artikel SET title = ?, description = ?, image = ? WHERE id = ?";
+        $sql = "UPDATE artikel 
+                SET title = ?, description = ?, image = ?, kategori_id = ? 
+                WHERE id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$title, $description, $image, $id]);
+        $stmt->execute([$title, $description, $image, $kategori_id, $id]);
 
         $_SESSION['message'] = ['type' => 'success', 'text' => 'Artikel berhasil diperbarui!'];
     } catch (Exception $e) {
@@ -69,30 +77,27 @@ if (isset($_POST['update'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edit Artikel</title>
 
-<!-- Favicon -->
 <link rel="icon" href="../img/favicon.png" type="image/png" />
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <style>
-:root { --primary: #0d6efd; --accent: #f4f6fb; --text-dark: #2e2e2e; --card-bg: #fff; }
-body { font-family:'Poppins',sans-serif; background: var(--accent); color: var(--text-dark); margin:0; overflow-x:hidden; }
-.sidebar { position: fixed; left:0; top:0; width:250px; height:100vh; background:#fff; box-shadow:3px 0 15px rgba(0,0,0,0.05); padding:30px 20px; display:flex; flex-direction:column; }
+:root { --primary:#0d6efd; --accent:#f4f6fb; --text-dark:#2e2e2e; --card-bg:#fff; }
+body { font-family:'Poppins',sans-serif; background:var(--accent); color:var(--text-dark); margin:0; overflow-x:hidden; }
+.sidebar { position:fixed; left:0; top:0; width:250px; height:100vh; background:#fff; box-shadow:3px 0 15px rgba(0,0,0,0.05); padding:30px 20px; display:flex; flex-direction:column; }
 .sidebar .logo { text-align:center; margin-bottom:40px; }
 .sidebar .logo img { width:140px; height:auto; }
 .sidebar a { display:flex; align-items:center; gap:12px; padding:12px 18px; color:#555; border-radius:10px; font-size:15px; text-decoration:none; margin-bottom:8px; transition:all 0.3s; }
-.sidebar a i { font-size:17px; }
 .sidebar a:hover, .sidebar a.active { background:var(--primary); color:white; box-shadow:0 4px 10px rgba(13,110,253,0.2); }
 .logout-link { margin-top:auto; color:#dc3545; font-weight:500; }
 .logout-link:hover { color:#b02a37; }
 .main-content { margin-left:270px; padding:40px 50px; }
 .main-header { margin-bottom:40px; }
-.main-header h3 { font-weight:700; color: var(--primary);}
-.card-form { background: var(--card-bg); border-radius:16px; padding:30px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
+.main-header h3 { font-weight:700; color:var(--primary);}
+.card-form { background:var(--card-bg); border-radius:16px; padding:30px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
 .card-form h4 { margin-bottom:25px; color:var(--primary); font-weight:700; }
-.btn-primary { background-color: var(--primary); border-radius:10px; border:none; }
+.btn-primary { background-color:var(--primary); border-radius:10px; border:none; }
 .btn-secondary { border-radius:10px; }
-img.current-image { width: 120px; border-radius: 8px; margin-bottom: 10px; }
+img.current-image { width:120px; border-radius:8px; margin-bottom:10px; }
 </style>
 </head>
 <body>
@@ -126,10 +131,24 @@ img.current-image { width: 120px; border-radius: 8px; margin-bottom: 10px; }
         <label class="form-label">Judul</label>
         <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($article['title']) ?>" required>
       </div>
+
       <div class="mb-3">
         <label class="form-label">Deskripsi</label>
         <textarea name="description" class="form-control" rows="5" required><?= htmlspecialchars($article['description']) ?></textarea>
       </div>
+
+      <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <select name="kategori_id" class="form-control" required>
+          <option value="">-- Pilih Kategori --</option>
+          <?php foreach ($kategoriList as $kat): ?>
+            <option value="<?= $kat['id'] ?>" <?= ($article['kategori_id'] == $kat['id']) ? 'selected' : '' ?>>
+              <?= htmlspecialchars($kat['nama_kategori']) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
       <div class="mb-3">
         <label class="form-label">Gambar Saat Ini</label><br>
         <?php if(!empty($article['image'])): ?>
@@ -137,8 +156,9 @@ img.current-image { width: 120px; border-radius: 8px; margin-bottom: 10px; }
         <?php else: ?>
           <img src="https://via.placeholder.com/120?text=No+Image" class="current-image">
         <?php endif; ?>
-        <input type="file" name="image" class="form-control">
+        <input type="file" name="image" class="form-control mt-2">
       </div>
+
       <div class="text-end">
         <a href="artikel.php" class="btn btn-secondary">Batal</a>
         <button type="submit" name="update" class="btn btn-primary">Update</button>
