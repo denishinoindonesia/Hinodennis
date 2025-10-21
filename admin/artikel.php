@@ -156,7 +156,7 @@ try {
             <td class="text-center"><?= $no++; ?></td>
             <td class="text-center">
               <?php if (!empty($row['gambar'])): ?>
-                <img src="../uploads/artikel/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
+                <img src="uploads/artikel/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
               <?php else: ?>
                 <img src="https://via.placeholder.com/60?text=No+Image" alt="no image">
               <?php endif; ?>
