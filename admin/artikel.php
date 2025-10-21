@@ -164,7 +164,7 @@ try {
             <td><?= htmlspecialchars($row['judul']) ?></td>
             <td class="text-center"><?= htmlspecialchars($row['kategori_nama'] ?? '-') ?></td>
             <td><?= htmlspecialchars(substr(strip_tags($row['isi']), 0, 70)) ?>...</td>
-            <td><?= date("d M Y", strtotime($row['created_at'])) ?></td>
+            <td><?= date("d M Y", strtotime($row['tanggal'])) ?></td>
             <td class="text-center">
               <a href="artikel_detail.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
               <a href="artikel_edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
