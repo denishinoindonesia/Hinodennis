@@ -249,22 +249,36 @@ body {
   }
 }
 
+/* ============================
+   MESSAGES & BUTTONS STYLE
+============================ */
 .card {
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  overflow-x: auto;
 }
 
 .table th {
   background-color: #0d6efd;
   color: white;
+  text-align: center;
+  vertical-align: middle;
 }
 
+.table td {
+  vertical-align: middle;
+}
+
+/* === BUTTONS === */
 .btn-primary,
 .btn-info,
 .btn-danger {
   border-radius: 8px;
   font-weight: 500;
+  transition: all 0.3s ease;
 }
+
 .btn-primary {
   background-color: #0d6efd;
   border: none;
@@ -289,4 +303,49 @@ body {
 }
 .btn-danger:hover {
   background-color: #b02a37;
+}
+
+/* ==============================
+   MEDIA QUERIES (RESPONSIVE)
+============================== */
+
+/* Tablet (≤ 992px) */
+@media (max-width: 992px) {
+  .card {
+    border-radius: 12px;
+    padding: 15px;
+  }
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .btn-primary,
+  .btn-info,
+  .btn-danger {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile (≤ 576px) */
+@media (max-width: 576px) {
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+  }
+  .table th,
+  .table td {
+    font-size: 13px;
+    padding: 6px;
+  }
+  .btn-primary,
+  .btn-info,
+  .btn-danger {
+    width: 100%;
+    font-size: 13px;
+    padding: 8px;
+    margin-bottom: 6px;
+  }
 }
