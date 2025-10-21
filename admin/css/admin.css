@@ -236,3 +236,15 @@ body {
     padding: 8px 10px;
   }
 }
+
+/* === Fix agar tulisan tidak ketutupan hamburger menu === */
+@media (max-width: 992px) {
+  .main-content {
+    margin-top: 70px; /* beri jarak agar tidak tertutup hamburger */
+  }
+}
+@media (max-width: 576px) {
+  .main-content {
+    margin-top: 80px; /* sedikit lebih besar untuk layar kecil */
+  }
+}
