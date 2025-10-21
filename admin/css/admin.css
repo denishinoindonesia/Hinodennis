@@ -248,3 +248,45 @@ body {
     margin-top: 80px; /* sedikit lebih besar untuk layar kecil */
   }
 }
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-primary,
+.btn-info,
+.btn-danger {
+  border-radius: 8px;
+  font-weight: 500;
+}
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #005ce6;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+}
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #b02a37;
+}
