@@ -77,9 +77,10 @@ if (isset($_POST['submit'])) {
 <title>Tambah Artikel</title>
 
 <link rel="icon" href="../img/favicon.png" type="image/png" />
-<link rel="stylesheet" href="css/admin.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css?v=2">
+
 
 <style>
 :root { --primary: #0d6efd; --accent: #f4f6fb; --text-dark: #2e2e2e; --card-bg: #fff; }
