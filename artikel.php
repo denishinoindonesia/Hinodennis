@@ -99,14 +99,14 @@ $artikel = array_slice($artikelData, $offset, $perPage);
       <div class="container header-content navbar">
     <!-- Logo -->
     <div class="header-title">
-      <a href="https://saleshinoindonesia.com">
+      <a href="https://official-hino.com">
         <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
       </a>
     </div>
 
         <div class="hamburger-menu">&#9776;</div>
         <nav class="nav links">
-          <a href="https://saleshinoindonesia.com">Home</a>
+          <a href="https://official-hino.com">Home</a>
           <a href="hino300.html">Hino 300 Series</a>
           <a href="hino500.html">Hino 500 Series</a>
           <a href="hinobus.html">Hino Bus Series</a>

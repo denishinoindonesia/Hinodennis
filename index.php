@@ -55,11 +55,11 @@ $artikelData = fetchAllPrepared($pdo, $sql);
 
         <nav class="nav links">
           <a href="index.php">Home</a>
-          <a href="#">Hino 300 Series</a>
-          <a href="#">Hino 500 Series</a>
-          <a href="#">Hino Bus Series</a>
-          <a href="#">Blog & Artikel</a>
-          <a href="#">Contact</a>
+          <a href="hino300.php">Hino 300 Series</a>
+          <a href="hino500.php">Hino 500 Series</a>
+          <a href="hinobus.php">Hino Bus Series</a>
+          <a href="artikel.php">Blog & Artikel</a>
+          <a href="contact.php">Contact</a>
         </nav>
       </div>
     </header>
@@ -113,13 +113,13 @@ $artikelData = fetchAllPrepared($pdo, $sql);
           <div class="hino-card">
             <img src="img/bannerservice.jpg" alt="Layanan Service" />
             <h3>LAYANAN SERVICE</h3>
-            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
           </div>
 
           <div class="hino-card">
             <img src="img/bannersparepart.jpg" alt="Spare Part" />
             <h3>SPARE PART</h3>
-            <a href="#" class="hino-btn">SELENGKAPNYA</a>
+            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
           </div>
         </div>
       </div>
