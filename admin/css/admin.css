@@ -1,14 +1,24 @@
-/* ============================== ADMIN PANEL MAIN STYLES ============================== */
+/* ==============================
+   ROOT & BODY
+   ============================== */
 :root {
   --primary: #0d6efd;
+  --accent: #f4f6fb;
+  --text-dark: #2e2e2e;
+  --card-bg: #fff;
 }
+
 body {
-  background: #f8f9fb;
   font-family: "Poppins", sans-serif;
+  background: var(--accent);
+  color: var(--text-dark);
   margin: 0;
-  padding: 0;
-  color: #333;
-} /* ============================== SIDEBAR ============================== */
+  overflow-x: hidden;
+}
+
+/* ==============================
+   SIDEBAR
+   ============================== */
 .sidebar {
   position: fixed;
   left: 0;
@@ -23,15 +33,18 @@ body {
   z-index: 1000;
   transition: left 0.3s ease;
 }
+
 .sidebar .logo {
   text-align: center;
   margin-bottom: 40px;
 }
+
 .sidebar .logo img {
   width: 140px;
   height: auto;
   object-fit: contain;
 }
+
 .sidebar a {
   display: flex;
   align-items: center;
@@ -44,51 +57,98 @@ body {
   margin-bottom: 8px;
   transition: all 0.3s;
 }
+
 .sidebar a i {
   font-size: 17px;
 }
+
 .sidebar a:hover,
 .sidebar a.active {
   background: var(--primary);
   color: white;
   box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
 }
+
 .logout-link {
   margin-top: auto;
   color: #dc3545;
   font-weight: 500;
 }
+
 .logout-link:hover {
   color: #b02a37;
-} /* ============================== MAIN CONTENT ============================== */
+}
+
+/* ==============================
+   MAIN CONTENT
+   ============================== */
 .main-content {
-  margin-left: 260px;
-  padding: 30px;
+  margin-left: 270px;
+  padding: 40px 50px;
   transition: margin-left 0.3s ease;
-} /* ============================== BUTTONS & TABLES ============================== */
-.btn-primary {
-  background-color: #0d6efd;
-  border: none;
-  border-radius: 10px;
-  font-weight: 500;
 }
-.btn-primary:hover {
-  background-color: #005ce6;
+
+.main-header {
+  margin-bottom: 40px;
 }
-.table th {
-  background-color: #0d6efd;
+
+.main-header h3 {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ==============================
+   STAT CARDS
+   ============================== */
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
   color: white;
+  flex-shrink: 0;
 }
-.table img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
+
+.icon-artikel {
+  background: linear-gradient(135deg, #28a745, #5dd075);
 }
-.card {
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-} /* ============================== HAMBURGER TOGGLE & OVERLAY ============================== */
+.icon-messages {
+  background: linear-gradient(135deg, #ffc107, #ffd75a);
+}
+
+.stat-info h6 {
+  margin: 0;
+  font-size: 15px;
+  color: #6c757d;
+}
+.stat-info h3 {
+  margin: 5px 0 0;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* ==============================
+   HAMBURGER TOGGLE & OVERLAY
+   ============================== */
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -101,151 +161,78 @@ body {
   border-radius: 8px;
   font-size: 18px;
   cursor: pointer;
-  display: none; /* hidden by default (desktop) */
+  display: none; /* hidden by default */
+  transition: background 0.3s;
 }
+
 .menu-toggle:hover {
   background: #005ce6;
 }
+
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
   z-index: 900;
   display: none;
-} /* ============================== MEDIA QUERIES (RESPONSIVE) ============================== */ /* Tablet (≤ 992px) */
+}
+
+/* ==============================
+   MEDIA QUERIES (RESPONSIVE)
+   ============================== */
+
+/* Tablet (≤ 992px) */
 @media (max-width: 992px) {
   .main-content {
     margin-left: 0;
     padding: 20px;
   }
+
   .sidebar {
-    left: -260px; /* hidden */
+    left: -260px; /* hidden by default */
   }
+
   .sidebar.active {
     left: 0;
   }
+
   .overlay.active {
     display: block;
   }
+
   .menu-toggle {
     display: block;
   }
+
   .sidebar .logo img {
     width: 120px;
   }
-} /* Mobile (≤ 576px) */
+}
+
+/* Mobile (≤ 576px) */
 @media (max-width: 576px) {
   .main-content {
     padding: 15px;
   }
+
   .sidebar {
     width: 220px;
     padding: 25px 15px;
   }
+
   .sidebar a {
     font-size: 14px;
     padding: 10px 14px;
     gap: 10px;
   }
+
   .sidebar .logo img {
     width: 100px;
   }
+
   .menu-toggle {
     top: 15px;
     left: 15px;
     padding: 8px 10px;
   }
-}
-body {
-  background: #f8f9fb;
-  font-family: "Poppins", sans-serif;
-}
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 250px;
-  height: 100vh;
-  background: #fff;
-  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.05);
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-}
-.sidebar .logo {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.sidebar .logo img {
-  width: 140px;
-  height: auto;
-}
-.sidebar a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  color: #555;
-  border-radius: 10px;
-  font-size: 15px;
-  text-decoration: none;
-  margin-bottom: 8px;
-  transition: 0.3s;
-}
-.sidebar a i {
-  font-size: 17px;
-}
-.sidebar a:hover,
-.sidebar a.active {
-  background: #0d6efd;
-  color: white;
-}
-.logout-link {
-  margin-top: auto;
-  color: #dc3545;
-  font-weight: 500;
-}
-.logout-link:hover {
-  color: #b02a37;
-}
-.main-content {
-  margin-left: 260px;
-  padding: 30px;
-}
-.card {
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-.table th {
-  background-color: #0d6efd;
-  color: white;
-}
-.btn-primary,
-.btn-info,
-.btn-danger {
-  border-radius: 8px;
-  font-weight: 500;
-}
-.btn-primary {
-  background-color: #0d6efd;
-  border: none;
-}
-.btn-primary:hover {
-  background-color: #005ce6;
-}
-.btn-info {
-  background-color: #17a2b8;
-  border: none;
-  color: white;
-}
-.btn-info:hover {
-  background-color: #138496;
-}
-.btn-danger {
-  background-color: #dc3545;
-  border: none;
-  color: white;
-}
-.btn-danger:hover {
-  background-color: #b02a37;
 }
