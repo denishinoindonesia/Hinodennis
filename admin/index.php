@@ -1,3 +1,17 @@
+<?php
+// Pastikan config.php sudah di-include untuk koneksi database
+include 'config.php';  // Sesuaikan dengan lokasi file config.php kamu
+
+// Ambil jumlah artikel
+$artikelQuery = "SELECT COUNT(*) FROM artikel";
+$totalArtikel = fetchOnePrepared($pdo, $artikelQuery)['COUNT(*)'];
+
+// Ambil jumlah pesan customer
+$pesanQuery = "SELECT COUNT(*) FROM messages";
+$totalPesanCustomer = fetchOnePrepared($pdo, $pesanQuery)['COUNT(*)'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -46,7 +60,7 @@
           <div class="stat-icon icon-artikel"><i class="fa-solid fa-file-lines"></i></div>
           <div class="stat-info">
             <h6>Total Artikel</h6>
-            <h3>2</h3>
+            <h3><?php echo $totalArtikel; ?></h3>
           </div>
         </div>
       </div>
@@ -56,7 +70,7 @@
           <div class="stat-icon icon-messages"><i class="fa-solid fa-envelope"></i></div>
           <div class="stat-info">
             <h6>Pesan Customer</h6>
-            <h3>1</h3>
+            <h3><?php echo $totalPesanCustomer; ?></h3>
           </div>
         </div>
       </div>
