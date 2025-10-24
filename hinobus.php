@@ -27,6 +27,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="apple-touch-icon" href="images/favicon.png" />
 
     <!-- Font -->
     <link
