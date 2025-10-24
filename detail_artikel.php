@@ -38,6 +38,16 @@ if ($id && is_array($data)) {
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/artikel.css">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8BPF492E6Z');
+    </script>
+
     <!-- JS -->
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>

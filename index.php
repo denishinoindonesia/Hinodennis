@@ -34,6 +34,16 @@ try {
 
     <link rel="canonical" href="https://official-hino.com/" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8BPF492E6Z');
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon.png" />

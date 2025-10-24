@@ -19,6 +19,16 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://official-hino.com/hinobus.php" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8BPF492E6Z');
+    </script>
+
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
 
