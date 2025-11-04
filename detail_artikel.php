@@ -24,8 +24,8 @@ if ($id && is_array($data)) {
     <meta property="og:description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>..." />
     <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>" />
     <meta property="og:url" content="https://official-hino.com/detail_artikel.php?id=<?= $artikel['id'] ?>" />
-    <title>Official Hino | Sales Truck Hino Terbaik di Tangerang</title>
-    <meta name="description" content="Hino Official - Dealer Truck Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
+    <title>Official Hino | Sales Hino Terbaik di Tangerang</title>
+    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
     <!-- Font -->
