@@ -35,7 +35,15 @@ $artikel = array_slice($artikelData, $offset, $perPage);
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <!-- Meta Keywords -->
     <meta name="keywords" content="sales Hino, sales Hino Jakarta, sales Hino Jabodetabek, sales Hino Tangerang, sales Hino Bekasi, sales Hino Depok, sales Hino Bogor, sales Hino, dealer Hino, dealer Hino Jabodetabek, dealer Hino Tangerang, dealer Hino Bekasi, dealer Hino Depok, dealer Hino Bogor, dealer Hino, dealer Hino resmi, dealer Hino Jakarta, dealer Hino Indonesia, jual truk Hino, kredit truk Hino, cicilan truk Hino, promo truk Hino, harga truk Hino terbaru, diskon truk Hino, truk Hino Dutro, truk Hino 300, truk Hino 500, Hino Dutro 136 HD, Hino Dutro 4x4, Hino Dutro box, Hino Dutro engkel, spesifikasi Hino Dutro, modifikasi truk Hino, gambar truk Hino, keunggulan truk Hino, truk Hino untuk bisnis, truk Hino untuk logistik, perbandingan truk Hino dan Isuzu Elf, dealer truk Hino termurah, dealer truk hino tangerang, dealer hino cikupa, hino cikupa, dealer hino tangerang murah" />
-      <!-- Google tag (gtag.js) -->
+
+    <!-- ✅ Open Graph (Facebook, WhatsApp, LinkedIn, dsb) -->
+    <meta property="og:site_name" content="Dealer Hino Tangerang" />
+    <meta property="og:title" content="Dealer Hino Tangerang" />
+    <meta property="og:description" content="Dealer Hino Tangerang Resmi - Hubungi 0812 1905 5571 untuk informasi Hino 500 Series, harga, dan promo terbaru." />
+    <meta property="og:url" content="https://official-hino.com/artikel.php" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://official-hino.com/img/hino.png" />
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

@@ -27,28 +27,35 @@ try {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✅ Judul utama -->
     <title>Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571</title>
 
-    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
-    <meta name="keywords" content="sales Hino, sales Hino Tangerang, sales Hino Jabodetabek, sales Hino Tangerang, sales Hino Bekasi, sales Hino Depok, sales Hino Bogor, sales Hino, dealer Hino, dealer Hino Jabodetabek, dealer Hino Tangerang, dealer Hino Bekasi, dealer Hino Depok, dealer Hino Bogor, dealer Hino, dealer Hino resmi, dealer Hino Tangerang, dealer Hino Tangerang Cikupa, jual truk Hino, kredit truk Hino, cicilan truk Hino, promo truk Hino, harga truk Hino terbaru, diskon truk Hino, truk Hino Dutro, truk Hino 300, truk Hino 500, Hino Dutro 136 HD, Hino Dutro 4x4, Hino Dutro box, Hino Dutro engkel, spesifikasi Hino Dutro, modifikasi truk Hino, gambar truk Hino, keunggulan truk Hino, truk Hino untuk bisnis, truk Hino untuk logistik, perbandingan truk Hino dan Isuzu Elf, dealer truk Hino termurah, dealer truk hino tangerang, dealer hino cikupa, hino cikupa, dealer hino tangerang murah" />
+    <!-- ✅ Deskripsi SEO -->
+    <meta name="description" content="Dealer Hino Tangerang Resmi — Hubungi 0812-1905-5571 untuk info harga, promo, dan pembelian truk Hino di wilayah Tangerang dan sekitarnya. Layanan cepat dan terpercaya.">
+    <meta name="keywords" content="dealer hino tangerang, hino tangerang, sales hino tangerang, harga truk hino, promo hino, kredit truk hino, hino resmi tangerang">
+    <meta name="author" content="Dealer Hino Tangerang">
 
+    <!-- ✅ Canonical URL -->
     <link rel="canonical" href="https://official-hino.com/" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- ✅ Tambahkan ini agar judul 'Dealer Hino Tangerang' muncul di atas domain (seperti di Indomobil Hino) -->
+    <meta name="application-name" content="Dealer Hino Tangerang">
+    <meta name="apple-mobile-web-app-title" content="Dealer Hino Tangerang">
 
-      gtag('config', 'G-8BPF492E6Z');
-    </script>
+    <!-- ✅ Open Graph untuk tampilan di Google / Facebook / WhatsApp -->
+    <meta property="og:site_name" content="Dealer Hino Tangerang">
+    <meta property="og:title" content="Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571">
+    <meta property="og:description" content="Dealer Hino Tangerang Resmi. Hubungi 0812-1905-5571 untuk promo dan harga truk Hino terbaru.">
+    <meta property="og:url" content="https://official-hino.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://official-hino.com/img/hino.png">
 
-    <!-- Favicon -->
+    <!-- ✅ Favicon -->
     <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link rel="apple-touch-icon" href="images/favicon.png" />
+    <link rel="apple-touch-icon" href="/img/favicon.png" />
 
-    <!-- Font & CSS -->
+    <!-- ✅ Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/navbar.css" />
@@ -60,10 +67,19 @@ try {
     <link rel="stylesheet" href="css/home_css/contact.css" />
     <link rel="stylesheet" href="css/home_css/blogcard.css" />
 
+    <!-- ✅ Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8BPF492E6Z');
+    </script>
+
+    <!-- ✅ Script -->
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
-
   <body>
     <!-- Header -->
     <header>
