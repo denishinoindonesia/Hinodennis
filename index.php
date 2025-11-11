@@ -67,6 +67,17 @@ try {
     <link rel="stylesheet" href="css/home_css/contact.css" />
     <link rel="stylesheet" href="css/home_css/blogcard.css" />
 
+  <!-- JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dealer Hino Tangerang",
+      "url": "https://official-hino.com"
+    }
+    </script>
+
+
     <!-- ✅ Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
     <script>
