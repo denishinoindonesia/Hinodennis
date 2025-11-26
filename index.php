@@ -51,9 +51,14 @@ try {
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://official-hino.com/img/hino.png">
 
-    <!-- ✅ Favicon -->
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link rel="apple-touch-icon" href="/img/favicon.png" />
+    <!-- Favicon untuk semua browser modern -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
+    
+    <!-- Favicon untuk browser lama -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Apple Touch Icon (iPhone/iPad) -->
+    <link rel="apple-touch-icon" href="/favicon_512.png">
 
     <!-- ✅ Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
@@ -75,6 +80,16 @@ try {
       "name": "Dealer Hino Tangerang",
       "alternateName": "Official Hino",
       "url": "https://official-hino.com"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Dealer Hino Tangerang",
+      "url": "https://official-hino.com",
+      "logo": "https://official-hino.com/img/hino.png"
     }
     </script>
 
