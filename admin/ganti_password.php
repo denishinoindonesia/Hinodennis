@@ -2,6 +2,10 @@
 session_start();
 require_once 'config.php';
 
+// Debug sementara — hapus setelah selesai
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+
 // Cek login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
@@ -11,14 +15,16 @@ if (!isset($_SESSION['admin_id'])) {
 $admin_id = $_SESSION['admin_id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
     $password_lama = $_POST['password_lama'] ?? '';
     $password_baru = $_POST['password_baru'] ?? '';
     $konfirmasi_password = $_POST['konfirmasi_password'] ?? '';
 
-    // Ambil data admin
-    $stmt = $pdo->prepare("SELECT password FROM users WHERE id = :id LIMIT 1");
-    $stmt->execute([':id' => $admin_id]);
-    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Ambil password lama
+    $admin = fetchOnePrepared($pdo, 
+        "SELECT password FROM users WHERE id = :id LIMIT 1",
+        [':id' => $admin_id]
+    );
 
     if (!$admin) {
         $error = "Akun tidak ditemukan!";
@@ -27,10 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($password_baru !== $konfirmasi_password) {
         $error = "Konfirmasi password tidak cocok!";
     } else {
-        // Update password baru
+
+        // Hash password baru
         $password_hash = password_hash($password_baru, PASSWORD_DEFAULT);
-        $update = $pdo->prepare("UPDATE users SET password = :p WHERE id = :id");
-        $update->execute([':p' => $password_hash, ':id' => $admin_id]);
+
+        // Update
+        execPrepared($pdo, 
+            "UPDATE users SET password = :p WHERE id = :id",
+            [
+                ':p' => $password_hash,
+                ':id' => $admin_id
+            ]
+        );
 
         $success = "Password berhasil diubah.";
     }
