@@ -82,10 +82,10 @@ if (isset($_POST['update'])) {
 
 <div class="sidebar">
   <div class="logo"><img src="../img/favicon.png" alt="Logo"></div>
-  <a href="index.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-  <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
-  <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
-  <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+    <a href="index.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a href="artikel.php"><i class="fa-solid fa-file-lines"></i> Artikel</a>
+    <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
+    <a href="ganti_password.php"><i class="fa-solid fa-envelope"></i> Ganti Password</a>
 </div>
 
 <div class="main-content">

@@ -43,9 +43,10 @@ try {
     <div class="logo text-center">
       <img src="../img/favicon.png" alt="Logo">
     </div>
-    <a href="index.php"><i class="fa-solid fa-home"></i> Dashboard</a>
-    <a href="artikel.php" class="active"><i class="fa-solid fa-file-alt"></i> Artikel</a>
+    <a href="index.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a href="artikel.php"><i class="fa-solid fa-file-lines"></i> Artikel</a>
     <a href="messages.php"><i class="fa-solid fa-envelope"></i> Pesan</a>
+    <a href="ganti_password.php"><i class="fa-solid fa-envelope"></i> Ganti Password</a>
     <div class="mt-auto pt-3">
       <a href="logout.php" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
