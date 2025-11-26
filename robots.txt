@@ -1,16 +1,13 @@
 # ============================
-# robots.txt for official-hino.com
+# robots.txt - Official Hino
 # ============================
 
 User-agent: *
-# ❌ Batasi akses ke area sensitif
+
+# ❌ Blokir area sensitif / admin / skrip
 Disallow: /admin/
 Disallow: /admin/api/
-Disallow: /uploads/
 Disallow: /.vscode/
-Disallow: /css/
-Disallow: /js/
-Disallow: /img/
 Disallow: /config.php
 Disallow: /koneksi.php
 Disallow: /proses_*
@@ -18,11 +15,21 @@ Disallow: /edit_*
 Disallow: /hapus_*
 Disallow: /tambah_*
 
-# ✅ Izinkan konten publik
+# ❌ Blokir folder upload privat (jika ada file non-public)
+Disallow: /uploads/private/
+# ✅ Biarkan folder publik untuk gambar, agar bisa diindeks
+Allow: /uploads/public/
+
+# ✅ Izinkan bot mengakses CSS/JS/IMG untuk rendering halaman
+Allow: /css/
+Allow: /js/
+Allow: /img/
+
+# ✅ Izinkan halaman publik untuk diindeks
+Allow: /index.php
 Allow: /artikel.php
 Allow: /detail_artikel.php
 Allow: /contact.php
-Allow: /index.php
 Allow: /hino300.html
 Allow: /hino500.html
 Allow: /hinobus.html
@@ -30,3 +37,4 @@ Allow: /hinobus.html
 # ⚙️ Sitemap utama
 Sitemap: https://official-hino.com/sitemap-index.xml
 Sitemap: https://official-hino.com/sitemap-artikel.php
+Sitemap: https://official-hino.com/sitemap-pages.xml
