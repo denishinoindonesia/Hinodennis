@@ -73,6 +73,7 @@ try {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Dealer Hino Tangerang",
+      "alternateName": "Official Hino",
       "url": "https://official-hino.com"
     }
     </script>
