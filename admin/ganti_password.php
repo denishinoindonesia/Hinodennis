@@ -40,26 +40,85 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ganti Password Admin</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #0d6efd, #5a9bfd, #a2c8ff);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 12px 35px rgba(13,110,253,0.3);
+}
+.card h2 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 25px;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #0d6efd, #5a9bfd);
+    border: none;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #005ce6, #3b82f6);
+}
+</style>
+
 </head>
 <body>
-<h2>Ganti Password</h2>
 
-<?php if($error) echo "<p style='color:red;'>$error</p>"; ?>
-<?php if($success) echo "<p style='color:green;'>$success</p>"; ?>
+<div class="card shadow">
+    <h2>Ganti Password</h2>
 
-<form method="post">
-    <label>Password Lama:</label><br>
-    <input type="password" name="password_lama" required><br><br>
+    <?php if($error): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+    <?php if($success): ?>
+        <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
 
-    <label>Password Baru:</label><br>
-    <input type="password" name="password_baru" required><br><br>
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Password Lama</label>
+            <input type="password" name="password_lama" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password Baru</label>
+            <input type="password" name="password_baru" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Konfirmasi Password Baru</label>
+            <input type="password" name="konfirmasi_password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Ganti Password</button>
+    </form>
 
-    <label>Konfirmasi Password:</label><br>
-    <input type="password" name="konfirmasi_password" required><br><br>
+    <div class="text-center mt-3">
+        <a href="index.php" class="text-decoration-none">&larr; Kembali ke Dashboard</a>
+    </div>
+</div>
 
-    <button type="submit">Ganti Password</button>
-</form>
-
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
