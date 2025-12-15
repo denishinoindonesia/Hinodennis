@@ -1,19 +1,22 @@
 <?php
 $slug = $_GET['slug'] ?? null;
-$data = json_decode(file_get_contents("https://official-hino.com/admin/api/get_artikel.php"), true);
+$data = json_decode(@file_get_contents("https://official-hino.com/admin/api/get_artikel.php"), true);
+
 $artikel = null;
+$id = null;
 
 if ($slug && is_array($data)) {
     foreach ($data as $item) {
-        if ($item['slug'] === $slug) {
+        if (($item['slug'] ?? '') === $slug) {
             $artikel = $item;
+            $id = $item['id'];
             break;
         }
     }
 }
 
 if (!$artikel) {
-    header("HTTP/1.0 404 Not Found");
+    http_response_code(404);
 }
 ?>
 <!DOCTYPE html>
@@ -21,14 +24,14 @@ if (!$artikel) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="<?= htmlspecialchars($artikel['judul']) ?>, Hino, Truk, Dealer Hino, Jabodetabek, Hino Indonesia" />
-    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>" />
-    <meta property="og:description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>..." />
-    <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>" />
-    <meta property="og:url" content="https://official-hino.com/artikel/<?= htmlspecialchars($artikel['slug']) ?>" />
+    <?php if ($artikel): ?>
+    <meta name="keywords" content="<?= htmlspecialchars($artikel['judul']) ?>, Hino, Truk Hino">
+    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars(substr(strip_tags($artikel['isi']), 0, 150)) ?>...">
+    <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>">
+    <meta property="og:url" content="https://official-hino.com/artikel/<?= htmlspecialchars($artikel['slug']) ?>">
     <link rel="canonical" href="https://official-hino.com/artikel/<?= htmlspecialchars($artikel['slug']) ?>">
-    <title>Official Hino | Sales Hino Terbaik di Tangerang</title>
-    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
+    <?php endif; ?>
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
     <!-- Font -->
@@ -92,7 +95,7 @@ if (!$artikel) {
               </p>
               <img src="<?= htmlspecialchars($artikel['gambar']) ?>" alt="<?= htmlspecialchars($artikel['judul']) ?>" class="featured-image" style="width: 100%; height: auto; margin-bottom: 20px;">
               <div class="isi-artikel">
-                <?= nl2br($artikel['isi']) ?>
+                <?= nl2br(htmlspecialchars($artikel['isi'])) ?>
               </div>
               <a href="artikel.php" class="btn-kembali" style="display:inline-block; margin-top:20px;">Kembali ke Daftar Artikel</a>
             <?php else: ?>
