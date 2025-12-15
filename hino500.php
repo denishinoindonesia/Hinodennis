@@ -41,42 +41,58 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://official-hino.com/hino500#product",
-      "name": "Hino 500 Series",
-      "description": "Hino 500 Series merupakan truk medium duty yang tangguh dan efisien untuk kebutuhan logistik, konstruksi, dan bisnis berat. Tersedia berbagai varian seperti Ranger Cargo, Ranger Dump, dan Mixer.",
+      "@type": "WebSite",
+      "name": "Dealer Hino Tangerang",
+      "url": "https://official-hino.com"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "@id": "https://official-hino.com/#dealer",
+      "name": "Dealer Hino Tangerang",
+      "alternateName": "Dealer Resmi Hino Tangerang",
+      "url": "https://official-hino.com/",
       "image": "https://official-hino.com/img/hino500produk.png",
-      "brand": {
-        "@type": "Brand",
-        "name": "Hino"
+      "logo": "https://official-hino.com/favicon_512.png",
+      "description": "Dealer Resmi Hino Tangerang.",
+      "telephone": "+62-812-1905-5571",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
+        "addressLocality": "Kabupaten Tangerang",
+        "addressRegion": "Banten",
+        "postalCode": "15710",
+        "addressCountry": "ID"
       },
-      "manufacturer": {
-        "@type": "Organization",
-        "name": "Hino Motors"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.1567,
+        "longitude": 106.6901
       },
-      "category": "Medium Duty Truck",
-      "sku": "HINO-500",
-      "itemCondition": "https://schema.org/NewCondition",
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "AutoDealer",
-          "@id": "https://official-hino.com/#dealer",
-          "name": "Dealer Hino Tangerang",
-          "url": "https://official-hino.com/contact",
-          "telephone": "+62-812-1905-5571",
-          "priceRange": "$$$",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
-            "addressLocality": "Kabupaten Tangerang",
-            "addressRegion": "Banten",
-            "postalCode": "15710",
-            "addressCountry": "ID"
-          }
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "17:00"
         }
-      }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/official-hino",
+        "https://www.instagram.com/official_hino.id",
+        "https://www.tiktok.com/@official_hino"
+      ]
     }
     </script>
 
