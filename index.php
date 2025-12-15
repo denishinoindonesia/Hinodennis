@@ -206,12 +206,12 @@ try {
         <div class="hamburger-menu">&#9776;</div>
 
         <nav class="nav links">
-          <a href="index.php">Home</a>
-          <a href="hino300.php">Hino 300 Series</a>
-          <a href="hino500.php">Hino 500 Series</a>
-          <a href="hinobus.php">Hino Bus Series</a>
-          <a href="artikel.php">Blog & Artikel</a>
-          <a href="contact.php">Contact</a>
+          <a href="/">Home</a>
+          <a href="/hino300">Hino 300 Series</a>
+          <a href="/hino500">Hino 500 Series</a>
+          <a href="/hinobus">Hino Bus Series</a>
+          <a href="/artikel">Blog & Artikel</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -265,13 +265,13 @@ try {
           <div class="hino-card">
             <img src="img/bannerservice.jpg" alt="Layanan Service" />
             <h3>LAYANAN SERVICE</h3>
-            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
+            <a href="/contact" class="hino-btn">SELENGKAPNYA</a>
           </div>
 
           <div class="hino-card">
             <img src="img/bannersparepart.jpg" alt="Spare Part" />
             <h3>SPARE PART</h3>
-            <a href="contact.php" class="hino-btn">SELENGKAPNYA</a>
+            <a href="/contact" class="hino-btn">SELENGKAPNYA</a>
           </div>
         </div>
       </div>
@@ -284,7 +284,7 @@ try {
         <div class="product">
           <img src="img/hino300produk.png" alt="Hino 300 Dutro" loading="lazy" />
           <h3>
-            <a href="https://official-hino.com/hino300.php" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a>
+            <a href="https://official-hino.com/hino300" target="_blank" rel="noopener noreferrer">Hino 300 Series (Dutro)</a>
           </h3>
           <p>Truk ringan dan tangguh, cocok untuk usaha kecil dan menengah.</p>
         </div>
@@ -292,7 +292,7 @@ try {
         <div class="product">
           <img src="img/hino500produk.png" alt="Hino 500 Ranger" loading="lazy" />
           <h3>
-            <a href="https://official-hino.com/hino500.php" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a>
+            <a href="https://official-hino.com/hino500" target="_blank" rel="noopener noreferrer">Hino 500 Series (Ranger)</a>
           </h3>
           <p>Performa handal untuk pengangkutan berat dan jarak jauh.</p>
         </div>
@@ -300,7 +300,7 @@ try {
         <div class="product">
           <img src="img/hinobusproduk.png" alt="Hino Bus Series" loading="lazy" />
           <h3>
-            <a href="https://official-hino.com/hinobus.php" target="_blank" rel="noopener noreferrer">Hino Bus Series</a>
+            <a href="https://official-hino.com/hinobus" target="_blank" rel="noopener noreferrer">Hino Bus Series</a>
           </h3>
           <p>Solusi transportasi penumpang dengan kenyamanan terbaik.</p>
         </div>

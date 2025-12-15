@@ -1,5 +1,5 @@
 <?php
-// footer.php
+// footer
 ?>
     <!-- Footer -->
     <footer class="site-footer">
