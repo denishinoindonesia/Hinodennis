@@ -41,20 +41,90 @@ $artikel      = array_slice($artikelData, $offset, $perPage);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Info dan Promo Hino Terbaru | Hino Official</title>
-    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <!-- Meta Keywords -->
-    <meta name="keywords" content="sales Hino, sales Hino Jakarta, sales Hino Jabodetabek, sales Hino Tangerang, sales Hino Bekasi, sales Hino Depok, sales Hino Bogor, sales Hino, dealer Hino, dealer Hino Jabodetabek, dealer Hino Tangerang, dealer Hino Bekasi, dealer Hino Depok, dealer Hino Bogor, dealer Hino, dealer Hino resmi, dealer Hino Jakarta, dealer Hino Indonesia, jual truk Hino, kredit truk Hino, cicilan truk Hino, promo truk Hino, harga truk Hino terbaru, diskon truk Hino, truk Hino Dutro, truk Hino 300, truk Hino 500, Hino Dutro 136 HD, Hino Dutro 4x4, Hino Dutro box, Hino Dutro engkel, spesifikasi Hino Dutro, modifikasi truk Hino, gambar truk Hino, keunggulan truk Hino, truk Hino untuk bisnis, truk Hino untuk logistik, perbandingan truk Hino dan Isuzu Elf, dealer truk Hino termurah, dealer truk hino tangerang, dealer hino cikupa, hino cikupa, dealer hino tangerang murah" />
 
-    <!-- ✅ Open Graph (Facebook, WhatsApp, LinkedIn, dsb) -->
-    <meta property="og:site_name" content="Dealer Hino Tangerang" />
-    <meta property="og:title" content="Dealer Hino Tangerang" />
-    <meta property="og:description" content="Dealer Hino Tangerang Resmi - Hubungi 0812 1905 5571 untuk informasi Hino 500 Series, harga, dan promo terbaru." />
+    <!-- ✅ SEO Title (Artikel / Blog) -->
+    <title>Artikel & Promo Truk Hino Terbaru | Dealer Hino Tangerang</title>
+
+    <!-- ✅ Meta Description (Informatif + CTA Halus) -->
+    <meta name="description" content="Artikel terbaru seputar truk Hino: harga, promo, spesifikasi Hino Dutro, Hino 300 & 500 Series. Update resmi dari Dealer Hino Tangerang Jabodetabek." />
+
+    <!-- ✅ Meta Keywords (khusus artikel, tidak spam) -->
+    <meta name="keywords" content="artikel hino, berita hino, promo truk hino, harga truk hino terbaru, spesifikasi hino dutro, hino 300, hino 500, dealer hino tangerang" />
+
+    <!-- ✅ Canonical -->
     <link rel="canonical" href="https://official-hino.com/artikel" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="/favicon_512.png" />
+
+    <!-- ✅ Open Graph (Share Sosial Media) -->
+    <meta property="og:site_name" content="Dealer Hino Tangerang" />
+    <meta property="og:title" content="Artikel & Promo Truk Hino Terbaru" />
+    <meta property="og:description" content="Update artikel Hino terbaru: harga, promo, dan spesifikasi truk Hino resmi dari Dealer Hino Tangerang." />
     <meta property="og:url" content="https://official-hino.com/artikel" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://official-hino.com/img/hino.png" />
+    <meta property="og:image" content="https://official-hino.com/img/hino300produk.png" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Artikel & Promo Truk Hino Terbaru" />
+    <meta name="twitter:description" content="Artikel lengkap truk Hino: harga, promo & spesifikasi resmi Dealer Hino Tangerang." />
+    <meta name="twitter:image" content="https://official-hino.com/img/hino300produk.png" />
+
+    <!-- JSON Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://official-hino.com/artikel",
+      "headline": "Artikel & Promo Truk Hino Terbaru",
+      "description": "Artikel terbaru seputar truk Hino meliputi harga, promo, spesifikasi Hino Dutro, Hino 300 dan Hino 500 dari Dealer Hino Tangerang resmi.",
+      "image": "https://official-hino.com/img/hino300produk.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Dealer Hino Tangerang",
+        "url": "https://official-hino.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Dealer Hino Tangerang",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://official-hino.com/favicon_512.png"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-01",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://official-hino.com/artikel"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://official-hino.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artikel",
+          "item": "https://official-hino.com/artikel"
+        }
+      ]
+    }
+    </script>
+
+
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
     <script>

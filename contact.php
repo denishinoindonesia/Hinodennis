@@ -43,27 +43,122 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hubungi Kami | Hino Official</title>
 
-    <!-- Meta Description -->
+    <!-- ✅ SEO Title -->
+    <title>Kontak Dealer Hino Tangerang | Official Hino</title>
+
+    <!-- ✅ Meta Description (CTA kuat) -->
     <meta
       name="description"
-      content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu."
+      content="Hubungi Dealer Hino Tangerang. Konsultasi harga truk Hino, promo terbaru, dan kredit mudah. Telepon & WhatsApp 0812-1905-5571."
     />
 
-    <!-- ✅ Open Graph (Facebook, WhatsApp, LinkedIn, dsb) -->
+    <!-- ✅ Canonical -->
+    <link rel="canonical" href="https://official-hino.com/contact" />
+
+    <!-- ✅ Meta Keywords (ringkas & lokal) -->
+    <meta
+      name="keywords"
+      content="kontak dealer hino tangerang, sales hino tangerang, alamat dealer hino tangerang, hubungi dealer hino, dealer hino"
+    />
+
+    <!-- ✅ Open Graph -->
     <meta property="og:site_name" content="Dealer Hino Tangerang" />
-    <meta property="og:title" content="Dealer Hino Tangerang | Hino Contact Resmi" />
-    <meta property="og:description" content="Dealer Hino Tangerang Resmi - Hubungi 0812 1905 5571 untuk informasi Hino 500 Series, harga, dan promo terbaru." />
+    <meta property="og:title" content="Kontak Dealer Hino Tangerang" />
+    <meta
+      property="og:description"
+      content="Hubungi Dealer Hino Tangerang untuk informasi harga, promo & kredit truk Hino. WA & Telp 0812-1905-5571."
+    />
     <meta property="og:url" content="https://official-hino.com/contact" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://official-hino.com/img/hino.png" />
 
-    <!-- Meta Keywords -->
-    <meta name="keywords" content="sales Hino, sales Hino Jakarta, sales Hino Jabodetabek, sales Hino Tangerang, sales Hino Bekasi, sales Hino Depok, sales Hino Bogor, sales Hino, dealer Hino, dealer Hino Jabodetabek, dealer Hino Tangerang, dealer Hino Bekasi, dealer Hino Depok, dealer Hino Bogor, dealer Hino, dealer Hino resmi, dealer Hino Jakarta, dealer Hino Indonesia, jual truk Hino, kredit truk Hino, cicilan truk Hino, promo truk Hino, harga truk Hino terbaru, diskon truk Hino, truk Hino Dutro, truk Hino 300, truk Hino 500, Hino Dutro 136 HD, Hino Dutro 4x4, Hino Dutro box, Hino Dutro engkel, spesifikasi Hino Dutro, modifikasi truk Hino, gambar truk Hino, keunggulan truk Hino, truk Hino untuk bisnis, truk Hino untuk logistik, perbandingan truk Hino dan Isuzu Elf, dealer truk Hino termurah, dealer truk hino tangerang, dealer hino cikupa, hino cikupa, dealer hino tangerang murah" />
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kontak Dealer Hino Tangerang" />
+    <meta
+      name="twitter:description"
+      content="Sales Hino Tangerang. Hubungi sekarang untuk harga & promo truk Hino."
+    />
+    <meta name="twitter:image" content="https://official-hino.com/img/hino.png" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://official-hino.com/contact" />
+    <!-- JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "@id": "https://official-hino.com/contact#autodealer",
+      "name": "Dealer Hino Tangerang",
+      "alternateName": "Hino Official Tangerang",
+      "url": "https://official-hino.com/contact",
+      "logo": "https://official-hino.com/favicon_512.png",
+      "image": "https://official-hino.com/img/hino.png",
+      "description": "Kontak Dealer Hino Tangerang resmi. Melayani penjualan truk Hino Dutro, Hino 300 & 500 Series dengan promo dan kredit terbaik.",
+      "telephone": "+62-812-1905-5571",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Raya Serang Km 18,8, Sukanagara, Kec. Cikupa",
+        "addressLocality": "Kabupaten Tangerang",
+        "addressRegion": "Banten",
+        "postalCode": "15710",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.2500,
+        "longitude": 106.5000
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+62-812-1905-5571",
+        "contactType": "Sales",
+        "areaServed": "ID",
+        "availableLanguage": ["id"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/official-hino",
+        "https://www.instagram.com/official_hino.id",
+        "https://www.tiktok.com/@official_hino"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://official-hino.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kontak",
+          "item": "https://official-hino.com/contact"
+        }
+      ]
+    }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
@@ -76,14 +171,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </script>
 
     <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" href="/img/favicon_512.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="img/logo.png" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/contact_css/header_contact.css" />
     <link rel="stylesheet" href="css/contact_css/contact.css" />
+
+    <!-- JS -->
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
   </head>

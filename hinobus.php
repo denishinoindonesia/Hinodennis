@@ -37,9 +37,73 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://official-hino.com/img/hino.png" />
 
+    <!-- JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "https://official-hino.com/hinobus",
+      "name": "Hino Bus",
+      "description": "Hino Bus merupakan kendaraan bus berkualitas tinggi untuk kebutuhan transportasi pariwisata, AKAP, AKDP, dan bus kota. Tersedia berbagai varian seperti Hino RK, RM, dan AK Series dengan performa tangguh dan efisiensi tinggi.",
+      "image": [
+        "https://official-hino.com/img/hinobusproduk.png"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Hino"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Hino Motors"
+      },
+      "category": "Bus",
+      "sku": "HINO-BUS",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://official-hino.com/hinobus",
+        "priceCurrency": "IDR",
+        "price": "Hubungi Kami",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "AutoDealer",
+          "name": "Dealer Hino Tangerang",
+          "url": "https://official-hino.com/contact",
+          "telephone": "+62-812-1905-5571"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://official-hino.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Produk Hino",
+          "item": "https://official-hino.com/produk"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hino Bus",
+          "item": "https://official-hino.com/hinobus"
+        }
+      ]
+    }
+    </script>
+
     <!-- ✅ Favicon -->
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link rel="apple-touch-icon" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon_512.png" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
 
     <!-- ✅ Font -->
     <link

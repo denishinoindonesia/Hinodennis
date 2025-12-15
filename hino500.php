@@ -37,9 +37,69 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://official-hino.com/img/hino.png" />
 
+    <!-- JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "https://official-hino.com/hino500",
+      "name": "Hino 500 Series",
+      "description": "Hino 500 Series merupakan truk medium duty yang tangguh dan efisien untuk kebutuhan logistik, konstruksi, dan bisnis berat. Tersedia berbagai varian seperti Ranger Cargo, Ranger Dump, dan Mixer.",
+      "image": [
+        "https://official-hino.com/img/hino500produk.png"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "Hino"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Hino Motors"
+      },
+      "category": "Medium Duty Truck",
+      "sku": "HINO-500",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://official-hino.com/hino500",
+        "priceCurrency": "IDR",
+        "price": "Hubungi Kami",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "AutoDealer",
+          "name": "Dealer Hino Tangerang",
+          "url": "https://official-hino.com/contact",
+          "telephone": "+62-812-1905-5571"
+        }
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://official-hino.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hino 500 Series",
+          "item": "https://official-hino.com/hino500"
+        }
+      ]
+    }
+    </script>
+
+
     <!-- ✅ Favicon -->
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link rel="apple-touch-icon" href="/img/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon_512.png" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
 
     <!-- ✅ Font -->
     <link
