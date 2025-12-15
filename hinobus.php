@@ -61,8 +61,6 @@
       "offers": {
         "@type": "Offer",
         "url": "https://official-hino.com/hinobus",
-        "priceCurrency": "IDR",
-        "price": "Hubungi Kami",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": {
@@ -88,12 +86,6 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Produk Hino",
-          "item": "https://official-hino.com/produk"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
           "name": "Hino Bus",
           "item": "https://official-hino.com/hinobus"
         }

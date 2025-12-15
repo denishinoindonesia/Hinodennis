@@ -61,8 +61,6 @@
       "offers": {
         "@type": "Offer",
         "url": "https://official-hino.com/hino500",
-        "priceCurrency": "IDR",
-        "price": "Hubungi Kami",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "seller": {
