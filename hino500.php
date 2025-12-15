@@ -66,6 +66,7 @@
           "name": "Dealer Hino Tangerang",
           "url": "https://official-hino.com/contact",
           "telephone": "+62-812-1905-5571",
+          "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
