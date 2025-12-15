@@ -2,58 +2,56 @@
 include "../config.php";
 header('Content-Type: application/json; charset=utf-8');
 
-// Ambil parameter
-$search   = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : null;
-$kategori = isset($_GET['kategori']) ? $conn->real_escape_string($_GET['kategori']) : null;
-$page     = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$perPage  = isset($_GET['perPage']) ? (int)$_GET['perPage'] : 6;
+// Parameter
+$search   = isset($_GET['search']) ? trim($_GET['search']) : '';
+$kategori = isset($_GET['kategori']) ? trim($_GET['kategori']) : '';
 
-if ($page < 1) $page = 1;
-if ($perPage < 1) $perPage = 6;
-$offset = ($page - 1) * $perPage;
+// SQL
+$sql = "
+    SELECT 
+        a.id,
+        a.judul,
+        a.slug,
+        a.isi,
+        a.gambar,
+        a.tanggal,
+        k.nama_kategori
+    FROM artikel a
+    LEFT JOIN kategori k ON a.kategori_id = k.id
+";
 
-// Query dasar
-$query = "FROM artikel a 
-          LEFT JOIN kategori_artikel k ON a.kategori_id = k.id 
-          WHERE 1=1";
+$where = [];
+$params = [];
 
-// Tambahkan filter search
-if (!empty($search)) {
-    $searchLike = "%" . $search . "%";
-    $query .= " AND (a.judul LIKE '$searchLike' OR a.konten LIKE '$searchLike' OR a.isi LIKE '$searchLike')";
+if ($search !== '') {
+    $where[] = "(a.judul LIKE :search OR a.isi LIKE :search)";
+    $params[':search'] = "%$search%";
 }
 
-// Filter kategori
-if (!empty($kategori)) {
-    $query .= " AND k.nama = '$kategori'";
+if ($kategori !== '') {
+    $where[] = "k.nama_kategori = :kategori";
+    $params[':kategori'] = $kategori;
 }
 
-// Hitung total data
-$totalResult = $conn->query("SELECT COUNT(*) as total " . $query);
-$total = $totalResult->fetch_assoc()['total'];
-
-// Ambil data artikel dengan limit
-$sql = "SELECT a.id, a.slug, a.judul, a.isi, a.konten, a.gambar, a.tanggal, k.nama AS kategori  
-        " . $query . " 
-        ORDER BY a.id DESC 
-        LIMIT $perPage OFFSET $offset";
-
-$result = $conn->query($sql);
-
-$artikel = [];
-while ($row = $result->fetch_assoc()) {
-    $row['gambar'] = !empty($row['gambar']) 
-        ? 'https://official-hino.com/admin/uploads/artikel/' . $row['gambar'] 
-        : null;
-    $artikel[] = $row;
+if ($where) {
+    $sql .= " WHERE " . implode(" AND ", $where);
 }
 
-// Response JSON
-echo json_encode([
-    "page" => $page,
-    "perPage" => $perPage,
-    "total" => (int)$total,
-    "totalPages" => ceil($total / $perPage),
-    "data" => $artikel
-], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-?>
+$sql .= " ORDER BY a.tanggal DESC";
+
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $artikel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($artikel as &$row) {
+        if (!empty($row['gambar'])) {
+            $row['gambar'] = "https://official-hino.com/admin/uploads/artikel/" . $row['gambar'];
+        }
+    }
+
+    echo json_encode($artikel, JSON_UNESCAPED_UNICODE);
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(["error" => "Gagal mengambil artikel"]);
+}

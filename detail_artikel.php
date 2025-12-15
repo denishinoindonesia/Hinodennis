@@ -1,210 +1,78 @@
 <?php
-$slug = isset($_GET['slug']) ? trim((string)$_GET['slug']) : '';
-$response = json_decode(file_get_contents("https://official-hino.com/admin/api/get_artikel.php?perPage=100"), true);
-$data = $response['data'] ?? [];
+// Ambil ID artikel dari URL
+$id = $_GET['id'] ?? null;
+$data = json_decode(file_get_contents("https://official-hino.com/admin/api/get_artikel.php"), true);
 $artikel = null;
 
-if ($slug !== '' && is_array($data)) {
+// Cari artikel berdasarkan ID
+if ($id && is_array($data)) {
   foreach ($data as $item) {
-    if (isset($item['slug']) && $item['slug'] === $slug) {
+    if ($item['id'] == $id) {
       $artikel = $item;
       break;
     }
   }
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-P7TN9DJW');
-    </script>
-    <!-- End Google Tag Manager -->
-
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <?php
-    $meta_desc = !empty($artikel['isi'])
-      ? mb_strimwidth(strip_tags($artikel['isi']), 0, 155, '...')
-      : 'Artikel terbaru seputar Truk Hino, tips, promo, dan berita resmi dari Dealer Hino Indonesia.';
-    ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="<?= htmlspecialchars($artikel['judul']) ?>, Hino, Truk, Dealer Hino, Jabodetabek, Hino Indonesia" />
+    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>" />
+    <meta property="og:description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>..." />
+    <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>" />
+    <meta property="og:url" content="https://official-hino.com/detail_artikel.php?id=<?= $artikel['id'] ?>" />
+    <title>Official Hino | Sales Hino Terbaik di Tangerang</title>
+    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
     
-    <meta name="description" content="<?= htmlspecialchars($meta_desc) ?>">
-    <meta
-      name="keywords"
-      content="harga truk hino terbaru, tips memilih truk hino, perbandingan hino dutro dan ranger, review truk hino, update harga hino 2025, berita hino terbaru, artikel hino indonesia, promo hino terbaru, panduan kredit truk hino, cara memilih truk bisnis"
-    />
-    <meta name="author" content="Nathan Hino" />
-    <link rel="canonical" href="https://official-hino.com/artikel/<?= urlencode($artikel['slug'] ?? '') ?>">
-    <title><?= htmlspecialchars($artikel['judul'] ?? 'Artikel Tidak Ditemukan') ?> | Dealer Hino Indonesia</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/home_css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/artikel.css">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17738682772">
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPF492E6Z"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'AW-17738682772');
+      gtag('config', 'G-8BPF492E6Z');
     </script>
-
-    <!-- Favicon untuk semua browser modern -->
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
-    
-    <!-- Favicon untuk browser lama -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Apple Touch Icon (iPhone/iPad) -->
-    <link rel="apple-touch-icon" href="/favicon_512.png">
-    
-    <!-- Google Lighthouse Recommendation -->
-    <meta name="theme-color" content="#ffffff">
-
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/whatsapp.css" />
-    <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/blog/artikel.css" />
-    <link rel="stylesheet" href="/css/blog/hero.css" />
-
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- JS -->
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?> | Artikel Hino" />
-    <meta property="og:description" content="<?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 150, '...')) ?>" />
-    <meta property="og:image" content="https://official-hino.com/admin/uploads/artikel/<?= $artikel['gambar'] ?>" />
-    <meta property="og:url" content="https://official-hino.com/artikel/<?= urlencode($artikel['slug']) ?>" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Dealer Hino Indonesia" />
-
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dealer Resmi Hino Jakarta | Harga & Promo Truk Hino Terbaru 2025" />
-    <meta
-      name="twitter:description"
-      content="Dealer Resmi Hino Jakarta - Jual Truk Hino Dutro, Ranger, dan Bus Hino dengan harga terbaik dan promo terbaru 2025."
-    />
-    <meta name="twitter:image" content="https://official-hino.com/images/promohino1.webp" />
-
-    <!-- Schema.org JSON-LD untuk SEO Dealer Hino -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Dealer Hino Indonesia",
-          "item": "https://official-hino.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Artikel",
-          "item": "https://official-hino.com/artikel"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "<?= htmlspecialchars($artikel['judul']) ?>",
-          "item": "https://official-hino.com/artikel/<?= urlencode($artikel['slug']) ?>"
-        }
-      ]
-    }
-    </script>
-    
-    <?php if (!empty($artikel)): ?>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://official-hino.com/artikel/<?= urlencode($artikel['slug']) ?>"
-      },
-      "headline": "<?= htmlspecialchars($artikel['judul']) ?>",
-      "description": "<?= htmlspecialchars($meta_desc) ?>",
-      "image": [
-        "https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['gambar']) ?>"
-      ],
-      "author": {
-        "@type": "Person",
-        "name": "Nathan Hino"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Dealer Hino Indonesia",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://official-hino.com/favicon_512.png"
-        }
-      },
-      "datePublished": "<?= date('c', strtotime($artikel['tanggal'])) ?>",
-      "dateModified": "<?= date('c', strtotime($artikel['tanggal'])) ?>"
-    }
-    </script>
-    <?php endif; ?>
-
-    <!-- Event snippet for Pembelian conversion page -->
-    <script>
-    gtag('event', 'conversion', {
-        'send_to': 'AW-17738682772/7zEXCMGP3sIbEJSju4pC',
-        'transaction_id': ''
-    });
-    </script>
-
+    <!-- Tambahan Perbaikan Ukuran Navbar & Footer -->
   </head>
-
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-P7TN9DJW"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
     <header>
       <div class="container header-content navbar">
-        <div class="header-title">
-          <a href="https://official-hino.com">
-            <img src="/images/logo3.webp" alt="Logo Hino Indonesia" loading="lazy" style="height: 60px" />
-          </a>
-        </div>
+    <!-- Logo -->
+    <div class="header-title">
+      <a href="https://official-hino.com">
+        <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
+      </a>
+    </div>
         <div class="hamburger-menu">&#9776;</div>
         <nav class="nav links">
-          <a href="https://official-hino.com/">Home</a>
-          <a href="https://official-hino.com/hino300">Hino 300 Series</a>
-          <a href="https://official-hino.com/hino500">Hino 500 Series</a>
-          <a href="https://official-hino.com/hinobus">Hino Bus Series</a>
-          <a href="https://official-hino.com/contact">Contact</a>
-          <a href="https://official-hino.com/artikel">Blog & Artikel</a>
+          <a href="index.php">Home</a>
+          <a href="hino300.php">Hino 300 Series</a>
+          <a href="hino500.php">Hino 500 Series</a>
+          <a href="hinobus.php">Hino Bus Series</a>
+          <a href="artikel.php">Blog & Artikel</a>
+          <a href="contact.php">Contact</a>
         </nav>
       </div>
     </header>
@@ -214,185 +82,98 @@ if ($slug !== '' && is_array($data)) {
       <div class="container">
         <div class="artikel-wrapper" style="display: flex; flex-wrap: wrap; gap: 30px;">
           <div class="artikel-main" style="flex: 1 1 65%;">
-            <?php if ($artikel): ?>
+            <?php if($artikel): ?>
               <h1><?= htmlspecialchars($artikel['judul']) ?></h1>
               <p style="color: #888; font-size: 14px; margin-bottom: 15px;">
-                Diposting pada <?= date('d M Y', strtotime($artikel['tanggal'] ?? 'now')) ?>
+                Diposting oleh <strong><?= htmlspecialchars($artikel['author'] ?? 'Dennis Hino') ?></strong> pada <?= date('d M Y', strtotime($artikel['tanggal'] ?? 'now')) ?>
               </p>
-              <img
-                src="<?= htmlspecialchars($artikel['gambar']) ?>"
-                alt="<?= htmlspecialchars($artikel['judul']) ?>"
-                class="featured-image"
-                style="width: 100%; height: auto; margin-bottom: 20px;"
-              />
-              <div class="isi-artikel"><?= nl2br($artikel['isi']) ?></div>
+              <img src="<?= htmlspecialchars($artikel['gambar']) ?>" alt="<?= htmlspecialchars($artikel['judul']) ?>" class="featured-image" style="width: 100%; height: auto; margin-bottom: 20px;">
+              <div class="isi-artikel">
+                <?= nl2br($artikel['isi']) ?>
+              </div>
               <a href="artikel.php" class="btn-kembali" style="display:inline-block; margin-top:20px;">Kembali ke Daftar Artikel</a>
             <?php else: ?>
               <p>Artikel tidak ditemukan.</p>
             <?php endif; ?>
           </div>
 
-        <!-- Sidebar -->
-        <aside class="artikel-sidebar" style="flex: 1 1 30%;">
-          <div class="sidebar-section">
-            <h2>Recent Posts</h2>
-            <div class="recent-posts-list">
-              <?php
-              foreach (array_slice($data, 0, 5) as $recent) {
-                if ($recent['slug'] != $slug) {
-        
-                  // URL SEO artikel
-                  $url = '/artikel/' . htmlspecialchars($recent['slug']);
-        
-                  echo '<div class="recent-post-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">';
-        
-                  // Image link
-                  echo '<a href="' . $url . '" style="flex-shrink: 0;">';
-                  echo '<img src="' . htmlspecialchars($recent['gambar']) . '" 
-                            alt="' . htmlspecialchars($recent['judul']) . '" 
-                            style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px;">';
-                  echo '</a>';
-        
-                  // Title link
-                  echo '<div style="flex: 1;">';
-                  echo '<a href="' . $url . '" 
-                            style="font-weight: 600; text-decoration: none; color: #333; line-height: 1.3; display: block;">'
-                            . htmlspecialchars($recent['judul']) . 
-                       '</a>';
-                  echo '</div>';
-        
-                  echo '</div>';
+          <!-- Sidebar -->
+          <aside class="artikel-sidebar" style="flex: 1 1 30%;">
+            <div class="sidebar-section">
+              <h3>Recent Posts</h3>
+              <div class="recent-posts-list">
+                <?php
+                foreach (array_slice($data, 0, 5) as $recent) {
+                  if ($recent['id'] != $id) {
+                    echo '<div class="recent-post-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">';
+                    echo '<a href="detail_artikel.php?id=' . $recent['id'] . '" style="flex-shrink: 0;">';
+                    echo '<img src="' . htmlspecialchars($recent['gambar']) . '" alt="' . htmlspecialchars($recent['judul']) . '" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px;">';
+                    echo '</a>';
+                    echo '<div style="flex: 1;">';
+                    echo '<a href="detail_artikel.php?id=' . $recent['id'] . '" style="font-weight: 600; text-decoration: none; color: #333; line-height: 1.3; display: block;">' . htmlspecialchars($recent['judul']) . '</a>';
+                    echo '</div>';
+                    echo '</div>';
+                  }
                 }
-              }
-              ?>
+                ?>
+              </div>
             </div>
-          </div>
-        <div class="sidebar-section">
-          <h2>Kategori</h2>
-          <ul style="list-style: none; padding-left: 0;">
-            <?php
-            $kategori = array_unique(array_column($data, 'kategori'));
-        
-            foreach ($kategori as $kat) {
-              if (!empty($kat)) {
-        
-                // URL kategori ke halaman artikel + filter kategori
-                $kat_url = 'https://official-hino.com/artikel?search=&kategori=' . urlencode($kat);
-        
-                echo '<li style="margin-bottom: 8px;">';
-                echo '<a href="' . $kat_url . '" 
-                          style="text-decoration: none; color: #333; font-weight: 500;">
-                          • ' . htmlspecialchars($kat) . '
-                      </a>';
-                echo '</li>';
-              }
-            }
-            ?>
-          </ul>
-        </div>
-        </aside>
+
+            <div class="sidebar-section">
+              <h3>Kategori</h3>
+              <ul style="list-style: none; padding-left: 0;">
+                <?php
+                $kategori = array_unique(array_column($data, 'kategori'));
+                foreach ($kategori as $kat) {
+                  if (!empty($kat)) {
+                    echo '<li style="margin-bottom: 8px;">';
+                    echo '<a href="artikel.php?kategori=' . urlencode($kat) . '" style="text-decoration: none; color: #333; font-weight: 500;">• ' . htmlspecialchars($kat) . '</a>';
+                    echo '</li>';
+                  }
+                }
+                ?>
+              </ul>
+            </div>
+          </aside>
         </div>
 
         <!-- Related Posts -->
         <?php if ($artikel): ?>
-          <div class="related-posts" style="margin-top: 60px;">
-            <h2 style="margin-bottom: 25px; font-size: 26px; font-weight: 700;">Related Posts</h2>
-            <div
-              class="related-list"
-              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;"
-            >
-              <?php
-              $related_count = 0;
-              foreach ($data as $rel) {
-                if (
-                  $rel['slug'] != $slug &&
-                  isset($rel['kategori'], $artikel['kategori']) &&
-                  $rel['kategori'] === $artikel['kategori']
-                ) {
-                  echo '<div class="related-item" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">';
-                  echo '<a href="/artikel/' . urlencode($rel['slug']) . '" style="text-decoration: none; color: #333;">';
-                  echo '<img src="' . htmlspecialchars($rel['gambar']) . '" alt="' . htmlspecialchars($rel['judul']) . '" style="width: 100%; height: 160px; object-fit: cover;">';
-                  echo '<div style="padding: 15px;">';
-                  echo '<h3 style="font-size: 16px; font-weight: 600; margin: 0 0 10px 0;">' . htmlspecialchars($rel['judul']) . '</h3>';
-                  echo '<p style="font-size: 14px; color: #666;">' . substr(strip_tags($rel['isi']), 0, 100) . '...</p>';
-                  echo '</div></a></div>';
-                  $related_count++;
-                  if ($related_count >= 3) break;
-                }
+        <div class="related-posts" style="margin-top: 60px;">
+          <h2 style="margin-bottom: 25px; font-size: 26px; font-weight: 700;">Related Posts</h2>
+          <div class="related-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+            <?php
+            $related_count = 0;
+            foreach ($data as $rel) {
+              if ($rel['id'] != $id && isset($rel['kategori'], $artikel['kategori']) && $rel['kategori'] === $artikel['kategori']) {
+                echo '<div class="related-item" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">';
+                echo '<a href="detail_artikel.php?id=' . $rel['id'] . '" style="text-decoration: none; color: #333;">';
+                echo '<img src="' . htmlspecialchars($rel['gambar']) . '" alt="' . htmlspecialchars($rel['judul']) . '" style="width: 100%; height: 160px; object-fit: cover;">';
+                echo '<div style="padding: 15px;">';
+                echo '<h4 style="font-size: 16px; font-weight: 600; margin: 0 0 10px 0;">' . htmlspecialchars($rel['judul']) . '</h4>';
+                echo '<p style="font-size: 14px; color: #666;">' . substr(strip_tags($rel['isi']), 0, 100) . '...</p>';
+                echo '</div></a></div>';
+                $related_count++;
+                if ($related_count >= 3) break;
               }
-              if ($related_count === 0) {
-                echo "<p>Tidak ada artikel terkait.</p>";
-              }
-              ?>
-            </div>
+            }
+            if ($related_count === 0) {
+              echo "<p>Tidak ada artikel terkait.</p>";
+            }
+            ?>
           </div>
+        </div>
         <?php endif; ?>
       </div>
     </section>
 
-  <!-- WhatsApp Floating Widget -->
-  <div id="wa-widget-container">
-
-    <!-- Floating Button -->
-    <div id="wa-floating-btn">
-      <img src="https://official-hino.com/images/wa.png" alt="wa" />
-      <span>WhatsApp</span>
-    </div>
-
-    <!-- Chat Box -->
-    <div id="wa-chatbox">
-      <div class="wa-header">
-        <img 
-          src="https://official-hino.com/images/NT.jpeg" 
-          class="wa-avatar" 
-          alt="Sales Hino Indonesia"
-        />
-        <div>
-          <h4>Denis Hino</h4>
-          <p>Online <span class="wa-dot"></span></p>
-        </div>
-        <div class="wa-close" onclick="toggleWA()">✕</div>
-      </div>
-
-      <div class="wa-body">
-        <div class="wa-message">
-          <p>Halo 👋</p>
-          <p>Saya siap membantu untuk info produk Hino.<br>
-          Silakan tanya apa saja 😊</p>
-        </div>
-      </div>
-
-      <a
-        href="https://wa.me/6285975287684?text=Halo%20kak%20Nathan.%20Saya%20mau%20bertanya%20tentang%20produk%20Hino."
-        class="wa-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Chat on WhatsApp
-      </a>
-    </div>
-  </div>
-
-  <script>
-    const waBox = document.getElementById("wa-chatbox");
-    const waBtn = document.getElementById("wa-floating-btn");
-
-    waBtn.onclick = toggleWA;
-
-    function toggleWA() {
-      waBox.classList.toggle("show");
-    }
-  </script>
-
-
-      <script>
-        // Toggle open/close
-        document.getElementById("wa-button").onclick = function () {
-          document.getElementById("wa-box").classList.toggle("show");
-        };
-      </script>
-
+    <!-- Footer -->
     <?php include 'footer.php'; ?>
+
+    <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-b334841b-ad07-411c-889b-4364272215a1" data-elfsight-app-lazy></div>
+
 
     <script>
       feather.replace();
