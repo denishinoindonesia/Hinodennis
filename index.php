@@ -400,7 +400,7 @@ try {
             <?php foreach ($artikelData as $artikel): ?>
               <div class="blog-card">
                 <img 
-                  src="https://official-hino.com/admin/uploads/artikel/<?= htmlspecialchars($artikel['gambar']) ?>"
+                  src="<?= htmlspecialchars($artikel['gambar']) ?>"
                   alt="<?= htmlspecialchars($artikel['judul']) ?>" 
                   loading="lazy"
                 />
