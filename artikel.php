@@ -1,30 +1,51 @@
 <?php
-// Ambil data artikel dan kategori dari API
-$kategoriData = json_decode(file_get_contents("https://official-hino.com/admin/api/get_kategori.php"), true);
-$search = $_GET['search'] ?? '';
-$selectedKategori = $_GET['kategori'] ?? '';
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+// ==================================================
+// ARTIKEL LIST PAGE - OFFICIAL HINO (STABLE)
+// ==================================================
+
+// Ambil kategori
+$kategoriData = json_decode(
+    @file_get_contents("https://official-hino.com/admin/api/get_kategori.php"),
+    true
+) ?: [];
+
+// Parameter URL
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$selectedKategori = isset($_GET['kategori']) ? trim($_GET['kategori']) : '';
+$page = isset($_GET['page']) && $_GET['page'] > 0 ? (int)$_GET['page'] : 1;
 $perPage = 6;
 
-// Bangun URL API dengan filter jika ada
+// Bangun URL API artikel
 $apiUrl = "https://official-hino.com/admin/api/get_artikel.php";
 $params = [];
+
 if ($search !== '') {
-  $params[] = "search=" . urlencode($search);
+    $params[] = 'search=' . urlencode($search);
 }
 if ($selectedKategori !== '') {
-  $params[] = "kategori=" . urlencode($selectedKategori);
-}
-if (!empty($params)) {
-  $apiUrl .= '?' . implode('&', $params);
+    $params[] = 'kategori=' . urlencode($selectedKategori);
 }
 
-$artikelData = json_decode(file_get_contents($apiUrl), true);
-$totalArtikel = is_array($artikelData) ? count($artikelData) : 0;
-$totalPages = ceil($totalArtikel / $perPage);
-$offset = ($page - 1) * $perPage;
+if ($params) {
+    $apiUrl .= '?' . implode('&', $params);
+}
+
+// Ambil artikel dari API (SAFE)
+$artikelData = json_decode(@file_get_contents($apiUrl), true);
+if (!is_array($artikelData)) {
+    $artikelData = [];
+}
+
+// Pagination
+$totalArtikel = count($artikelData);
+$totalPages   = max(1, ceil($totalArtikel / $perPage));
+$page         = min($page, $totalPages);
+$offset       = ($page - 1) * $perPage;
+
+// Data halaman ini
 $artikel = array_slice($artikelData, $offset, $perPage);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -160,15 +181,14 @@ $artikel = array_slice($artikelData, $offset, $perPage);
           />
           <select name="kategori" onchange="this.form.submit()">
             <option value="">Semua Kategori</option>
-            <option value="">Berita Dealer</option>
-            <option value="">Promo Hino</option>
-            <?php if (is_array($kategoriData)): ?>
-              <?php foreach ($kategoriData as $kat): ?>
-                <option value="<?= htmlspecialchars($kat['nama_kategori']) ?>" <?= $selectedKategori === $kat['nama_kategori'] ? 'selected' : '' ?>>
-                  <?= htmlspecialchars($kat['nama_kategori']) ?>
-                </option>
-              <?php endforeach; ?>
-            <?php endif; ?>
+            <?php foreach ($kategoriData as $kat): ?>
+              <option 
+                value="<?= htmlspecialchars($kat['nama_kategori'], ENT_QUOTES, 'UTF-8') ?>"
+                <?= $selectedKategori === $kat['nama_kategori'] ? 'selected' : '' ?>
+              >
+                <?= htmlspecialchars($kat['nama_kategori'], ENT_QUOTES, 'UTF-8') ?>
+              </option>
+            <?php endforeach; ?>
           </select>
           <button type="submit">Filter</button>
         </form>
@@ -184,7 +204,13 @@ $artikel = array_slice($artikelData, $offset, $perPage);
                     <?= htmlspecialchars($row['judul']) ?>
                   </a>
                 </h2>
-                <p><?= substr(strip_tags($row['isi']), 0, 100) ?>...</p>
+                <p>
+                <?= htmlspecialchars(
+                    mb_strimwidth(strip_tags($row['isi'] ?? ''), 0, 100, '...'),
+                    ENT_QUOTES,
+                    'UTF-8'
+                ) ?>
+                </p>
                 <div class="card-footer">
                   <a href="/artikel/<?= htmlspecialchars($row['slug']) ?>">Baca Selengkapnya</a>
                 </div>
