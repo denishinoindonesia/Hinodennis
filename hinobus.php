@@ -42,12 +42,10 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "@id": "https://official-hino.com/hinobus",
+      "@id": "https://official-hino.com/hinobus#product",
       "name": "Hino Bus",
       "description": "Hino Bus merupakan kendaraan bus berkualitas tinggi untuk kebutuhan transportasi pariwisata, AKAP, AKDP, dan bus kota. Tersedia berbagai varian seperti Hino RK, RM, dan AK Series dengan performa tangguh dan efisiensi tinggi.",
-      "image": [
-        "https://official-hino.com/img/hinobusproduk.png"
-      ],
+      "image": "https://official-hino.com/img/hinobusproduk.png",
       "brand": {
         "@type": "Brand",
         "name": "Hino"
@@ -58,20 +56,29 @@
       },
       "category": "Bus",
       "sku": "HINO-BUS",
+      "itemCondition": "https://schema.org/NewCondition",
       "offers": {
         "@type": "Offer",
-        "url": "https://official-hino.com/hinobus",
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "AutoDealer",
+          "@id": "https://official-hino.com/#dealer",
           "name": "Dealer Hino Tangerang",
           "url": "https://official-hino.com/contact",
-          "telephone": "+62-812-1905-5571"
+          "telephone": "+62-812-1905-5571",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
+            "addressLocality": "Kabupaten Tangerang",
+            "addressRegion": "Banten",
+            "postalCode": "15710",
+            "addressCountry": "ID"
+          }
         }
       }
     }
     </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

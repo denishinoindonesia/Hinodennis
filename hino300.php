@@ -42,12 +42,10 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "@id": "https://official-hino.com/hino300",
+      "@id": "https://official-hino.com/hino300#product",
       "name": "Hino 300 Series",
       "description": "Hino 300 Series adalah truk ringan andalan untuk bisnis logistik dan distribusi. Tersedia berbagai varian seperti Hino Dutro 110 SD, 130 HD, dan 136 HD dengan mesin tangguh dan irit bahan bakar.",
-      "image": [
-        "https://official-hino.com/img/hino300produk.png"
-      ],
+      "image": "https://official-hino.com/img/hino300produk.png",
       "brand": {
         "@type": "Brand",
         "name": "Hino"
@@ -58,16 +56,24 @@
       },
       "category": "Light Duty Truck",
       "sku": "HINO-300",
+      "itemCondition": "https://schema.org/NewCondition",
       "offers": {
         "@type": "Offer",
-        "url": "https://official-hino.com/hino300",
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "AutoDealer",
+          "@id": "https://official-hino.com/#dealer",
           "name": "Dealer Hino Tangerang",
           "url": "https://official-hino.com/contact",
-          "telephone": "+62-812-1905-5571"
+          "telephone": "+62-812-1905-5571",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
+            "addressLocality": "Kabupaten Tangerang",
+            "addressRegion": "Banten",
+            "postalCode": "15710",
+            "addressCountry": "ID"
+          }
         }
       }
     }

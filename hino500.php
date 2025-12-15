@@ -42,12 +42,10 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "@id": "https://official-hino.com/hino500",
+      "@id": "https://official-hino.com/hino500#product",
       "name": "Hino 500 Series",
       "description": "Hino 500 Series merupakan truk medium duty yang tangguh dan efisien untuk kebutuhan logistik, konstruksi, dan bisnis berat. Tersedia berbagai varian seperti Ranger Cargo, Ranger Dump, dan Mixer.",
-      "image": [
-        "https://official-hino.com/img/hino500produk.png"
-      ],
+      "image": "https://official-hino.com/img/hino500produk.png",
       "brand": {
         "@type": "Brand",
         "name": "Hino"
@@ -58,16 +56,24 @@
       },
       "category": "Medium Duty Truck",
       "sku": "HINO-500",
+      "itemCondition": "https://schema.org/NewCondition",
       "offers": {
         "@type": "Offer",
-        "url": "https://official-hino.com/hino500",
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "AutoDealer",
+          "@id": "https://official-hino.com/#dealer",
           "name": "Dealer Hino Tangerang",
           "url": "https://official-hino.com/contact",
-          "telephone": "+62-812-1905-5571"
+          "telephone": "+62-812-1905-5571",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
+            "addressLocality": "Kabupaten Tangerang",
+            "addressRegion": "Banten",
+            "postalCode": "15710",
+            "addressCountry": "ID"
+          }
         }
       }
     }
