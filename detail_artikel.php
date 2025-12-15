@@ -74,7 +74,7 @@ $allArtikel = json_decode(
     <!-- Logo -->
     <div class="header-title">
       <a href="https://official-hino.com">
-        <img src="img/logo3.png" alt="Logo Hino" style="height: 60px" />
+        <img src="/img/logo3.png" alt="Logo Hino" style="height: 60px" />
       </a>
     </div>
         <div class="hamburger-menu">&#9776;</div>
