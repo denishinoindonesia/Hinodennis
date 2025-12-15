@@ -61,7 +61,7 @@ $allArtikel = json_decode(
     </script>
 
     <!-- JS -->
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Tambahan Perbaikan Ukuran Navbar & Footer -->
@@ -79,12 +79,12 @@ $allArtikel = json_decode(
     </div>
         <div class="hamburger-menu">&#9776;</div>
         <nav class="nav links">
-          <a href="index.php">Home</a>
-          <a href="hino300.php">Hino 300 Series</a>
-          <a href="hino500.php">Hino 500 Series</a>
-          <a href="hinobus.php">Hino Bus Series</a>
-          <a href="artikel.php">Blog & Artikel</a>
-          <a href="contact.php">Contact</a>
+          <a href="/">Home</a>
+          <a href="/hino300">Hino 300 Series</a>
+          <a href="/hino500">Hino 500 Series</a>
+          <a href="/hinobus">Hino Bus Series</a>
+          <a href="/artikel">Blog & Artikel</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
     </header>
