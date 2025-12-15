@@ -1,32 +1,44 @@
 <?php
-// Ambil ID artikel dari URL
-$id = $_GET['id'] ?? null;
-$data = json_decode(file_get_contents("https://official-hino.com/admin/api/get_artikel.php"), true);
-$artikel = null;
-
-// Cari artikel berdasarkan ID
-if ($id && is_array($data)) {
-  foreach ($data as $item) {
-    if ($item['id'] == $id) {
-      $artikel = $item;
-      break;
-    }
-  }
+$slug = $_GET['slug'] ?? null;
+if (!$slug) {
+    http_response_code(404);
+    exit('Artikel tidak ditemukan');
 }
+
+// Ambil artikel by slug
+$artikel = json_decode(
+    file_get_contents("https://official-hino.com/admin/api/get_artikel.php?slug=" . urlencode($slug)),
+    true
+);
+
+if (!$artikel || !isset($artikel['slug'])) {
+    http_response_code(404);
+    exit('Artikel tidak ditemukan');
+}
+
+// Ambil artikel lain untuk sidebar
+$allArtikel = json_decode(
+    file_get_contents("https://official-hino.com/admin/api/get_artikel.php"),
+    true
+) ?: [];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="<?= htmlspecialchars($artikel['judul']) ?>, Hino, Truk, Dealer Hino, Jabodetabek, Hino Indonesia" />
-    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>" />
-    <meta property="og:description" content="<?= substr(strip_tags($artikel['isi']), 0, 150) ?>..." />
-    <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>" />
-    <meta property="og:url" content="https://official-hino.com/detail_artikel.php?id=<?= $artikel['id'] ?>" />
-    <title>Official Hino | Sales Hino Terbaik di Tangerang</title>
-    <meta name="description" content="Hino Official - Dealer Hino Tangerang. Hubungi : 0812 1905 5571 Untuk mendapatkan informasi produk Hino. Layanan Terbaik dan Jaminan Mutu." />
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><?= htmlspecialchars($artikel['judul']) ?> | Official Hino</title>
+    <meta name="description" content="<?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']),0,160,'...')) ?>">
+
+    <!-- SEO -->
+    <meta property="og:title" content="<?= htmlspecialchars($artikel['judul']) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']),0,160,'...')) ?>">
+    <meta property="og:image" content="<?= htmlspecialchars($artikel['gambar']) ?>">
+    <meta property="og:url" content="https://official-hino.com/artikel/<?= htmlspecialchars($artikel['slug']) ?>">
+    <meta property="og:type" content="article">
+    <link rel="icon" type="image/png" href="/favicon_512.png">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet" />
