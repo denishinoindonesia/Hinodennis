@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- ✅ Meta Keywords (ringkas & lokal) -->
     <meta
       name="keywords"
-      content="kontak dealer hino tangerang, sales hino tangerang, alamat dealer hino tangerang, hubungi dealer hino, dealer hino"
+      content="kontak dealer hino tangerang, sales hino tangerang, alamat dealer hino tangerang, hubungi dealer hino, dealer hino, hino dutro, hino ranger, dealer hino cikupa, dealer resmi hino tangerang, hino tangerang"
     />
 
     <!-- ✅ Open Graph -->

@@ -49,7 +49,7 @@ $artikel      = array_slice($artikelData, $offset, $perPage);
     <meta name="description" content="Artikel terbaru seputar truk Hino: harga, promo, spesifikasi Hino Dutro, Hino 300 & 500 Series. Update resmi dari Dealer Hino Tangerang Jabodetabek." />
 
     <!-- ✅ Meta Keywords (khusus artikel, tidak spam) -->
-    <meta name="keywords" content="artikel hino, berita hino, promo truk hino, harga truk hino terbaru, spesifikasi hino dutro, hino 300, hino 500, dealer hino tangerang" />
+    <meta name="keywords" content="artikel hino, berita hino, promo truk hino, harga truk hino terbaru, spesifikasi hino dutro, hino 300, hino 500, dealer hino tangerang, hino dutro, hino ranger, dealer hino cikupa, dealer resmi hino tangerang, hino tangerang" />
 
     <!-- ✅ Canonical -->
     <link rel="canonical" href="https://official-hino.com/artikel" />

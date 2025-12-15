@@ -49,8 +49,8 @@ try {
     <title>Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571</title>
 
     <!-- ✅ Deskripsi SEO -->
-    <meta name="description" content="Dealer Hino Tangerang Resmi — Hubungi 0812-1905-5571 untuk info harga, promo, dan pembelian truk Hino di wilayah Tangerang dan sekitarnya. Layanan cepat dan terpercaya.">
-    <meta name="keywords" content="dealer hino tangerang, hino tangerang, sales hino tangerang, harga truk hino, promo hino, kredit truk hino, hino resmi tangerang">
+    <meta name="description" content="Dealer Hino Tangerang — Hubungi 0812-1905-5571 untuk info harga, promo, dan pembelian truk Hino di wilayah Tangerang dan sekitarnya. Layanan cepat dan terpercaya.">
+    <meta name="keywords" content="dealer hino tangerang, hino tangerang, sales hino tangerang, harga truk hino, promo hino, kredit truk hino, dealer hino resmi tangerang, dealer hino cikupa, dealer hino cikupa tangerang">
     <meta name="author" content="Dealer Hino Tangerang">
 
     <!-- ✅ Canonical URL -->
@@ -63,7 +63,7 @@ try {
     <!-- ✅ Open Graph untuk tampilan di Google / Facebook / WhatsApp -->
     <meta property="og:site_name" content="Dealer Hino Tangerang">
     <meta property="og:title" content="Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571">
-    <meta property="og:description" content="Dealer Hino Tangerang Resmi. Hubungi 0812-1905-5571 untuk promo dan harga truk Hino terbaru.">
+    <meta property="og:description" content="Dealer Hino Tangerang. Hubungi 0812-1905-5571 untuk promo dan harga truk Hino terbaru.">
     <meta property="og:url" content="https://official-hino.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://official-hino.com/img/hino.png">
