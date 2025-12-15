@@ -5,6 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 // Parameter
 $search   = isset($_GET['search']) ? trim($_GET['search']) : '';
 $kategori = isset($_GET['kategori']) ? trim($_GET['kategori']) : '';
+$slug     = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 
 // SQL
 $sql = "
@@ -15,7 +16,7 @@ $sql = "
         a.isi,
         a.gambar,
         a.tanggal,
-        k.nama_kategori
+        k.nama_kategori AS kategori
     FROM artikel a
     LEFT JOIN kategori k ON a.kategori_id = k.id
 ";
@@ -23,11 +24,19 @@ $sql = "
 $where = [];
 $params = [];
 
+// filter slug (DETAIL)
+if ($slug !== '') {
+    $where[] = "a.slug = :slug";
+    $params[':slug'] = $slug;
+}
+
+// filter search
 if ($search !== '') {
     $where[] = "(a.judul LIKE :search OR a.isi LIKE :search)";
     $params[':search'] = "%$search%";
 }
 
+// filter kategori
 if ($kategori !== '') {
     $where[] = "k.nama_kategori = :kategori";
     $params[':kategori'] = $kategori;
@@ -50,7 +59,13 @@ try {
         }
     }
 
-    echo json_encode($artikel, JSON_UNESCAPED_UNICODE);
+    // JIKA DETAIL (slug) → KIRIM 1 DATA
+    if ($slug !== '') {
+        echo json_encode($artikel[0] ?? null, JSON_UNESCAPED_UNICODE);
+    } else {
+        echo json_encode($artikel, JSON_UNESCAPED_UNICODE);
+    }
+
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(["error" => "Gagal mengambil artikel"]);

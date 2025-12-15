@@ -115,14 +115,14 @@ $allArtikel = json_decode(
               <h3>Recent Posts</h3>
               <div class="recent-posts-list">
                 <?php
-                foreach (array_slice($data, 0, 5) as $recent) {
-                  if ($recent['id'] != $id) {
+                foreach (array_slice($allArtikel, 0, 5) as $recent) {
+                  if ($recent['slug'] !== $artikel['slug']) {
                     echo '<div class="recent-post-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">';
-                    echo '<a href="detail_artikel.php?id=' . $recent['id'] . '" style="flex-shrink: 0;">';
+                    echo '<a href="/artikel/' . htmlspecialchars($recent['slug']) . '" style="flex-shrink: 0;">';
                     echo '<img src="' . htmlspecialchars($recent['gambar']) . '" alt="' . htmlspecialchars($recent['judul']) . '" style="width: 80px; height: 60px; object-fit: cover; border-radius: 6px;">';
                     echo '</a>';
                     echo '<div style="flex: 1;">';
-                    echo '<a href="detail_artikel.php?id=' . $recent['id'] . '" style="font-weight: 600; text-decoration: none; color: #333; line-height: 1.3; display: block;">' . htmlspecialchars($recent['judul']) . '</a>';
+                    echo '<a href="/artikel/' . htmlspecialchars($recent['slug']) . '" style="font-weight: 600; text-decoration: none; color: #333; line-height: 1.3; display: block;">' . htmlspecialchars($recent['judul']) . '</a>';
                     echo '</div>';
                     echo '</div>';
                   }
@@ -135,7 +135,7 @@ $allArtikel = json_decode(
               <h3>Kategori</h3>
               <ul style="list-style: none; padding-left: 0;">
                 <?php
-                $kategori = array_unique(array_column($data, 'kategori'));
+                $kategori = array_unique(array_column($allArtikel, 'kategori'));
                 foreach ($kategori as $kat) {
                   if (!empty($kat)) {
                     echo '<li style="margin-bottom: 8px;">';
@@ -156,10 +156,10 @@ $allArtikel = json_decode(
           <div class="related-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
             <?php
             $related_count = 0;
-            foreach ($data as $rel) {
-              if ($rel['id'] != $id && isset($rel['kategori'], $artikel['kategori']) && $rel['kategori'] === $artikel['kategori']) {
+            foreach ($allArtikel as $rel) {
+              if ($rel['slug'] !== $artikel['slug'] && isset($rel['kategori'], $artikel['kategori']) && $rel['kategori'] === $artikel['kategori']) {
                 echo '<div class="related-item" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">';
-                echo '<a href="detail_artikel.php?id=' . $rel['id'] . '" style="text-decoration: none; color: #333;">';
+                echo '<a href="/artikel/' . htmlspecialchars($rel['slug']) . '" style="text-decoration: none; color: #333;">';
                 echo '<img src="' . htmlspecialchars($rel['gambar']) . '" alt="' . htmlspecialchars($rel['judul']) . '" style="width: 100%; height: 160px; object-fit: cover;">';
                 echo '<div style="padding: 15px;">';
                 echo '<h4 style="font-size: 16px; font-weight: 600; margin: 0 0 10px 0;">' . htmlspecialchars($rel['judul']) . '</h4>';
