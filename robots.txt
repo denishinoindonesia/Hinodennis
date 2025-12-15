@@ -1,5 +1,5 @@
 # =========================================================
-# robots.txt for dealerhinoindonesia.com
+# robots.txt for official-hino.com
 # FINAL CLEAN & OPTIMIZED
 # =========================================================
 
@@ -8,9 +8,9 @@ User-agent: *
 # --- ALLOW: Static files ---
 Allow: /css/
 Allow: /js/
-Allow: /images/
+Allow: /img/
 Allow: /admin/uploads/
-Allow: /favicon.png
+Allow: /favicon_512.png
 Allow: /favicon.ico
 
 # --- BLOCK: Sensitive directories ---
@@ -26,10 +26,9 @@ Allow: /hinobus.php$
 Allow: /contact.php$
 
 # --- Sitemap ---
-Sitemap: https://dealerhinoindonesia.com/sitemap-index.xml
-Sitemap: https://dealerhinoindonesia.com/sitemap-pages.xml
-Sitemap: https://dealerhinoindonesia.com/sitemap-produk.xml
-Sitemap: https://dealerhinoindonesia.com/sitemap-artikel.php
+Sitemap: https://official-hino.com/sitemap-index.xml
+Sitemap: https://official-hino.com/sitemap-pages.xml
+Sitemap: https://official-hino.com/sitemap-artikel
 
 # =========================================================
 # END OF FILE
