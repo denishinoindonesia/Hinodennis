@@ -1,12 +1,13 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
 include "../config.php";
 header('Content-Type: application/json; charset=utf-8');
 
-// Ambil parameter pencarian dan filter kategori
 $search   = isset($_GET['search']) ? trim($_GET['search']) : null;
 $kategori = isset($_GET['kategori']) ? trim($_GET['kategori']) : null;
 
-// Query dasar
 $sql = "
     SELECT 
         a.id, 
@@ -20,7 +21,6 @@ $sql = "
     LEFT JOIN kategori k ON a.kategori_id = k.id
 ";
 
-// Buat kondisi dinamis
 $conditions = [];
 $params = [];
 
@@ -34,30 +34,32 @@ if ($kategori) {
     $params[':kategori'] = $kategori;
 }
 
-// Tambahkan kondisi jika ada
 if (!empty($conditions)) {
     $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
-// Urutkan artikel terbaru
 $sql .= " ORDER BY a.id DESC";
 
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
-    $artikel = $stmt->fetchAll();
+    $artikel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Ubah path gambar ke URL lengkap
     foreach ($artikel as &$row) {
+        $row['judul']    = $row['judul'] ?? '';
+        $row['slug']     = $row['slug'] ?? '';
+        $row['isi']      = $row['isi'] ?? '';
+        $row['kategori'] = $row['kategori'] ?? '';
+
         if (!empty($row['gambar'])) {
             $row['gambar'] = 'https://official-hino.com/admin/uploads/artikel/' . $row['gambar'];
+        } else {
+            $row['gambar'] = '';
         }
     }
 
     echo json_encode($artikel, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
 } catch (Exception $e) {
-    // Error handling
-    error_log("Error get_artikel: " . $e->getMessage());
     echo json_encode(['error' => 'Terjadi kesalahan saat mengambil data artikel.']);
 }
-?>
