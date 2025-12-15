@@ -1,29 +1,40 @@
 <?php
-// Ambil data artikel dan kategori dari API
-$kategoriData = json_decode(file_get_contents("https://official-hino.com/admin/api/get_kategori.php"), true);
+$kategoriData = json_decode(
+    file_get_contents("https://official-hino.com/admin/api/get_kategori.php"),
+    true
+);
+
 $search = $_GET['search'] ?? '';
 $selectedKategori = $_GET['kategori'] ?? '';
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $perPage = 6;
 
-// Bangun URL API dengan filter jika ada
+// Bangun URL API
 $apiUrl = "https://official-hino.com/admin/api/get_artikel.php";
 $params = [];
+
 if ($search !== '') {
-  $params[] = "search=" . urlencode($search);
+    $params[] = "search=" . urlencode($search);
 }
 if ($selectedKategori !== '') {
-  $params[] = "kategori=" . urlencode($selectedKategori);
-}
-if (!empty($params)) {
-  $apiUrl .= '?' . implode('&', $params);
+    $params[] = "kategori=" . urlencode($selectedKategori);
 }
 
+if ($params) {
+    $apiUrl .= '?' . implode('&', $params);
+}
+
+// Ambil data artikel
 $artikelData = json_decode(file_get_contents($apiUrl), true);
-$totalArtikel = is_array($artikelData) ? count($artikelData) : 0;
-$totalPages = ceil($totalArtikel / $perPage);
-$offset = ($page - 1) * $perPage;
-$artikel = array_slice($artikelData, $offset, $perPage);
+if (!is_array($artikelData)) {
+    $artikelData = [];
+}
+
+// Pagination manual
+$totalArtikel = count($artikelData);
+$totalPages   = ceil($totalArtikel / $perPage);
+$offset       = ($page - 1) * $perPage;
+$artikel      = array_slice($artikelData, $offset, $perPage);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -40,7 +51,8 @@ $artikel = array_slice($artikelData, $offset, $perPage);
     <meta property="og:site_name" content="Dealer Hino Tangerang" />
     <meta property="og:title" content="Dealer Hino Tangerang" />
     <meta property="og:description" content="Dealer Hino Tangerang Resmi - Hubungi 0812 1905 5571 untuk informasi Hino 500 Series, harga, dan promo terbaru." />
-    <meta property="og:url" content="https://official-hino.com/artikel.php" />
+    <link rel="canonical" href="https://official-hino.com/artikel" />
+    <meta property="og:url" content="https://official-hino.com/artikel" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://official-hino.com/img/hino.png" />
     <!-- Google tag (gtag.js) -->
@@ -160,8 +172,6 @@ $artikel = array_slice($artikelData, $offset, $perPage);
           />
           <select name="kategori" onchange="this.form.submit()">
             <option value="">Semua Kategori</option>
-            <option value="">Berita Dealer</option>
-            <option value="">Promo Hino</option>
             <?php if (is_array($kategoriData)): ?>
               <?php foreach ($kategoriData as $kat): ?>
                 <option value="<?= htmlspecialchars($kat['nama_kategori']) ?>" <?= $selectedKategori === $kat['nama_kategori'] ? 'selected' : '' ?>>
@@ -180,13 +190,13 @@ $artikel = array_slice($artikelData, $offset, $perPage);
               <div class="blog-post">
                 <img src="<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
                 <h2>
-                  <a href="detail_artikel.php?id=<?= urlencode($row['id']) ?>">
+                  <a href="/artikel/<?= htmlspecialchars($row['slug']) ?>">
                     <?= htmlspecialchars($row['judul']) ?>
                   </a>
                 </h2>
                 <p><?= substr(strip_tags($row['isi']), 0, 100) ?>...</p>
                 <div class="card-footer">
-                  <a href="detail_artikel.php?id=<?= urlencode($row['id']) ?>">Baca Selengkapnya</a>
+                  <a href="/artikel/<?= htmlspecialchars($row['slug']) ?>">Baca Selengkapnya</a>
                 </div>
               </div>
             <?php endforeach; ?>
