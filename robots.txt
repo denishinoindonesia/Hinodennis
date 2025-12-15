@@ -1,40 +1,36 @@
-# ============================
-# robots.txt - Official Hino
-# ============================
+# =========================================================
+# robots.txt for dealerhinoindonesia.com
+# FINAL CLEAN & OPTIMIZED
+# =========================================================
 
 User-agent: *
 
-# ❌ Blokir area sensitif / admin / skrip
-Disallow: /admin/
-Disallow: /admin/api/
-Disallow: /.vscode/
-Disallow: /config.php
-Disallow: /koneksi.php
-Disallow: /proses_*
-Disallow: /edit_*
-Disallow: /hapus_*
-Disallow: /tambah_*
-
-# ❌ Blokir folder upload privat (jika ada file non-public)
-Disallow: /uploads/private/
-# ✅ Biarkan folder publik untuk gambar, agar bisa diindeks
-Allow: /uploads/public/
-
-# ✅ Izinkan bot mengakses CSS/JS/IMG untuk rendering halaman
+# --- ALLOW: Static files ---
 Allow: /css/
 Allow: /js/
-Allow: /img/
+Allow: /images/
+Allow: /admin/uploads/
+Allow: /favicon.png
+Allow: /favicon.ico
 
-# ✅ Izinkan halaman publik untuk diindeks
-Allow: /index.php
-Allow: /artikel.php
-Allow: /detail_artikel.php
-Allow: /contact.php
-Allow: /hino300.html
-Allow: /hino500.html
-Allow: /hinobus.html
+# --- BLOCK: Sensitive directories ---
+Disallow: /admin/
 
-# ⚙️ Sitemap utama
-Sitemap: https://official-hino.com/sitemap-index.xml
-Sitemap: https://official-hino.com/sitemap-artikel.php
-Sitemap: https://official-hino.com/sitemap-pages.xml
+# --- ALLOW important public PHP pages ---
+Allow: /index.php$
+Allow: /artikel.php$
+Allow: /detail_artikel.php$
+Allow: /hino300.php$
+Allow: /hino500.php$
+Allow: /hinobus.php$
+Allow: /contact.php$
+
+# --- Sitemap ---
+Sitemap: https://dealerhinoindonesia.com/sitemap-index.xml
+Sitemap: https://dealerhinoindonesia.com/sitemap-pages.xml
+Sitemap: https://dealerhinoindonesia.com/sitemap-produk.xml
+Sitemap: https://dealerhinoindonesia.com/sitemap-artikel.php
+
+# =========================================================
+# END OF FILE
+# =========================================================

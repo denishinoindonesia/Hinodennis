@@ -72,7 +72,7 @@ try {
     <link rel="stylesheet" href="css/home_css/contact.css" />
     <link rel="stylesheet" href="css/home_css/blogcard.css" />
 
-  <!-- JSON -->
+    <!-- JSON -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -82,16 +82,85 @@ try {
       "url": "https://official-hino.com"
     }
     </script>
-
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Dealer Hino Tangerang",
       "url": "https://official-hino.com",
-      "logo": "https://official-hino.com/img/hino.png"
+      "logo": "https://official-hino.com/favicon_512.png"
     }
     </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "@id": "https://official-hino.com/#dealer",
+      "name": "Dealer Hino Tangerang",
+      "alternateName": "Dealer Hino Tangerang",
+      "url": "https://official-hino.com/",
+      "image": "https://official-hino.com/img/hino300produk.png",
+      "logo": "https://official-hino.com/img/hino300produk.png",
+      "description": "Dealer Resmi Hino Tangerang - Menyediakan berbagai jenis truk dan bus Hino dengan layanan terbaik. Dapatkan promo menarik dan layanan kredit untuk wilayah Tangerang dan sekitarnya.",
+      "telephone": "+62-812-1905-5571",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Raya Serang No.Km.18,8, Sukanagara, Kec. Cikupa",
+        "addressLocality": "Kabupaten Tangerang",
+        "addressRegion": "Banten",
+        "postalCode": "15710",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.2500,
+        "longitude": 106.5000
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/official-hino",
+        "https://www.instagram.com/official_hino.id",
+        "https://www.tiktok.com/@official_hino"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://official-hino.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dealer Hino Tangerang"
+        }
+      ]
+    }
+    </script>
+
 
 
     <!-- ✅ Google Analytics -->
@@ -337,14 +406,14 @@ try {
                 />
                 <div class="blog-card-content">
                   <h3>
-                    <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>">
+                    <a href="/artikel/<?= htmlspecialchars($artikel['slug']) ?>">
                       <?= htmlspecialchars($artikel['judul']) ?>
                     </a>
                   </h3>
 
                   <p><?= htmlspecialchars(mb_strimwidth(strip_tags($artikel['isi']), 0, 100, '...')) ?></p>
 
-                  <a href="detail_artikel.php?id=<?= urlencode($artikel['id']) ?>" class="read-more">
+                  <a href="/artikel/<?= htmlspecialchars($artikel['slug']) ?>" class="read-more">
                     Baca Selengkapnya
                   </a>
                 </div>

@@ -180,13 +180,13 @@ $artikel = array_slice($artikelData, $offset, $perPage);
               <div class="blog-post">
                 <img src="<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['judul']) ?>">
                 <h2>
-                  <a href="detail_artikel.php?id=<?= urlencode($row['id']) ?>">
+                  <a href="/artikel/<?= htmlspecialchars($row['slug']) ?>">
                     <?= htmlspecialchars($row['judul']) ?>
                   </a>
                 </h2>
                 <p><?= substr(strip_tags($row['isi']), 0, 100) ?>...</p>
                 <div class="card-footer">
-                  <a href="detail_artikel.php?id=<?= urlencode($row['id']) ?>">Baca Selengkapnya</a>
+                  <a href="/artikel/<?= htmlspecialchars($row['slug']) ?>">Baca Selengkapnya</a>
                 </div>
               </div>
             <?php endforeach; ?>
