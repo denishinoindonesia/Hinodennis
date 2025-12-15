@@ -5,22 +5,39 @@ error_reporting(E_ALL);
 
 require 'admin/config.php';
 
-// Ambil 3 artikel terbaru dari database
-$sql = "SELECT a.id, a.judul, a.isi, a.gambar, a.tanggal, k.nama_kategori AS kategori
-        FROM artikel a
-        LEFT JOIN kategori k ON a.kategori_id = k.id
-        ORDER BY a.tanggal DESC
-        LIMIT 3";
+// Ambil 3 artikel terbaru (SEO READY)
+$sql = "
+    SELECT 
+        a.id,
+        a.judul,
+        a.slug,
+        a.isi,
+        a.gambar,
+        a.tanggal,
+        k.nama_kategori AS kategori
+    FROM artikel a
+    LEFT JOIN kategori k ON a.kategori_id = k.id
+    ORDER BY a.tanggal DESC
+    LIMIT 3
+";
 
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $artikelData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Samakan format gambar seperti API
+    foreach ($artikelData as &$row) {
+        if (!empty($row['gambar'])) {
+            $row['gambar'] = "https://official-hino.com/admin/uploads/artikel/" . $row['gambar'];
+        }
+    }
+    unset($row);
+
 } catch (PDOException $e) {
     die("Gagal mengambil data artikel: " . $e->getMessage());
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
