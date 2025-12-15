@@ -1,6 +1,6 @@
 ###############################################
 # 🌐 FRONTEND SECURITY + SEO + PERFORMANCE
-# Dealer Hino Indonesia
+# Official Hino
 ###############################################
 
 Options -Indexes
@@ -30,7 +30,7 @@ RewriteRule ^sitemap.*\.xml$ - [L,NC]
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} \.(jpe?g|png|gif|svg|webp)$ [NC]
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(www\.)?dealerhinoindonesia\.com [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?official-hino\.com [NC]
 RewriteRule \.(jpe?g|png|gif|svg|webp)$ - [F,NC,L]
 
 
