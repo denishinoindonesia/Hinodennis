@@ -1,6 +1,6 @@
 ###############################################
 # 🌐 FRONTEND SECURITY + SEO + PERFORMANCE
-# Official Hino
+# Dealer Hino Indonesia
 ###############################################
 
 Options -Indexes
@@ -27,17 +27,11 @@ RewriteRule ^sitemap.*\.xml$ - [L,NC]
 ###############################################
 # 3) ANTI HOTLINK (IMAGE PROTECTION)
 ###############################################
-# Allow images from artikel uploads
-RewriteCond %{REQUEST_URI} ^/admin/uploads/artikel/ [NC]
-RewriteRule .* - [L]
-
-# Anti hotlink selain itu
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} \.(jpe?g|png|gif|svg|webp)$ [NC]
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(www\.)?official-hino\.com [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?dealerhinoindonesia\.com [NC]
 RewriteRule \.(jpe?g|png|gif|svg|webp)$ - [F,NC,L]
-
 
 
 ###############################################
@@ -51,6 +45,8 @@ RewriteRule \.(jpe?g|png|gif|svg|webp)$ - [F,NC,L]
 ###############################################
 # 5) BLOCK BAD QUERY / INJECTION
 ###############################################
+RewriteCond %{QUERY_STRING} (\.\./|/etc/passwd|base64|eval\(|system\(|UNION.*SELECT|GLOBALS|_REQUEST) [NC]
+RewriteRule .* - [F,L]
 
 
 ###############################################
@@ -90,6 +86,7 @@ SetEnvIfNoCase User-Agent "sqlmap" bad_bot
     Header always set Content-Security-Policy "
         default-src 'self';
         img-src 'self' data: https:;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://ajax.googleapis.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
         font-src 'self' https://fonts.gstatic.com data:;
         connect-src 'self';
@@ -97,15 +94,6 @@ SetEnvIfNoCase User-Agent "sqlmap" bad_bot
         media-src 'self';
         worker-src 'self';
         base-uri 'self';
-        script-src 
-        'self' 
-        'unsafe-inline' 
-        'unsafe-eval'
-        https://www.googletagmanager.com
-        https://elfsightcdn.com
-        https://unpkg.com
-        https://cdnjs.cloudflare.com;
-
     "
 </IfModule>
 
