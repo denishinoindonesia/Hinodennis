@@ -46,24 +46,24 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ✅ Judul utama -->
-    <title>Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571</title>
+    <title>Dealer Hino Cikupa Tangerang & Bogor | Pusat Pembelian Truk & Bus Hino Jakarta Bogor Depok Tangerang</title>
 
     <!-- ✅ Deskripsi SEO -->
-    <meta name="description" content="Dealer Hino Tangerang — Hubungi 0812-1905-5571 untuk info harga, promo, dan pembelian truk Hino di wilayah Tangerang dan sekitarnya. Layanan cepat dan terpercaya.">
-    <meta name="keywords" content="dealer hino, dealer hino jakarta, dealer hino jabodetabek, dealer hino jakarta barat, dealer hino jakarta timur, dealer hino jakarta utara, dealer hino jakarta selatan, dealer hino tangerang, dealer hino bekasi, dealer hino depok, dealer hino bogor, dealer hino bandung, dealer resmi hino indonesia, sales hino, promo hino, harga truk hino, jual truk hino, kredit truk hino, cicilan truk hino, hino ready stock, stok unit hino terbaru, harga hino terbaru 2025, promo kredit hino, dealer hino tangerang, hino tangerang, sales hino tangerang, harga truk hino tangerang, promo hino tangerang, kredit truk hino tangerang, dealer hino resmi tangerang, dealer hino cikupa, dealer hino cikupa tangerang">
-    <meta name="author" content="Dealer Hino Tangerang">
+    <meta name="description" content="Dealer Hino Cikupa Tangerang & Bogor | Pusat Pembelian Truk & Bus Hino Jakarta Bogor Depok Tangerang untuk info harga, promo, dan pembelian truk Hino di wilayah cikupa Tangerang, jakarta, bogor, dan depok. Layanan cepat dan terpercaya.">
+    <meta name="keywords" content="dealer hino, dealer hino jakarta, dealer hino jabodetabek, dealer hino jakarta barat, dealer hino jakarta timur, dealer hino jakarta utara, dealer hino jakarta selatan, dealer hino tangerang, dealer hino bekasi, dealer hino depok, dealer hino sentul bogor, dealer hino bandung, dealer hino kalimantan, dealer hino samarinda, dealer resmi hino indonesia, sales hino, promo hino, harga truk hino, jual truk hino, kredit truk hino, cicilan truk hino, hino ready stock, stok unit hino terbaru, harga hino terbaru 2026, promo kredit hino, dealer hino tangerang, hino tangerang, sales hino tangerang, harga truk hino tangerang, promo hino tangerang, kredit truk hino tangerang, dealer hino resmi tangerang, dealer hino cikupa, dealer hino cikupa tangerang">
+    <meta name="author" content="Dealer Hino Cikupa Tangerang & Bogor">
 
     <!-- ✅ Canonical URL -->
     <link rel="canonical" href="https://official-hino.com/" />
 
-    <!-- ✅ Tambahkan ini agar judul 'Dealer Hino Tangerang' muncul di atas domain (seperti di Indomobil Hino) -->
-    <meta name="application-name" content="Dealer Hino Tangerang">
-    <meta name="apple-mobile-web-app-title" content="Dealer Hino Tangerang">
+    <!-- ✅ Tambahkan ini agar judul 'Dealer Hino Cikupa Tangerang & Bogor' muncul di atas domain (seperti di Indomobil Hino) -->
+    <meta name="application-name" content="Dealer Hino Cikupa Tangerang & Bogor">
+    <meta name="apple-mobile-web-app-title" content="Dealer Hino Cikupa Tangerang & Bogor">
 
     <!-- ✅ Open Graph untuk tampilan di Google / Facebook / WhatsApp -->
-    <meta property="og:site_name" content="Dealer Hino Tangerang">
-    <meta property="og:title" content="Dealer Hino Tangerang | Info Pemesanan Hubungi 0812-1905-5571">
-    <meta property="og:description" content="Dealer Hino Tangerang. Hubungi 0812-1905-5571 untuk promo dan harga truk Hino terbaru.">
+    <meta property="og:site_name" content="Dealer Hino Cikupa Tangerang & Bogor">
+    <meta property="og:title" content="Dealer Hino Cikupa Tangerang & Bogor | Pusat Pembelian Truk & Bus Hino Jakarta Bogor Depok Tangerang">
+    <meta property="og:description" content="Dealer Hino Cikupa Tangerang & Bogor. Hubungi 0812-1905-5571 untuk promo dan harga truk Hino terbaru.">
     <meta property="og:url" content="https://official-hino.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://official-hino.com/img/hino.png">
@@ -94,7 +94,7 @@ try {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Dealer Hino Tangerang",
+      "name": "Dealer Hino Cikupa Tangerang & Bogor",
       "alternateName": "Official Hino",
       "url": "https://official-hino.com"
     }
@@ -104,7 +104,7 @@ try {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Dealer Hino Tangerang",
+      "name": "Dealer Hino Cikupa Tangerang & Bogor",
       "url": "https://official-hino.com",
       "logo": "https://official-hino.com/favicon_512.png"
     }
@@ -115,12 +115,12 @@ try {
       "@context": "https://schema.org",
       "@type": "AutoDealer",
       "@id": "https://official-hino.com/#dealer",
-      "name": "Dealer Hino Tangerang",
-      "alternateName": "Dealer Hino Tangerang",
+      "name": "Dealer Hino Cikupa Tangerang & Bogor",
+      "alternateName": "Dealer Hino Cikupa Tangerang & Bogor",
       "url": "https://official-hino.com/",
       "image": "https://official-hino.com/img/hino300produk.png",
       "logo": "https://official-hino.com/img/hino300produk.png",
-      "description": "Dealer Resmi Hino Tangerang - Menyediakan berbagai jenis truk dan bus Hino dengan layanan terbaik. Dapatkan promo menarik dan layanan kredit untuk wilayah Tangerang dan sekitarnya.",
+      "description": "Dealer Resmi Hino Cikupa Tangerang & Bogor - Menyediakan berbagai jenis truk dan bus Hino dengan layanan terbaik. Dapatkan promo menarik dan layanan kredit untuk wilayah Tangerang dan sekitarnya.",
       "telephone": "+62-812-1905-5571",
       "address": {
         "@type": "PostalAddress",
@@ -172,7 +172,7 @@ try {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Dealer Hino Tangerang"
+          "name": "Dealer Hino Cikupa Tangerang & Bogor"
         }
       ]
     }
